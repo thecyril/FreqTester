@@ -5,4 +5,10 @@
     <string name="textBtnRTS">RTS - Request To Send</string>
     <string name="textBtnDTR">DTR - Data Terminal Ready</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="Units">
+        <item>Hz</item>
+        <item>kHz</item>
+        <item>Ghz</item>
+    </string-array>
 </resources>

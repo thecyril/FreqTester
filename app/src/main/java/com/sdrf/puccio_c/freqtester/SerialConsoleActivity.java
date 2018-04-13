@@ -29,19 +29,23 @@ import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.util.HexDump;
 import com.hoho.android.usbserial.util.SerialInputOutputManager;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -67,12 +71,15 @@ public class SerialConsoleActivity extends Activity {
      */
     private static UsbSerialPort    sPort = null;
 
-    private TextView                mTitleTextView;
-    private TextView                mDumpTextView;
-    private ScrollView              mScrollView;
-    private EditText                mFreqInput;
-    private Button                  mStart;
-    private ImageButton             mReset;
+    protected TextView                mTitleTextView;
+    protected TextView                mDumpTextView;
+    protected ScrollView              mScrollView;
+    protected EditText                mFreqInput;
+    protected Button                  mStart;
+    protected ImageButton             mReset;
+    protected Spinner                 mSpinner;
+    protected BigInteger              mFreq;
+    protected static Integer          mFreqmult = 1;
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
@@ -109,11 +116,16 @@ public class SerialConsoleActivity extends Activity {
         mReset = (ImageButton) findViewById(R.id.reset);
 
         mReset.setImageResource(R.drawable.reset);
+        addItemsOnSpinner();
+        addListenerOnSpinnerItemSelection();
         mStart.setOnClickListener(
                 new View.OnClickListener()
                 {
                     public void onClick(View view)
                     {
+//                        Toast.makeText(getApplicationContext(),
+//                                "Spinner : " + String.valueOf(mSpinner.getSelectedItem()),
+//                                Toast.LENGTH_SHORT).show();
                         sendCommand();
                     }
                 });
@@ -127,6 +139,19 @@ public class SerialConsoleActivity extends Activity {
                 });
     }
 
+    public void addItemsOnSpinner() {
+
+        mSpinner = (Spinner) findViewById(R.id.Unit);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(SerialConsoleActivity.this,
+                R.array.Units, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
+    }
+
+    public void addListenerOnSpinnerItemSelection() {
+        mSpinner = (Spinner) findViewById(R.id.Unit);
+        mSpinner.setOnItemSelectedListener(new SpinnerActivity());
+    }
 
     @Override
     protected void onPause() {
@@ -196,20 +221,34 @@ public class SerialConsoleActivity extends Activity {
     }
 
     public void sendCommand(){
-        byte[] msg = Utils.intToByteArray(Integer.valueOf(mFreqInput.getText().toString()), 30);
-        Log.d(TAG, Integer.valueOf(mFreqInput.getText().toString()).toString());
+        String  Freqtxt = mFreqInput.getText().toString();
+        if (Freqtxt.matches(""))
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Error you should put a value",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+            mFreq = new BigInteger(Freqtxt).multiply(BigInteger.valueOf(mFreqmult));
+            Toast.makeText(getApplicationContext(),
+                    String.valueOf(mFreq),
+                    Toast.LENGTH_SHORT).show();
+            byte[] msg = Utils.intToByteArray(mFreq.intValue(), 30);
+            Log.d(TAG, mFreq.toString());
 //                msg[0] = 30;
 //                msg = new Integer(cmd).toString().getBytes();
 //                int i[] = {30, 0, 152, 150, 128};
 //                byte msg [] = {(byte) 30, (byte) 0, (byte) 152, (byte) 150, (byte) 128};              // 8 bits representing that value
 //                msg[0] = (byte)30;
-        for (int index = 0; index < msg.length; index++){
-            Log.i("Byte", String.format("0x%20x", msg[index]));
-        }
+            for (int index = 0; index < msg.length; index++) {
+                Log.i("Byte", String.format("0x%20x", msg[index]));
+            }
         try{
             sPort.write(msg, 10);
-        } catch (IOException e) {
-            Log.e(TAG, "Write Error");
+           } catch (IOException e) {
+               Log.e(TAG, "Write Error");
+           }
         }
     }
 

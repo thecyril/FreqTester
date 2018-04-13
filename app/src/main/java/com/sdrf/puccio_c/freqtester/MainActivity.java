@@ -2,6 +2,7 @@ package com.sdrf.puccio_c.freqtester;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.AsyncTask;
@@ -124,6 +125,8 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onResume() {
+//        startActivity(new Intent(this, SerialConsoleActivity.class));
+//        finish();
         super.onResume();
         mHandler.sendEmptyMessage(MESSAGE_REFRESH);
     }
