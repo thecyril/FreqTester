@@ -18,27 +18,316 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e57feee7-4db7-49ec-bec3-c93db34b4c56" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/com_android_support_constraint_constraint_layout_1_0_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/com_android_support_constraint_constraint_layout_solver_1_0_2_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SpinnerActivity.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-19-11-604.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-19-11-604.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-19-13-458.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-19-13-458.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-21-29-044.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-21-29-044.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-22-31-204.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-22-31-204.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-24-15-080.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-24-15-080.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-26-24-983.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-26-24-983.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-28-12-626.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-28-12-626.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-28-59-828.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-28-59-828.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-32-45-316.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-32-45-316.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-38-10-885.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-38-10-885.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-38-58-508.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-38-58-508.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-40-51-327.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-40-51-327.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-41-31-879.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-12-41-31-879.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-17-14-13-009.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-17-14-13-009.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-17-14-28-449.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-17-14-28-449.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-17-14-51-393.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-11-17-14-51-393.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-11-11-592.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-11-11-592.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-11-24-376.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-11-24-376.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-28-39-482.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-28-39-482.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-28-58-484.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-28-58-484.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-34-36-868.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-34-36-868.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-38-19-955.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-38-19-955.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-41-20-941.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-41-20-941.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-42-09-754.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-42-09-754.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-46-09-666.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-46-09-666.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-46-27-359.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-46-27-359.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-46-56-796.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-46-56-796.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-48-25-565.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-48-25-565.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-48-41-758.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-48-41-758.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-49-00-490.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-49-00-490.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-50-56-386.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-50-56-386.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-58-06-546.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-58-06-546.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-58-31-074.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-13-58-31-074.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-29-52-122.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-29-52-122.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-30-12-823.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-30-12-823.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-31-39-295.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-31-39-295.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-33-41-238.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-33-41-238.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-51-46-575.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-51-46-575.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-53-12-604.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-53-12-604.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-56-56-684.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-56-56-684.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-57-16-872.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-57-16-872.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-58-35-709.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-58-35-709.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-59-18-944.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-14-59-18-944.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-03-28-254.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-03-28-254.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-05-42-822.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-05-42-822.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-06-00-627.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-06-00-627.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-06-20-305.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-06-20-305.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-06-39-883.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-06-39-883.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-07-01-264.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-07-01-264.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-08-53-465.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-08-53-465.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-12-47-672.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-12-47-672.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-13-33-789.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-13-33-789.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-20-08-537.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-20-08-537.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-20-17-354.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-20-17-354.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-43-11-248.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-43-11-248.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-43-41-986.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-43-41-986.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-44-21-093.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-44-21-093.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-44-39-665.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-44-39-665.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-46-41-599.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-46-41-599.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-47-40-317.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-47-40-317.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-48-09-097.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-48-09-097.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-48-33-480.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-48-33-480.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-51-35-932.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-51-35-932.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-52-14-079.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-52-14-079.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-52-46-097.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-52-46-097.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-53-21-365.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-53-21-365.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-59-45-990.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-12-15-59-45-990.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-10-43-29-920.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-10-43-29-920.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-10-44-30-388.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-10-44-30-388.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-10-44-49-203.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-10-44-49-203.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-10-45-33-897.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-10-45-33-897.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-12-38-345.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-12-38-345.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-12-54-321.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-12-54-321.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-14-47-746.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-14-47-746.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-14-55-048.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-14-55-048.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-15-11-883.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-15-11-883.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-18-51-213.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-18-51-213.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-27-54-451.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-27-54-451.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-29-26-855.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-29-26-855.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-29-40-525.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-29-40-525.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-30-22-471.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-30-22-471.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-40-18-188.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-40-18-188.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-50-38-815.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-50-38-815.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-51-26-870.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-51-26-870.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-52-25-929.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-52-25-929.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-54-30-126.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-54-30-126.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-58-28-942.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-58-28-942.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-58-43-556.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-11-58-43-556.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-05-10-112.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-05-10-112.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-05-54-621.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-05-54-621.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-07-25-986.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-07-25-986.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-07-51-304.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-07-51-304.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-08-05-951.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-08-05-951.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-09-04-907.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-09-04-907.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-09-53-218.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-09-53-218.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-11-24-850.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-11-24-850.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-13-13-032.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-13-13-032.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-14-46-381.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-14-46-381.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-15-18-996.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-15-18-996.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-19-32-532.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-19-32-532.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-21-44-801.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-12-21-44-801.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-13-59-58-315.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-13-59-58-315.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-01-22-133.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-01-22-133.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-03-15-430.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-03-15-430.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-03-45-282.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-03-45-282.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-34-44-309.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-34-44-309.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-36-25-851.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-36-25-851.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-36-33-115.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-36-33-115.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-37-27-247.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-37-27-247.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-38-48-760.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-38-48-760.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-39-13-971.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-39-13-971.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-40-53-832.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-40-53-832.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-42-03-605.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-42-03-605.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-42-53-400.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-42-53-400.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-46-52-820.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-46-52-820.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-48-09-986.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-48-09-986.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-50-55-486.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-50-55-486.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-51-27-661.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-51-27-661.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-59-04-447.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-14-59-04-447.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-02-04-860.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-02-04-860.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-03-34-080.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-03-34-080.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-06-00-276.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-06-00-276.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-06-08-534.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-06-08-534.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-06-34-229.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-06-34-229.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-08-39-185.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-08-39-185.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-09-07-305.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-09-07-305.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-09-17-827.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-09-17-827.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-13-29-101.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-13-29-101.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-14-03-755.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-14-03-755.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-14-17-122.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-04-13-15-14-17-122.rawproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/generated/mockable-android-26.v3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/generated/source/buildConfig/androidTest/debug/com/hoho/android/usbserial/examples/test/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/generated/source/r/androidTest/debug/com/hoho/android/usbserial/examples/test/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/compileDebugAndroidTestAidl/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/manifest/androidTest/debug/output.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/res/androidTest/debug/output.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/res/androidTest/debug/resources-debugAndroidTest.ap_" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/splits-support/androidTest/debug/split-list.gson" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/generated/mockable-android-26.v3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/generated/source/buildConfig/androidTest/debug/com/hoho/android/usbserial/test/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/generated/source/r/androidTest/debug/com/hoho/android/usbserial/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/generated/source/r/androidTest/debug/com/hoho/android/usbserial/test/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/compileDebugAndroidTestAidl/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/manifest/androidTest/debug/output.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/res/androidTest/debug/output.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/res/androidTest/debug/resources-debugAndroidTest.ap_" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/res/symbol-table-with-package/androidTest/debug/package-aware-r.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/symbols/androidTest/debug/R.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/debug-mergeJniLibs/merge-state" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/0.jar" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/0.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/1.jar" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/1.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/2.jar" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/2.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/3.jar" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/3.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/4.jar" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexBuilder/debug/4.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexMerger/debug/0/classes.dex" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/transforms/dexMerger/debug/0/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/outputs/apk/debug/usbSerialExamples-debug.apk" afterPath="$PROJECT_DIR$/usbSerialExamples/build/outputs/apk/debug/usbSerialExamples-debug.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/outputs/aar/usbSerialForAndroid-debug.aar" afterPath="$PROJECT_DIR$/usbSerialForAndroid/build/outputs/aar/usbSerialForAndroid-debug.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" afterPath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,12 +367,14 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="128" column="2" lean-forward="false" selection-start-line="128" selection-start-column="2" selection-end-line="128" selection-end-column="2" />
+            <state relative-caret-position="233">
+              <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1588#2032#0" expanded="true" />
                 <element signature="e#2031#2032#0" expanded="true" />
+                <element signature="e#4004#4498#0" expanded="true" />
+                <element signature="e#4497#4498#0" expanded="true" />
                 <element signature="e#6896#6897#0" expanded="true" />
                 <element signature="e#6950#6951#0" expanded="true" />
               </folding>
@@ -91,11 +382,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerialConsoleActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SerialConsoleActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="243" column="62" lean-forward="true" selection-start-line="243" selection-start-column="62" selection-end-line="243" selection-end-column="62" />
+            <state relative-caret-position="165">
+              <caret line="265" column="32" lean-forward="false" selection-start-line="265" selection-start-column="24" selection-end-line="265" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4432#4849#0" expanded="true" />
@@ -110,7 +401,7 @@
       <file leaf-file-name="SpinnerActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SpinnerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="527">
               <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -135,8 +426,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="35" column="39" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="39" />
+            <state relative-caret-position="301">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
                 <element signature="e#491#510#0" expanded="true" />
               </folding>
@@ -144,26 +435,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="357">
+              <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
               <folding />
             </state>
           </provider>
           <provider editor-type-id="android-manifest">
             <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-              <folding />
-            </state>
           </provider>
         </entry>
       </file>
@@ -178,19 +459,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setting</find>
-      <find>UsbSerialProber</find>
-      <find>manager</find>
-      <find>device</find>
-      <find>open</find>
-      <find>sPort</find>
-      <find>opende</find>
-      <find>deviceList</find>
-      <find>onDeviceStateChange</find>
-      <find>check</find>
-      <find>chk</find>
-      <find>SerialCon</find>
-      <find>madapter</find>
       <find>port</find>
       <find>ment</find>
       <find>scrollvi</find>
@@ -208,6 +476,19 @@
       <find>mSpinner</find>
       <find>mFreq</find>
       <find>intent</find>
+      <find>serial</find>
+      <find>serialcon</find>
+      <find>getview</find>
+      <find>pare</find>
+      <find>ondevice</find>
+      <find>orien</find>
+      <find>land</find>
+      <find>refres</find>
+      <find>showconsole</find>
+      <find>show</find>
+      <find>refr</find>
+      <find>refre</find>
+      <find>Stopping</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -3806,12 +4087,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/usbSerialExamples/src/main/java/com/hoho/android/usbserial/examples/SerialConsoleActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/Utils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SpinnerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -4147,36 +4428,6 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FreqTester" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FreqTester" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -4283,6 +4534,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="androidTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4396,7 +4651,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1523626533292" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1523632113164" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -4443,7 +4698,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1523626533292" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1523632113164" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -4625,7 +4880,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1523626533292" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1523632113165" />
       </method>
     </configuration>
     <configuration default="false" name="usbSerialExamples" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -4673,7 +4928,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1523626533292" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1523632113165" />
       </method>
     </configuration>
     <list size="2">
@@ -4727,13 +4982,13 @@
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.4914621" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36681223" sideWeight="0.5613661" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36681223" sideWeight="0.43863395" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36681223" sideWeight="0.5635005" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36681223" sideWeight="0.43649948" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.49573106" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995633" sideWeight="0.6157951" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.49573106" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31222707" sideWeight="0.38900748" order="14" side_tool="false" content_ui="tabs" />
@@ -4769,89 +5024,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java</url>
-          <line>82</line>
-          <properties method="getView">
-            <option name="EMULATED" value="true" />
-          </properties>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java</url>
-          <line>58</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="22" lean-forward="false" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1588#2032#0" expanded="true" />
-            <element signature="e#2031#2032#0" expanded="true" />
-            <element signature="e#6896#6897#0" expanded="true" />
-            <element signature="e#6950#6951#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1588#2032#0" expanded="true" />
-            <element signature="e#2031#2032#0" expanded="true" />
-            <element signature="e#6896#6897#0" expanded="true" />
-            <element signature="e#6950#6951#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -4871,6 +5048,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1588#2032#0" expanded="true" />
             <element signature="e#2031#2032#0" expanded="true" />
+            <element signature="e#4004#4498#0" expanded="true" />
+            <element signature="e#4497#4498#0" expanded="true" />
             <element signature="e#6896#6897#0" expanded="true" />
             <element signature="e#6950#6951#0" expanded="true" />
           </folding>
@@ -4920,6 +5099,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1588#2032#0" expanded="true" />
             <element signature="e#2031#2032#0" expanded="true" />
+            <element signature="e#4004#4498#0" expanded="true" />
+            <element signature="e#4497#4498#0" expanded="true" />
             <element signature="e#6896#6897#0" expanded="true" />
             <element signature="e#6950#6951#0" expanded="true" />
           </folding>
@@ -4970,6 +5151,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1588#2032#0" expanded="true" />
             <element signature="e#2031#2032#0" expanded="true" />
+            <element signature="e#4004#4498#0" expanded="true" />
+            <element signature="e#4497#4498#0" expanded="true" />
             <element signature="e#6896#6897#0" expanded="true" />
             <element signature="e#6950#6951#0" expanded="true" />
           </folding>
@@ -5017,13 +5200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-26/android.jar!/android/view/View.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24209">
-          <caret line="2864" column="13" lean-forward="false" selection-start-line="2864" selection-start-column="13" selection-end-line="2864" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-26/android.jar!/android/content/Context.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -5049,17 +5225,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="31" column="17" lean-forward="false" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -5164,21 +5329,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        <state relative-caret-position="176">
+          <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest">
+    </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/platforms/android-26/data/res/layout/simple_list_item_2.xml">
+      <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/device_filter.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="24" selection-end-column="51" />
+        <state relative-caret-position="289">
+          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -5191,30 +5383,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="35" column="39" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="39" />
+        <state relative-caret-position="301">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
             <element signature="e#491#510#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SpinnerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="527">
           <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -5222,14 +5414,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/sdrf/puccio_c/freqtester/ExampleInstrumentedTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-26/android.jar!/android/view/View.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="2420" column="76" lean-forward="false" selection-start-line="2420" selection-start-column="76" selection-end-line="2420" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-26/android.jar!/android/widget/RelativeLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="92" column="75" lean-forward="false" selection-start-line="92" selection-start-column="75" selection-end-line="92" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-26/android.jar!/android/widget/AbsListView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="660" column="0" lean-forward="false" selection-start-line="660" selection-start-column="0" selection-end-line="660" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="128" column="2" lean-forward="false" selection-start-line="128" selection-start-column="2" selection-end-line="128" selection-end-column="2" />
+        <state relative-caret-position="233">
+          <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1588#2032#0" expanded="true" />
             <element signature="e#2031#2032#0" expanded="true" />
+            <element signature="e#4004#4498#0" expanded="true" />
+            <element signature="e#4497#4498#0" expanded="true" />
             <element signature="e#6896#6897#0" expanded="true" />
             <element signature="e#6950#6951#0" expanded="true" />
           </folding>
@@ -5238,8 +5464,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="243" column="62" lean-forward="true" selection-start-line="243" selection-start-column="62" selection-end-line="243" selection-end-column="62" />
+        <state relative-caret-position="165">
+          <caret line="265" column="32" lean-forward="false" selection-start-line="265" selection-start-column="24" selection-end-line="265" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4432#4849#0" expanded="true" />
@@ -5248,6 +5474,17 @@
             <element signature="e#5097#5098#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
   </component>
