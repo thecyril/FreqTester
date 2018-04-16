@@ -231,29 +231,36 @@ public class SerialConsoleActivity extends Activity {
         }
         else {
             mFreq = new BigInteger(Freqtxt).multiply(BigInteger.valueOf(mFreqmult));
-            Toast.makeText(getApplicationContext(),
-                    String.valueOf(mFreq),
-                    Toast.LENGTH_SHORT).show();
-            byte[] msg = Utils.intToByteArray(mFreq.intValue(), 30);
-            Log.d(TAG, mFreq.toString());
-//                msg[0] = 30;
-//                msg = new Integer(cmd).toString().getBytes();
-//                int i[] = {30, 0, 152, 150, 128};
-//                byte msg [] = {(byte) 30, (byte) 0, (byte) 152, (byte) 150, (byte) 128};              // 8 bits representing that value
-//                msg[0] = (byte)30;
-            for (int index = 0; index < msg.length; index++) {
-                Log.i("Byte", String.format("0x%20x", msg[index]));
+            if (mFreq.longValue() > 100000000000L)
+                Toast.makeText(getApplicationContext(),
+                        "Value is too high",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                Toast.makeText(getApplicationContext(),
+                        String.valueOf(mFreq),
+                        Toast.LENGTH_SHORT).show();
+
+                byte[] msg = Utils.intToByteArray(mFreq, 30);
+
+                Log.d(TAG, mFreq.toString());
+
+                for (byte b : msg) {
+                    System.out.println(Integer.toBinaryString(b & 255 | 256).substring(1));
+                }
+                for (int index = 0; index < msg.length; index++) {
+                    Log.i("Byte", String.format("0x%20x", msg[index]));
+                }
+                try {
+                    sPort.write(msg, 10);
+                } catch (IOException e) {
+                    Log.e(TAG, "Write Error");
+                }
             }
-        try{
-            sPort.write(msg, 10);
-           } catch (IOException e) {
-               Log.e(TAG, "Write Error");
-           }
         }
     }
 
     public void resetBoard(){
-        byte[] msg = Utils.intToByteArray(0, 5);
+        byte[] msg = Utils.intToByteArray(BigInteger.valueOf(0), 5);
         try{
             sPort.write(msg, 10);
         } catch (IOException e) {
