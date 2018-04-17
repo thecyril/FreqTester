@@ -11,9 +11,9 @@ import java.nio.ByteBuffer;
 
 public class Utils {
 
-    static public byte[] intToByteArray (final BigInteger integer, final int start) {
+    static public byte[] intToByteArray (final BigInteger value, final int start) {
         byte[] startbyte = new byte[1];
-        final byte[] converted = integer.toByteArray();
+        final byte[] converted = value.toByteArray();
 
         startbyte[0] = (byte)start;
 

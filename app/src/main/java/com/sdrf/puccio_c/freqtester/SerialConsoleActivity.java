@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
+import android.icu.math.BigDecimal;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -78,8 +79,8 @@ public class SerialConsoleActivity extends Activity {
     protected Button                  mStart;
     protected ImageButton             mReset;
     protected Spinner                 mSpinner;
-    protected BigInteger              mFreq;
-    protected static Integer          mFreqmult = 1;
+    protected BigInteger                 mFreq;
+    protected static Double           mFreqmult;
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
@@ -230,7 +231,12 @@ public class SerialConsoleActivity extends Activity {
             return;
         }
         else {
-            mFreq = new BigInteger(Freqtxt).multiply(BigInteger.valueOf(mFreqmult));
+            try {
+                Double tmp = Double.parseDouble(Freqtxt) * mFreqmult;
+                mFreq = BigDecimal.valueOf(tmp).toBigInteger();
+            } catch(Exception e) {
+                return;
+            }
             if (mFreq.longValue() > 100000000000L)
                 Toast.makeText(getApplicationContext(),
                         "Value is too high",
@@ -240,6 +246,7 @@ public class SerialConsoleActivity extends Activity {
                         String.valueOf(mFreq),
                         Toast.LENGTH_SHORT).show();
 
+                Log.i("mFreq", String.format("%d", mFreq));
                 byte[] msg = Utils.intToByteArray(mFreq, 30);
 
                 Log.d(TAG, mFreq.toString());

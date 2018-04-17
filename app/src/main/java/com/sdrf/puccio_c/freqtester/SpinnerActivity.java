@@ -23,13 +23,13 @@ public class SpinnerActivity extends SerialConsoleActivity implements AdapterVie
 
             switch (pos) {
                 case 0:
-                    mFreqmult = 1;
+                    mFreqmult = 1000000000D;
                     break;
                 case 1:
-                    mFreqmult = 1000000;
+                    mFreqmult = 1000000D;
                     break;
                 case 2:
-                    mFreqmult = 1000000000;
+                    mFreqmult = 1D;
                     break;
             }
 //            Toast.makeText(parent.getContext(),
