@@ -274,7 +274,6 @@ public class SerialConsoleActivity extends Activity {
             Log.e(TAG, "Write Error");
         }
     }
-
     private void stopIoManager() {
         if (mSerialIoManager != null) {
             Log.i(TAG, "Stopping io manager ..");
