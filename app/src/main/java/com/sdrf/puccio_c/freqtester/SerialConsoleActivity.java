@@ -29,7 +29,9 @@ import android.hardware.usb.UsbManager;
 import android.icu.math.BigDecimal;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -119,6 +121,16 @@ public class SerialConsoleActivity extends Activity {
         mReset.setImageResource(R.drawable.reset);
         addItemsOnSpinner();
         addListenerOnSpinnerItemSelection();
+        mFreqInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
+                    prepareCommand();
+                    return true;
+                }
+                return false;
+            }
+        });
         mStart.setOnClickListener(
                 new View.OnClickListener()
                 {
@@ -127,7 +139,7 @@ public class SerialConsoleActivity extends Activity {
 //                        Toast.makeText(getApplicationContext(),
 //                                "Spinner : " + String.valueOf(mSpinner.getSelectedItem()),
 //                                Toast.LENGTH_SHORT).show();
-                        sendCommand();
+                        prepareCommand();
                     }
                 });
         mReset.setOnClickListener(
@@ -221,7 +233,8 @@ public class SerialConsoleActivity extends Activity {
         onDeviceStateChange();
     }
 
-    public void sendCommand(){
+    public void prepareCommand()
+    {
         String  Freqtxt = mFreqInput.getText().toString();
         if (Freqtxt.matches(""))
         {
@@ -234,7 +247,7 @@ public class SerialConsoleActivity extends Activity {
             try {
                 Double tmp = Double.parseDouble(Freqtxt) * mFreqmult;
                 mFreq = BigDecimal.valueOf(tmp).toBigInteger();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 return;
             }
             if (mFreq.longValue() > 100000000000L)
@@ -247,22 +260,27 @@ public class SerialConsoleActivity extends Activity {
                         Toast.LENGTH_SHORT).show();
 
                 Log.i("mFreq", String.format("%d", mFreq));
-                byte[] msg = Utils.intToByteArray(mFreq, 30);
-
-                Log.d(TAG, mFreq.toString());
-
-                for (byte b : msg) {
-                    System.out.println(Integer.toBinaryString(b & 255 | 256).substring(1));
-                }
-                for (int index = 0; index < msg.length; index++) {
-                    Log.i("Byte", String.format("0x%20x", msg[index]));
-                }
-                try {
-                    sPort.write(msg, 10);
-                } catch (IOException e) {
-                    Log.e(TAG, "Write Error");
-                }
             }
+            sendCommand();
+        }
+    }
+
+    public void sendCommand(){
+
+        byte[] msg = Utils.intToByteArray(mFreq, 30);
+
+        Log.d(TAG, mFreq.toString());
+
+        for (byte b : msg) {
+            System.out.println(Integer.toBinaryString(b & 255 | 256).substring(1));
+        }
+        for (int index = 0; index < msg.length; index++) {
+            Log.i("Byte", String.format("0x%20x", msg[index]));
+        }
+            try {
+                sPort.write(msg, 10);
+        } catch (IOException e) {
+            Log.e(TAG, "Write Error");
         }
     }
 
