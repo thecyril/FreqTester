@@ -65,7 +65,7 @@ import java.util.concurrent.Executors;
  *
  * @author mike wakerly (opensource@hoho.com)
  */
-public class SerialConsoleActivity extends AppCompatActivity {
+public class SerialConsoleActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final String TAG = SerialConsoleActivity.class.getSimpleName();
 
@@ -142,27 +142,25 @@ public class SerialConsoleActivity extends AppCompatActivity {
                 return false;
             }
         });
-        mStart.setOnClickListener(
-                new View.OnClickListener()
-                {
-                    public void onClick(View view)
-                    {
-//                        Toast.makeText(getApplicationContext(),
-//                                "Spinner : " + String.valueOf(mSpinner.getSelectedItem()),
-//                                Toast.LENGTH_SHORT).show();
-                        prepareCommand();
-                    }
-                });
-        mReset.setOnClickListener(
-                new View.OnClickListener()
-                {
-                    public void onClick(View view)
-                    {
-                        resetBoard();
-                    }
-                });
+        mStart.setOnClickListener(this);
+        mReset.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId()) {
+            case R.id.start:
+                prepareCommand();
+
+            break;
+
+            case R.id.reset:
+                resetBoard();
+
+            break;
+        }
+    }
 
     public void addItemsOnSpinner() {
 
@@ -188,9 +186,9 @@ public class SerialConsoleActivity extends AppCompatActivity {
             } catch (IOException e) {
                 // Ignore.
             }
-            sPort = null;
+//            sPort = null;
         }
-        finish();
+        //finish();
     }
 
     void showStatus(TextView theTextView, String theLabel, boolean theValue){
@@ -246,7 +244,7 @@ public class SerialConsoleActivity extends AppCompatActivity {
     }
 
     @Override
-            public void onConfigurationChanged(Configuration newConfig)
+    public void onConfigurationChanged(Configuration newConfig)
     {
         super.onConfigurationChanged(newConfig);
         if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
