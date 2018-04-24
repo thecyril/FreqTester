@@ -24,12 +24,19 @@ package com.sdrf.puccio_c.freqtester;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.icu.math.BigDecimal;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
@@ -58,7 +65,7 @@ import java.util.concurrent.Executors;
  *
  * @author mike wakerly (opensource@hoho.com)
  */
-public class SerialConsoleActivity extends Activity {
+public class SerialConsoleActivity extends AppCompatActivity {
 
     private final String TAG = SerialConsoleActivity.class.getSimpleName();
 
@@ -79,10 +86,12 @@ public class SerialConsoleActivity extends Activity {
     protected ScrollView              mScrollView;
     protected EditText                mFreqInput;
     protected Button                  mStart;
-    protected ImageButton             mReset;
+    protected Button                  mReset;
     protected Spinner                 mSpinner;
-    protected BigInteger                 mFreq;
+    protected BigInteger              mFreq;
     protected static Double           mFreqmult;
+    protected Toolbar                 mToolbar;
+    protected ActionBar               mActionBar;
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
@@ -116,9 +125,11 @@ public class SerialConsoleActivity extends Activity {
         mScrollView = (ScrollView) findViewById(R.id.demoScroller);
         mFreqInput = (EditText) findViewById(R.id.Freq);
         mStart = (Button) findViewById(R.id.start);
-        mReset = (ImageButton) findViewById(R.id.reset);
+        mReset = (Button) findViewById(R.id.reset);
+        mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
 
-        mReset.setImageResource(R.drawable.reset);
+        setSupportActionBar(mToolbar);
+        mActionBar = getSupportActionBar();
         addItemsOnSpinner();
         addListenerOnSpinnerItemSelection();
         mFreqInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -151,6 +162,7 @@ public class SerialConsoleActivity extends Activity {
                     }
                 });
     }
+
 
     public void addItemsOnSpinner() {
 
@@ -233,6 +245,17 @@ public class SerialConsoleActivity extends Activity {
         onDeviceStateChange();
     }
 
+    @Override
+            public void onConfigurationChanged(Configuration newConfig)
+    {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+        }
+    }
+
     public void prepareCommand()
     {
         String  Freqtxt = mFreqInput.getText().toString();
@@ -305,6 +328,25 @@ public class SerialConsoleActivity extends Activity {
             Log.i(TAG, "Starting io manager ..");
             mSerialIoManager = new SerialInputOutputManager(sPort, mListener);
             mExecutor.submit(mSerialIoManager);
+        }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.item, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
         }
     }
 
