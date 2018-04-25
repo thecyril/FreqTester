@@ -25,9 +25,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.icu.math.BigDecimal;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +40,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -130,6 +134,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setDisplayShowHomeEnabled(true);
         addItemsOnSpinner();
         addListenerOnSpinnerItemSelection();
         mFreqInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -144,6 +150,11 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         });
         mStart.setOnClickListener(this);
         mReset.setOnClickListener(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor("#66BB6A"));
+        }
     }
 
     @Override
@@ -152,13 +163,14 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         switch (v.getId()) {
             case R.id.start:
                 prepareCommand();
-
-            break;
+                break;
 
             case R.id.reset:
                 resetBoard();
-
-            break;
+                break;
+            case R.id.home:
+                finish();
+                break;
         }
     }
 
@@ -336,11 +348,16 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+       if(item.getItemId()== android.R.id.home)
+           finish();
+
         switch (item.getItemId()) {
+            case R.id.home:
+                finish();
+                return true;
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
                 return true;
-
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
