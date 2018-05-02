@@ -8,6 +8,7 @@
 
     <string-array name="Units">
         <item>GHz</item>
+        <item>MHz</item>
         <item>kHz</item>
         <item>Hz</item>
     </string-array>

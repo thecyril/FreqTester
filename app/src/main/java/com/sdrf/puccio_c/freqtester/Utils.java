@@ -1,7 +1,9 @@
 package com.sdrf.puccio_c.freqtester;
 
 import android.util.Log;
+import android.widget.EditText;
 
+import android.icu.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 
@@ -10,6 +12,34 @@ import java.nio.ByteBuffer;
  */
 
 public class Utils {
+
+    static public BigDecimal division(Integer numberpick, Integer unit, Double Freq){
+        BigDecimal  res;
+        BigDecimal  calc;
+
+        calc = BigDecimal.valueOf(unit).multiply(BigDecimal.valueOf(Freq)).divide(BigDecimal.valueOf(1000000000), 9, BigDecimal.ROUND_HALF_UP);
+        res = BigDecimal.valueOf(numberpick);
+        res = res.divide(calc, 9, BigDecimal.ROUND_HALF_UP);
+        return res;
+    }
+
+    static public Double ParseFreq(EditText txt)
+    {
+        Double tmp = 0D;
+        String  Freqtxt = txt.getText().toString();
+        if (Freqtxt.matches(""))
+        {
+            return -1D;
+        }
+        else {
+            try {
+                tmp = Double.parseDouble(Freqtxt);
+            } catch (Exception e) {
+                return -1D;
+            }
+        }
+        return (tmp);
+    }
 
     static public byte[] intToByteArray (final BigInteger value, final int start) {
         byte[] startbyte = new byte[1];

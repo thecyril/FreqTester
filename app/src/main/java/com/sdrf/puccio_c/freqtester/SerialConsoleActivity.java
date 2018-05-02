@@ -29,6 +29,7 @@ import android.graphics.Color;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.icu.math.BigDecimal;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -49,6 +50,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.NumberPicker;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -85,17 +87,25 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
      */
     private static UsbSerialPort    sPort = null;
 
-    protected TextView                mTitleTextView;
-    protected TextView                mDumpTextView;
-    protected ScrollView              mScrollView;
-    protected EditText                mFreqInput;
-    protected Button                  mStart;
-    protected Button                  mReset;
-    protected Spinner                 mSpinner;
-    protected BigInteger              mFreq;
-    protected static Double           mFreqmult;
-    protected Toolbar                 mToolbar;
-    protected ActionBar               mActionBar;
+    protected TextView              mTitleTextView;
+    protected TextView              mDumpTextView;
+    protected ScrollView            mScrollView;
+    protected EditText              mFreqInput;
+    protected Button                mStart;
+    protected Button                mReset;
+    protected ImageButton           mErase;
+    protected Spinner               mSpinner;
+    protected Spinner               mSpinnerStep;
+    protected BigInteger            mFreq;
+    protected static Double         mFreqmult;
+    protected static Integer        mNbDiv;
+    protected Toolbar               mToolbar;
+    protected ActionBar             mActionBar;
+    protected Button                mDecrease;
+    protected Button                mIncrease;
+    protected NumberPicker          np;
+    protected BigDecimal            mNb;
+    protected Integer               mVnp;
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
@@ -124,14 +134,34 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.serial_console);
-        mTitleTextView = (TextView) findViewById(R.id.demoTitle);
-        mDumpTextView = (TextView) findViewById(R.id.consoleText);
-        mScrollView = (ScrollView) findViewById(R.id.demoScroller);
-        mFreqInput = (EditText) findViewById(R.id.Freq);
-        mStart = (Button) findViewById(R.id.start);
-        mReset = (Button) findViewById(R.id.reset);
-        mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        mTitleTextView  = (TextView) findViewById(R.id.demoTitle);
+        mDumpTextView   = (TextView) findViewById(R.id.consoleText);
+        mScrollView     = (ScrollView) findViewById(R.id.demoScroller);
+        mFreqInput      = (EditText) findViewById(R.id.Freq);
+        mStart          = (Button) findViewById(R.id.start);
+        mReset          = (Button) findViewById(R.id.reset);
+        mToolbar        = (Toolbar) findViewById(R.id.my_toolbar);
+        mDecrease       = (Button) findViewById(R.id.decrease);
+        mIncrease       = (Button) findViewById(R.id.increase);
+        mErase          = (ImageButton) findViewById(R.id.erase);
+        np              = (NumberPicker) findViewById(R.id.np);
 
+        np.setMinValue(1);
+        np.setMaxValue(1000);
+        np.setWrapSelectorWheel(true);
+        np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
+                //Display the newly selected number from picker
+                mVnp = newVal;
+                Log.d(TAG, mVnp.toString());
+            }
+        });
+
+        mVnp = 1;
+        mNb = BigDecimal.ZERO;
+        display(mNb);
+        mFreq = BigInteger.valueOf(0);
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -150,6 +180,9 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         });
         mStart.setOnClickListener(this);
         mReset.setOnClickListener(this);
+        mDecrease.setOnClickListener(this);
+        mIncrease.setOnClickListener(this);
+        mErase.setOnClickListener(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -164,28 +197,55 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             case R.id.start:
                 prepareCommand();
                 break;
-
             case R.id.reset:
                 resetBoard();
                 break;
             case R.id.home:
                 finish();
                 break;
+            case R.id.erase:
+                display(BigDecimal.valueOf(0));
+                break;
+            case R.id.increase:
+                if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D))) {
+                    mNb = mNb.add(Utils.division(mVnp, mNbDiv, mFreqmult));
+                }
+                else
+                    return;
+                display(mNb);
+                break;
+            case R.id.decrease:
+                if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)) && mNb.signum() > 0)
+                    mNb = mNb.subtract(Utils.division(mVnp, mNbDiv, mFreqmult));
+                else
+                    return;
+                display(mNb);
+                break;
         }
+    }
+
+    private void display(BigDecimal number) {
+        TextView displayInteger = (TextView) findViewById(
+                R.id.Freq);
+        displayInteger.setText("" + number);
     }
 
     public void addItemsOnSpinner() {
 
         mSpinner = (Spinner) findViewById(R.id.Unit);
+        mSpinnerStep = (Spinner) findViewById(R.id.Unit2);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(SerialConsoleActivity.this,
                 R.array.Units, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
+        mSpinnerStep.setAdapter(adapter);
     }
 
     public void addListenerOnSpinnerItemSelection() {
         mSpinner = (Spinner) findViewById(R.id.Unit);
         mSpinner.setOnItemSelectedListener(new SpinnerActivity());
+        mSpinnerStep = (Spinner) findViewById(R.id.Unit2);
+        mSpinnerStep.setOnItemSelectedListener(new SpinnerActivity());
     }
 
     @Override
@@ -268,18 +328,17 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
     public void prepareCommand()
     {
-        String  Freqtxt = mFreqInput.getText().toString();
-        if (Freqtxt.matches(""))
+
+        if ((mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).doubleValue() < 0d)
         {
             Toast.makeText(getApplicationContext(),
-                    "Error you should put a value",
+                    "Error you should enter a value",
                     Toast.LENGTH_SHORT).show();
             return;
         }
         else {
             try {
-                Double tmp = Double.parseDouble(Freqtxt) * mFreqmult;
-                mFreq = BigDecimal.valueOf(tmp).toBigInteger();
+                mFreq = mNb.multiply(BigDecimal.valueOf(mFreqmult)).toBigInteger();
             } catch (Exception e) {
                 return;
             }
@@ -318,6 +377,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     }
 
     public void resetBoard(){
+        if (sPort == null)
+            return;
         byte[] msg = Utils.intToByteArray(BigInteger.valueOf(0), 5);
         try{
             sPort.write(msg, 10);
@@ -350,7 +411,6 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     public boolean onOptionsItemSelected(MenuItem item) {
        if(item.getItemId()== android.R.id.home)
            finish();
-
         switch (item.getItemId()) {
             case R.id.home:
                 finish();
