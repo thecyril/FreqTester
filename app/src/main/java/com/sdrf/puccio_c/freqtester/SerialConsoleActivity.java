@@ -32,6 +32,7 @@ import android.icu.math.BigDecimal;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -53,8 +54,10 @@ import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.util.HexDump;
@@ -62,6 +65,8 @@ import com.hoho.android.usbserial.util.SerialInputOutputManager;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -91,13 +96,20 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected TextView              mDumpTextView;
     protected ScrollView            mScrollView;
     protected EditText              mFreqInput;
+    protected EditText              mFreqStart;
+    protected EditText              mFreqStop;
+    protected EditText              mDelay;
     protected Button                mStart;
     protected Button                mReset;
     protected ImageButton           mErase;
+    protected ImageButton           mPlay;
+    protected ImageButton           mStop;
+    protected ImageButton           mLoop;
     protected Spinner               mSpinner;
     protected Spinner               mSpinnerStep;
     protected BigInteger            mFreq;
     protected static Double         mFreqmult;
+    protected static Double         mFreqLoop;
     protected static Integer        mNbDiv;
     protected Toolbar               mToolbar;
     protected ActionBar             mActionBar;
@@ -106,6 +118,10 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected NumberPicker          np;
     protected BigDecimal            mNb;
     protected Integer               mVnp;
+    private Timer                   timer;
+    private TimerTask               timerTask;
+    private Switch                  mSwitch;
+    private Handler                 handler = new Handler();
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
@@ -138,13 +154,20 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mDumpTextView   = (TextView) findViewById(R.id.consoleText);
         mScrollView     = (ScrollView) findViewById(R.id.demoScroller);
         mFreqInput      = (EditText) findViewById(R.id.Freq);
+        mFreqStart      = (EditText) findViewById(R.id.Start);
+        mFreqStop       = (EditText) findViewById(R.id.Stop);
+        mDelay          = (EditText) findViewById(R.id.Delay);
         mStart          = (Button) findViewById(R.id.start);
         mReset          = (Button) findViewById(R.id.reset);
         mToolbar        = (Toolbar) findViewById(R.id.my_toolbar);
         mDecrease       = (Button) findViewById(R.id.decrease);
         mIncrease       = (Button) findViewById(R.id.increase);
         mErase          = (ImageButton) findViewById(R.id.erase);
+        mPlay           = (ImageButton) findViewById(R.id.play);
+        mStop           = (ImageButton) findViewById(R.id.stop);
+        mLoop           = (ImageButton) findViewById(R.id.loop);
         np              = (NumberPicker) findViewById(R.id.np);
+        mSwitch         = (Switch) findViewById(R.id.RF);
 
         np.setMinValue(1);
         np.setMaxValue(1000);
@@ -160,7 +183,10 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
         mVnp = 1;
         mNb = BigDecimal.ZERO;
-        display(mNb);
+        displayInt(0, mFreqStart);
+        displayInt(0, mFreqStop);
+        displayInt(400, mDelay);
+        display(mNb, mFreqInput);
         mFreq = BigInteger.valueOf(0);
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
@@ -172,10 +198,19 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
-                    prepareCommand();
+                    prepareCommand(mFreqInput);
                     return true;
                 }
                 return false;
+            }
+        });
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    prepareCommand(mFreqInput);
+                } else {
+                    // The toggle is disabled
+                }
             }
         });
         mStart.setOnClickListener(this);
@@ -183,6 +218,9 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mDecrease.setOnClickListener(this);
         mIncrease.setOnClickListener(this);
         mErase.setOnClickListener(this);
+        mPlay.setOnClickListener(this);
+        mStop.setOnClickListener(this);
+        mLoop.setOnClickListener(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -195,7 +233,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     {
         switch (v.getId()) {
             case R.id.start:
-                prepareCommand();
+                prepareCommand(mFreqInput);
                 break;
             case R.id.reset:
                 resetBoard();
@@ -204,7 +242,16 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 finish();
                 break;
             case R.id.erase:
-                display(BigDecimal.valueOf(0));
+                display(BigDecimal.valueOf(0), mFreqInput);
+                break;
+            case R.id.play:
+                mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqStart));
+                startTimer();
+                break;
+            case R.id.stop:
+                stopTimer();
+                break;
+            case R.id.loop:
                 break;
             case R.id.increase:
                 if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D))) {
@@ -212,22 +259,55 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 }
                 else
                     return;
-                display(mNb);
+                display(mNb, mFreqInput);
                 break;
             case R.id.decrease:
                 if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)) && mNb.signum() > 0)
                     mNb = mNb.subtract(Utils.division(mVnp, mNbDiv, mFreqmult));
                 else
                     return;
-                display(mNb);
+                display(mNb, mFreqInput);
                 break;
         }
     }
 
-    private void display(BigDecimal number) {
-        TextView displayInteger = (TextView) findViewById(
-                R.id.Freq);
-        displayInteger.setText("" + number);
+    private void stopTimer(){
+        if(timer != null){
+            timer.cancel();
+            timer.purge();
+        }
+    }
+
+    //To start timer
+    private void startTimer(){
+        timer = new Timer();
+        timerTask = new TimerTask() {
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run(){
+                        display(mNb, mFreqInput);
+                        BigDecimal stop = BigDecimal.valueOf(Utils.ParseFreq(mFreqStop));
+                        if (mNb.compareTo(stop) >= 0)
+                            stopTimer();
+                        else {
+                            resetBoard();
+                            mNb = mNb.add(Utils.division(mVnp, mNbDiv, mFreqmult));
+                            display(mNb, mFreqInput);
+                            prepareCommand(mFreqInput);
+                        }
+                     }
+                });
+            }
+        };
+        timer.schedule(timerTask, 500, Utils.ParseFreq(mDelay).intValue());
+    }
+
+    private void display(BigDecimal number, TextView tv) {
+        tv.setText("" + number);
+    }
+
+    private void displayInt(Integer number, TextView tv) {
+        tv.setText("" + number);
     }
 
     public void addItemsOnSpinner() {
@@ -326,10 +406,10 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    public void prepareCommand()
+    public void prepareCommand(EditText input)
     {
 
-        if ((mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).doubleValue() < 0d)
+        if ((mNb = BigDecimal.valueOf(Utils.ParseFreq(input))).doubleValue() < 0d)
         {
             Toast.makeText(getApplicationContext(),
                     "Error you should enter a value",
@@ -435,6 +515,14 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 + HexDump.dumpHexString(data) + "\n\n";
         mDumpTextView.append(message);
         mScrollView.smoothScrollTo(0, mDumpTextView.getBottom());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        stopTimer();
+        finish();
     }
 
     /**

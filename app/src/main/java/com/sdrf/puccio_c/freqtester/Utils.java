@@ -13,6 +13,18 @@ import java.nio.ByteBuffer;
 
 public class Utils {
 
+    static public BigDecimal Bigdivision(BigDecimal val, Double Freq){
+        BigDecimal  res;
+        BigDecimal  calc;
+
+        calc = BigDecimal.valueOf(Freq).divide(BigDecimal.valueOf(1000000000), 9, BigDecimal.ROUND_HALF_UP);
+        Log.d("$$$$$$$$$$$$$$$$$$$$$$$$$", calc.toString());
+        res = val;
+        res = res.divide(calc, 9, BigDecimal.ROUND_HALF_UP);
+        return res;
+    }
+
+
     static public BigDecimal division(Integer numberpick, Integer unit, Double Freq){
         BigDecimal  res;
         BigDecimal  calc;
