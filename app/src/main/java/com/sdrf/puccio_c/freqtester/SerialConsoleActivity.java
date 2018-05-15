@@ -98,6 +98,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected EditText              mFreqInput;
     protected EditText              mFreqStart;
     protected EditText              mFreqStop;
+    protected EditText              mAmpinput;
     protected EditText              mDelay;
     protected Button                mStart;
     protected Button                mReset;
@@ -107,7 +108,6 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected ImageButton           mLoop;
     protected Spinner               mSpinner;
     protected Spinner               mSpinnerStep;
-    protected BigInteger            mFreq;
     protected static Double         mFreqmult;
     protected static Double         mFreqLoop;
     protected static Integer        mNbDiv;
@@ -115,12 +115,17 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected ActionBar             mActionBar;
     protected Button                mDecrease;
     protected Button                mIncrease;
+    protected Button                mDecreaseamp;
+    protected Button                mIncreaseamp;
+    protected Button                mSetAmp;
     protected NumberPicker          np;
     protected BigDecimal            mNb;
+    protected BigDecimal            mAmp;
     protected Integer               mVnp;
     private Timer                   timer;
     private TimerTask               timerTask;
-    private Switch                  mSwitch;
+    private Switch                  mSwRf;
+    private Switch                  mSwRef;
     private Handler                 handler = new Handler();
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
@@ -159,15 +164,20 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mDelay          = (EditText) findViewById(R.id.Delay);
         mStart          = (Button) findViewById(R.id.start);
         mReset          = (Button) findViewById(R.id.reset);
+        mSetAmp         = (Button) findViewById(R.id.setamp);
         mToolbar        = (Toolbar) findViewById(R.id.my_toolbar);
         mDecrease       = (Button) findViewById(R.id.decrease);
         mIncrease       = (Button) findViewById(R.id.increase);
+        mDecreaseamp    = (Button) findViewById(R.id.decreaseamp);
+        mIncreaseamp    = (Button) findViewById(R.id.increaseamp);
         mErase          = (ImageButton) findViewById(R.id.erase);
         mPlay           = (ImageButton) findViewById(R.id.play);
         mStop           = (ImageButton) findViewById(R.id.stop);
         mLoop           = (ImageButton) findViewById(R.id.loop);
         np              = (NumberPicker) findViewById(R.id.np);
-        mSwitch         = (Switch) findViewById(R.id.RF);
+        mSwRf           = (Switch) findViewById(R.id.RF);
+        mSwRef          = (Switch) findViewById(R.id.Ref);
+        mAmpinput       = (EditText) findViewById(R.id.Amp);
 
         np.setMinValue(1);
         np.setMaxValue(1000);
@@ -182,12 +192,13 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         });
 
         mVnp = 1;
+        mAmp = BigDecimal.ZERO;
         mNb = BigDecimal.ZERO;
         displayInt(0, mFreqStart);
         displayInt(0, mFreqStop);
-        displayInt(400, mDelay);
+        displayInt(800, mDelay);
         display(mNb, mFreqInput);
-        mFreq = BigInteger.valueOf(0);
+        display(mAmp, mAmpinput);
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -198,18 +209,27 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
-                    prepareCommand(mFreqInput);
+                    sendFreq(mFreqInput, 33);
                     return true;
                 }
                 return false;
             }
         });
-        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mSwRf.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    prepareCommand(mFreqInput);
+                    sendCommand(BigInteger.valueOf(1), 31, 2);
                 } else {
-                    // The toggle is disabled
+                    sendCommand(BigInteger.valueOf(0), 31, 2);
+                }
+            }
+        });
+        mSwRef.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    sendCommand(BigInteger.valueOf(1), 28, 2);
+                } else {
+                    sendCommand(BigInteger.valueOf(0), 28, 2);
                 }
             }
         });
@@ -217,10 +237,13 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mReset.setOnClickListener(this);
         mDecrease.setOnClickListener(this);
         mIncrease.setOnClickListener(this);
+        mIncreaseamp.setOnClickListener(this);
+        mDecreaseamp.setOnClickListener(this);
         mErase.setOnClickListener(this);
         mPlay.setOnClickListener(this);
         mStop.setOnClickListener(this);
         mLoop.setOnClickListener(this);
+        mSetAmp.setOnClickListener(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -233,7 +256,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     {
         switch (v.getId()) {
             case R.id.start:
-                prepareCommand(mFreqInput);
+                sendFreq(mFreqInput, 33);
                 break;
             case R.id.reset:
                 resetBoard();
@@ -254,12 +277,12 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             case R.id.loop:
                 break;
             case R.id.increase:
-                if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D))) {
+                if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)))
                     mNb = mNb.add(Utils.division(mVnp, mNbDiv, mFreqmult));
-                }
                 else
                     return;
                 display(mNb, mFreqInput);
+                sendFreq(mFreqInput, 33);
                 break;
             case R.id.decrease:
                 if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)) && mNb.signum() > 0)
@@ -267,6 +290,26 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 else
                     return;
                 display(mNb, mFreqInput);
+                sendFreq(mFreqInput, 33);
+                break;
+            case R.id.setamp:
+                sendAmp(mAmpinput, 32);
+                break;
+            case R.id.increaseamp:
+                if (!(mAmp = BigDecimal.valueOf(Utils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-1D)))
+                    mAmp = mAmp.add(BigDecimal.valueOf(0.1));
+                else
+                    return;
+                display(mAmp, mAmpinput);
+                sendAmp(mAmpinput, 32);
+                break;
+            case R.id.decreaseamp:
+                if (!(mAmp = BigDecimal.valueOf(Utils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-1D)))
+                    mAmp = mAmp.subtract(BigDecimal.valueOf(0.1));
+                else
+                    return;
+                display(mAmp, mAmpinput);
+                sendAmp(mAmpinput, 32);
                 break;
         }
     }
@@ -293,7 +336,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                             resetBoard();
                             mNb = mNb.add(Utils.division(mVnp, mNbDiv, mFreqmult));
                             display(mNb, mFreqInput);
-                            prepareCommand(mFreqInput);
+                            sendFreq(mFreqInput, 33);
                         }
                      }
                 });
@@ -406,9 +449,44 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    public void prepareCommand(EditText input)
+    public void sendAmp(EditText input, Integer nb)
     {
+        BigInteger tmp;
+        if ((mAmp = BigDecimal.valueOf(Utils.ParseFreq(input))).doubleValue() < -500d)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "value is to low",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+            try {
+                tmp = mAmp.multiply(BigDecimal.valueOf(10)).toBigInteger();
+            } catch (Exception e) {
+                return;
+            }
+            if (tmp.longValue() > 300L)
+                Toast.makeText(getApplicationContext(),
+                        "Value is too high",
+                        Toast.LENGTH_SHORT).show();
+            else if (tmp.longValue() < -500L)
+                Toast.makeText(getApplicationContext(),
+                        "Value is too Low",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                Toast.makeText(getApplicationContext(),
+                        String.valueOf(tmp),
+                        Toast.LENGTH_SHORT).show();
 
+                Log.i("mAmp", String.format("%d", tmp));
+            }
+            sendCommand(tmp, nb, 2);
+        }
+    }
+
+    public void sendFreq(EditText input, Integer nb)
+    {
+        BigInteger  tmp;
         if ((mNb = BigDecimal.valueOf(Utils.ParseFreq(input))).doubleValue() < 0d)
         {
             Toast.makeText(getApplicationContext(),
@@ -418,30 +496,30 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
         else {
             try {
-                mFreq = mNb.multiply(BigDecimal.valueOf(mFreqmult)).toBigInteger();
+                tmp = mNb.multiply(BigDecimal.valueOf(mFreqmult)).toBigInteger();
             } catch (Exception e) {
                 return;
             }
-            if (mFreq.longValue() > 100000000000L)
+            if (tmp.longValue() > 100000000000L)
                 Toast.makeText(getApplicationContext(),
                         "Value is too high",
                         Toast.LENGTH_SHORT).show();
             else {
                 Toast.makeText(getApplicationContext(),
-                        String.valueOf(mFreq),
+                        String.valueOf(tmp),
                         Toast.LENGTH_SHORT).show();
 
-                Log.i("mFreq", String.format("%d", mFreq));
+                Log.i("mFreq", String.format("%d", tmp));
             }
-            sendCommand();
+            sendCommand(tmp, nb, 8);
         }
     }
 
-    public void sendCommand(){
+    public void sendCommand(BigInteger val, Integer nb, int bits){
 
-        byte[] msg = Utils.intToByteArray(mFreq, 30);
+        byte[] msg = Utils.intToByteArray(val, nb, bits);
 
-        Log.d(TAG, mFreq.toString());
+        Log.d(TAG, val.toString());
 
         for (byte b : msg) {
             System.out.println(Integer.toBinaryString(b & 255 | 256).substring(1));
@@ -459,7 +537,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     public void resetBoard(){
         if (sPort == null)
             return;
-        byte[] msg = Utils.intToByteArray(BigInteger.valueOf(0), 5);
+        byte[] msg = Utils.intToByteArray(BigInteger.valueOf(0), 5, 2);
         try{
             sPort.write(msg, 10);
         } catch (IOException e) {

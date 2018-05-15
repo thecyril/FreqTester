@@ -53,7 +53,7 @@ public class Utils {
         return (tmp);
     }
 
-    static public byte[] intToByteArray (final BigInteger value, final int start) {
+    static public byte[] intToByteArray (final BigInteger value, final int start, int bits) {
         byte[] startbyte = new byte[1];
         final byte[] converted = value.toByteArray();
 
@@ -62,9 +62,9 @@ public class Utils {
         byte[] zero = new byte[1];
         zero[0] = (byte)0;
 
-        ByteBuffer bb = ByteBuffer.allocate(9);
+        ByteBuffer bb = ByteBuffer.allocate(bits + 1);
         bb.put(startbyte);
-        for(int i = 0; i != 8 - converted.length; i++)
+        for(int i = 0; i != bits - converted.length; i++)
             bb.put(zero);
         bb.put(converted);
         byte[] result = bb.array();
