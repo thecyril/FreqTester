@@ -21,7 +21,6 @@
 
 package com.sdrf.puccio_c.freqtester;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -29,9 +28,10 @@ import android.graphics.Color;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.icu.math.BigDecimal;
-import android.media.Image;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -47,7 +47,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -57,14 +56,20 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.util.HexDump;
 import com.hoho.android.usbserial.util.SerialInputOutputManager;
+import com.nononsenseapps.filepicker.FilePickerActivity;
+import com.nononsenseapps.filepicker.Utils;
+import com.opencsv.CSVReader;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
@@ -92,6 +97,9 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
      */
     private static UsbSerialPort    sPort = null;
 
+    public static final int FILE_CODE = 1;
+
+
     protected TextView              mTitleTextView;
     protected TextView              mDumpTextView;
     protected ScrollView            mScrollView;
@@ -100,6 +108,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected EditText              mFreqStop;
     protected EditText              mAmpinput;
     protected EditText              mDelay;
+    protected EditText              mCorrection;
     protected Button                mStart;
     protected Button                mReset;
     protected ImageButton           mErase;
@@ -118,7 +127,9 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected Button                mDecreaseamp;
     protected Button                mIncreaseamp;
     protected Button                mSetAmp;
+    protected Button                mCalib;
     protected NumberPicker          np;
+    protected BigInteger            mFreq;
     protected BigDecimal            mNb;
     protected BigDecimal            mAmp;
     protected Integer               mVnp;
@@ -127,6 +138,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     private Switch                  mSwRf;
     private Switch                  mSwRef;
     private Handler                 handler = new Handler();
+    protected LinkedHashMap<BigInteger, BigDecimal> mTable;
+
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
@@ -162,6 +175,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mFreqStart      = (EditText) findViewById(R.id.Start);
         mFreqStop       = (EditText) findViewById(R.id.Stop);
         mDelay          = (EditText) findViewById(R.id.Delay);
+        mCorrection     = (EditText) findViewById(R.id.correction);
         mStart          = (Button) findViewById(R.id.start);
         mReset          = (Button) findViewById(R.id.reset);
         mSetAmp         = (Button) findViewById(R.id.setamp);
@@ -170,6 +184,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mIncrease       = (Button) findViewById(R.id.increase);
         mDecreaseamp    = (Button) findViewById(R.id.decreaseamp);
         mIncreaseamp    = (Button) findViewById(R.id.increaseamp);
+        mCalib          = (Button) findViewById(R.id.calib);
         mErase          = (ImageButton) findViewById(R.id.erase);
         mPlay           = (ImageButton) findViewById(R.id.play);
         mStop           = (ImageButton) findViewById(R.id.stop);
@@ -178,6 +193,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mSwRf           = (Switch) findViewById(R.id.RF);
         mSwRef          = (Switch) findViewById(R.id.Ref);
         mAmpinput       = (EditText) findViewById(R.id.Amp);
+
 
         np.setMinValue(1);
         np.setMaxValue(1000);
@@ -194,6 +210,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mVnp = 1;
         mAmp = BigDecimal.ZERO;
         mNb = BigDecimal.ZERO;
+        mFreq = BigInteger.ZERO;
         displayInt(0, mFreqStart);
         displayInt(0, mFreqStop);
         displayInt(800, mDelay);
@@ -218,18 +235,18 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mSwRf.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    sendCommand(BigInteger.valueOf(1), 31, 2);
+                    sendCommand(BigInteger.valueOf(1), 31, 1);
                 } else {
-                    sendCommand(BigInteger.valueOf(0), 31, 2);
+                    sendCommand(BigInteger.valueOf(0), 31, 1);
                 }
             }
         });
         mSwRef.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    sendCommand(BigInteger.valueOf(1), 28, 2);
+                    sendCommand(BigInteger.valueOf(1), 28, 1);
                 } else {
-                    sendCommand(BigInteger.valueOf(0), 28, 2);
+                    sendCommand(BigInteger.valueOf(0), 28, 1);
                 }
             }
         });
@@ -244,6 +261,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mStop.setOnClickListener(this);
         mLoop.setOnClickListener(this);
         mSetAmp.setOnClickListener(this);
+        mCalib.setOnClickListener(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -268,7 +286,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 display(BigDecimal.valueOf(0), mFreqInput);
                 break;
             case R.id.play:
-                mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqStart));
+                mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqStart));
                 startTimer();
                 break;
             case R.id.stop:
@@ -276,17 +294,20 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.loop:
                 break;
+            case R.id.calib:
+                openFolder();
+                break;
             case R.id.increase:
-                if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)))
-                    mNb = mNb.add(Utils.division(mVnp, mNbDiv, mFreqmult));
+                if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)))
+                    mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
                 else
                     return;
                 display(mNb, mFreqInput);
                 sendFreq(mFreqInput, 33);
                 break;
             case R.id.decrease:
-                if (!(mNb = BigDecimal.valueOf(Utils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)) && mNb.signum() > 0)
-                    mNb = mNb.subtract(Utils.division(mVnp, mNbDiv, mFreqmult));
+                if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)) && mNb.signum() > 0)
+                    mNb = mNb.subtract(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
                 else
                     return;
                 display(mNb, mFreqInput);
@@ -296,7 +317,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 sendAmp(mAmpinput, 32);
                 break;
             case R.id.increaseamp:
-                if (!(mAmp = BigDecimal.valueOf(Utils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-1D)))
+                if (!(mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-1D)))
                     mAmp = mAmp.add(BigDecimal.valueOf(0.1));
                 else
                     return;
@@ -304,13 +325,58 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 sendAmp(mAmpinput, 32);
                 break;
             case R.id.decreaseamp:
-                if (!(mAmp = BigDecimal.valueOf(Utils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-1D)))
+                if (!(mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-1D)))
                     mAmp = mAmp.subtract(BigDecimal.valueOf(0.1));
                 else
                     return;
                 display(mAmp, mAmpinput);
                 sendAmp(mAmpinput, 32);
                 break;
+        }
+    }
+
+    public void openFolder()
+    {
+        Intent i = new Intent(this, FilePickerActivity.class);
+
+        i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
+        i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
+        i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
+
+        i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
+
+        startActivityForResult(i, FILE_CODE);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        try
+        {
+            if (requestCode == FILE_CODE && resultCode == -1)
+            {
+                List<Uri> files = Utils.getSelectedFilesFromResult(data);
+                for (Uri uri : files)
+                {
+                    File file = Utils.getFileForUri(uri);
+                    try{
+                        CSVReader reader = new CSVReader(new FileReader(file.getAbsolutePath()));
+                        mTable = new LinkedHashMap<>();// create prices map
+
+                        String [] nextLine;
+                        while ((nextLine = reader.readNext()) != null) {
+                            System.out.println(nextLine[0] + ", " +nextLine[1]);
+                            mTable.put(new BigInteger(nextLine[0]), new BigDecimal(nextLine[1]));
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(this, "Wrong Csv File", Toast.LENGTH_SHORT).show();
+                    }
+                    Toast.makeText(getApplicationContext(), file.getPath(), Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+        catch (Exception ex) {
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -329,12 +395,12 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 handler.post(new Runnable() {
                     public void run(){
                         display(mNb, mFreqInput);
-                        BigDecimal stop = BigDecimal.valueOf(Utils.ParseFreq(mFreqStop));
+                        BigDecimal stop = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqStop));
                         if (mNb.compareTo(stop) >= 0)
                             stopTimer();
                         else {
                             resetBoard();
-                            mNb = mNb.add(Utils.division(mVnp, mNbDiv, mFreqmult));
+                            mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
                             display(mNb, mFreqInput);
                             sendFreq(mFreqInput, 33);
                         }
@@ -342,7 +408,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 });
             }
         };
-        timer.schedule(timerTask, 500, Utils.ParseFreq(mDelay).intValue());
+        timer.schedule(timerTask, 500, SDRFUtils.ParseFreq(mDelay).intValue());
     }
 
     private void display(BigDecimal number, TextView tv) {
@@ -452,7 +518,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     public void sendAmp(EditText input, Integer nb)
     {
         BigInteger tmp;
-        if ((mAmp = BigDecimal.valueOf(Utils.ParseFreq(input))).doubleValue() < -500d)
+        if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -500d)
         {
             Toast.makeText(getApplicationContext(),
                     "value is to low",
@@ -484,10 +550,31 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    public void correctAmp(EditText input, Integer nb)
+    {
+        BigInteger tmp;
+        if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() == -1D)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Put a value",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+            try {
+                tmp = mAmp.multiply(BigDecimal.valueOf(10)).toBigInteger();
+                tmp = BigInteger.ZERO.subtract(tmp);
+            } catch (Exception e) {
+                return;
+            }
+                Log.i("Correct amp", String.format("%d", tmp));
+            }
+            sendCommand(tmp, nb, 8);
+        }
+
     public void sendFreq(EditText input, Integer nb)
     {
-        BigInteger  tmp;
-        if ((mNb = BigDecimal.valueOf(Utils.ParseFreq(input))).doubleValue() < 0d)
+        if ((mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < 0d)
         {
             Toast.makeText(getApplicationContext(),
                     "Error you should enter a value",
@@ -496,28 +583,32 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
         else {
             try {
-                tmp = mNb.multiply(BigDecimal.valueOf(mFreqmult)).toBigInteger();
+                mFreq = mNb.multiply(BigDecimal.valueOf(mFreqmult)).toBigInteger();
             } catch (Exception e) {
                 return;
             }
-            if (tmp.longValue() > 100000000000L)
+            if (mFreq.longValue() > 100000000000L)
                 Toast.makeText(getApplicationContext(),
                         "Value is too high",
                         Toast.LENGTH_SHORT).show();
             else {
                 Toast.makeText(getApplicationContext(),
-                        String.valueOf(tmp),
+                        String.valueOf(mFreq),
                         Toast.LENGTH_SHORT).show();
 
-                Log.i("mFreq", String.format("%d", tmp));
+                Log.i("mFreq", String.format("%d", mFreq));
             }
-            sendCommand(tmp, nb, 8);
+            if (mTable != null) {
+                display(SDRFUtils.ParseAmp(mTable, mFreq), mCorrection);
+                correctAmp(mCorrection, 32);
+            }
+            sendCommand(mFreq, nb, 8);
         }
     }
 
     public void sendCommand(BigInteger val, Integer nb, int bits){
 
-        byte[] msg = Utils.intToByteArray(val, nb, bits);
+        byte[] msg = SDRFUtils.intToByteArray(val, nb, bits);
 
         Log.d(TAG, val.toString());
 
@@ -537,7 +628,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     public void resetBoard(){
         if (sPort == null)
             return;
-        byte[] msg = Utils.intToByteArray(BigInteger.valueOf(0), 5, 2);
+        byte[] msg = SDRFUtils.intToByteArray(BigInteger.valueOf(0), 5, 2);
         try{
             sPort.write(msg, 10);
         } catch (IOException e) {
