@@ -1,8 +1,11 @@
 package com.sdrf.puccio_c.freqtester;
 
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
@@ -48,9 +51,34 @@ public class MainActivity extends Activity {
     private ListView mListView;
     private TextView mProgressBarTitle;
     private ProgressBar mProgressBar;
+    private PendingIntent mPermissionIntent;
+    private UsbDevice mDevice;
 
     private static final int MESSAGE_REFRESH = 101;
     private static final long REFRESH_TIMEOUT_MILLIS = 5000;
+
+    private static final String ACTION_USB_PERMISSION =
+            "com.android.example.USB_PERMISSION";
+    private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
+
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (ACTION_USB_PERMISSION.equals(action)) {
+                synchronized (this) {
+                    UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+
+                    if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
+                        if(device != null){
+                            //call method to set up device communication
+                        }
+                    }
+                    else {
+                        Log.d(TAG, "permission denied for device " + device);
+                    }
+                }
+            }
+        }
+    };
 
     private final Handler mHandler = new Handler() {
         @Override
@@ -81,6 +109,12 @@ public class MainActivity extends Activity {
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mProgressBarTitle = (TextView) findViewById(R.id.progressBarTitle);
 
+        mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
+        IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
+        registerReceiver(mUsbReceiver, filter);
+        Log.d("$$$$$$$$$$$$$$$$$", "Pas Here");
+
+
         mAdapter = new ArrayAdapter<UsbSerialPort>(this,
                 android.R.layout.simple_expandable_list_item_2, mEntries) {
             @Override
@@ -96,11 +130,13 @@ public class MainActivity extends Activity {
 
                 final UsbSerialPort port = mEntries.get(position);
                 final UsbSerialDriver driver = port.getDriver();
-                final UsbDevice device = driver.getDevice();
+                mDevice = driver.getDevice();
+
+                mUsbManager.requestPermission(mDevice, mPermissionIntent);
 
                 final String title = String.format("Board: Vendor %s Product %s",
-                        HexDump.toHexString((short) device.getVendorId()),
-                        HexDump.toHexString((short) device.getProductId()));
+                        HexDump.toHexString((short) mDevice.getVendorId()),
+                        HexDump.toHexString((short) mDevice.getProductId()));
                 row.getText1().setText(title);
 
                 final String subtitle = driver.getClass().getSimpleName();

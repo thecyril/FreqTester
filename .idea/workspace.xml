@@ -24,72 +24,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffcf0fd9-1cf3-49fa-a23d-f62b100bf74a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_1_0_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_1_0_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_27_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_0_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_27_1_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_27_1_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_27_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_27_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_1.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_nononsenseapps_filepicker_4_1_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_opencsv_opencsv_4_1_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_beanutils_commons_beanutils_1_9_3_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_collections_commons_collections_3_2_2_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_logging_commons_logging_1_2_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_lang3_3_6_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_text_1_1_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/my_border.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_0_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_0_0_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_26_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_26_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_0_2_jar.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_26_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_26_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_26_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_27_1_1_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_26_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_26_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_26_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_26_1_0.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_26_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_27_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_26_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_27_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_26_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_rules_1_0_1.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_26_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_27_1_0.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/Utils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
+      <change beforePath="$PROJECT_DIR$/usbSerialExamples/usbSerialExamples.iml" afterPath="$PROJECT_DIR$/usbSerialExamples/usbSerialExamples.iml" />
       <change beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
+      <change beforePath="$PROJECT_DIR$/usbSerialForAndroid/usbSerialForAndroid.iml" afterPath="$PROJECT_DIR$/usbSerialForAndroid/usbSerialForAndroid.iml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -129,26 +82,37 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <caret line="114" column="19" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+              <folding>
+                <element signature="e#2825#3269#0" expanded="true" />
+                <element signature="e#3268#3269#0" expanded="true" />
+                <element signature="e#8637#8638#0" expanded="true" />
+                <element signature="e#8695#8696#0" expanded="true" />
+                <element signature="e#8755#8756#0" expanded="true" />
+                <element signature="e#8809#8810#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerialConsoleActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SerialConsoleActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="374" column="17" lean-forward="true" selection-start-line="374" selection-start-column="17" selection-end-line="374" selection-end-column="17" />
+            <state relative-caret-position="572">
+              <caret line="567" column="14" lean-forward="false" selection-start-line="567" selection-start-column="14" selection-end-line="567" selection-end-column="14" />
               <folding>
-                <element signature="e#0#26327#0" expanded="true" />
+                <element signature="e#0#26001#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#9303#9664#0" expanded="true" />
-                <element signature="e#9663#9664#0" expanded="true" />
-                <element signature="e#16290#16291#0" expanded="true" />
-                <element signature="e#16329#16330#0" expanded="true" />
-                <element signature="e#16389#16390#0" expanded="true" />
-                <element signature="e#16428#16429#0" expanded="true" />
+                <element signature="e#6052#6235#0" expanded="true" />
+                <element signature="e#6234#6235#0" expanded="true" />
+                <element signature="e#15630#16323#0" expanded="true" />
+                <element signature="e#15709#16297#0" expanded="true" />
+                <element signature="e#16296#16297#0" expanded="true" />
+                <element signature="e#16322#16323#0" expanded="true" />
+                <element signature="e#16469#16470#0" expanded="true" />
+                <element signature="e#16508#16509#0" expanded="true" />
+                <element signature="e#16568#16569#0" expanded="true" />
+                <element signature="e#16607#16608#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -157,8 +121,8 @@
       <file leaf-file-name="SDRFUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
+            <state relative-caret-position="305">
+              <caret line="172" column="35" lean-forward="false" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -166,25 +130,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <file leaf-file-name="vga_ctrl_voltage_att.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="25" column="39" lean-forward="false" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+              <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serial_console.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="1173">
+              <caret line="69" column="23" lean-forward="false" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="serial_console.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="35" />
+            <state relative-caret-position="119">
+              <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
               <folding />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer2">
+        </entry>
+      </file>
+      <file leaf-file-name="my_border.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/my_border.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-manifest">
             <state />
           </provider>
         </entry>
@@ -205,41 +205,42 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>28z</find>
-      <find>28</find>
-      <find>31</find>
-      <find>acc</find>
-      <find>tool</find>
-      <find>utils</find>
-      <find>Utils</find>
-      <find>image</find>
-      <find>File</find>
-      <find>data</find>
-      <find>tree</find>
-      <find>hash</find>
-      <find>mtable</find>
-      <find>Key is</find>
-      <find>Key</find>
-      <find>key</find>
-      <find>is</find>
-      <find>mAmp</find>
-      <find>value</find>
-      <find>calib</find>
-      <find>open</find>
-      <find>onActivityResult</find>
-      <find>mTable</find>
-      <find>mfreq</find>
-      <find>mta</find>
+      <find>context</find>
+      <find>Context</find>
+      <find>csv</find>
+      <find>toast</find>
+      <find>LENGTH_LONG</find>
+      <find>contex</find>
+      <find>con</find>
+      <find>mFile</find>
+      <find>mCorrection</find>
+      <find>32</find>
+      <find>sendamp</find>
+      <find>correctamp</find>
+      <find>value is</find>
+      <find>correc</find>
+      <find>log.</find>
+      <find>mtension</find>
+      <find>Tens</find>
+      <find>parse</find>
+      <find>val</find>
+      <find>valcal</find>
+      <find>1, BigDecimal.ROUND_HALF_EVEN</find>
+      <find>valca</find>
+      <find>parseTe</find>
+      <find>setsc</find>
+      <find>tension</find>
+      <find>mCorrectedamp</find>
+      <find>mamp</find>
+      <find>system.out</find>
+      <find>tens</find>
       <find>sendFreq</find>
-      <find>sendam</find>
-      <find>sendAm</find>
-      <find>correct</find>
-      <find>amp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -4166,23 +4167,25 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/serial_console.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SpinnerActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/Utils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/my_border.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="70" />
-    <option name="width" value="1834" />
-    <option name="height" value="951" />
+    <option name="x" value="79" />
+    <option name="width" value="1280" />
+    <option name="height" value="692" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -4199,41 +4202,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="freqtester" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -4259,6 +4227,14 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreqTester" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FreqTester" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FreqTester" type="b2602c69:ProjectViewProjectNode" />
@@ -4361,6 +4337,41 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="freqtester" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="FreqTester" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4369,9 +4380,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="device.picker.selection" value="192.168.21.205:5555" />
     <property name="android.profiler.active" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/puccio_c/rendu/Mobile/FreqTester/app/src/main/AndroidManifest.xml" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/assets" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
       <recent name="$PROJECT_DIR$/app/src/main/res/menu" />
@@ -4615,7 +4631,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="70" y="0" width="1922" height="1039" extended-state="6" />
+    <frame x="-1" y="0" width="1922" height="1039" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="0" side_tool="false" content_ui="tabs" />
@@ -4625,21 +4641,21 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19903949" sideWeight="0.50591713" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2595838" sideWeight="0.5602988" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31323373" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3713034" sideWeight="0.66648877" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3702081" sideWeight="0.66648877" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19903949" sideWeight="0.49408284" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2595838" sideWeight="0.43970117" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2705367" sideWeight="0.43970117" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.4704142" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978093" sideWeight="0.6302028" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5295858" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978093" sideWeight="0.6302028" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -4649,8 +4665,42 @@
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31323373" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19903949" sideWeight="0.50591713" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2595838" sideWeight="0.5602988" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37068063" sideWeight="0.66648877" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2705367" sideWeight="0.43970117" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5295858" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978093" sideWeight="0.6302028" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31323373" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19903949" sideWeight="0.49408284" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.4704142" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -4665,13 +4715,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_more_vert_black_48dp.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/serial_consolebackup.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_consolebackup.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console_OLD.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/serial_consolebackup.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_consolebackup.xml" />
@@ -4684,13 +4727,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/usbSerialExamples/src/main/res/layout/serial_console.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
           <caret line="49" column="29" lean-forward="false" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/usbSerialExamples/src/main/AndroidManifest.xml">
@@ -4704,44 +4747,44 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/usbSerialExamples/src/main/res/layout/main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/platforms/android-26/data/res/layout/simple_list_item_2.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/platforms/android-26/data/res/layout/simple_expandable_list_item_2.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-26/android.jar!/android/widget/TextView.class">
@@ -4798,14 +4841,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="41" lean-forward="false" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
@@ -4839,25 +4882,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="58" column="46" lean-forward="false" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-26/android.jar!/android/view/View.class">
@@ -4868,14 +4900,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/serial_console.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="1972">
           <caret line="116" column="52" lean-forward="false" selection-start-line="116" selection-start-column="52" selection-end-line="116" selection-end-column="52" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/usbSerialForAndroid/src/main/java/com/hoho/android/usbserial/driver/CdcAcmSerialDriver.java">
@@ -4886,6 +4918,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/item.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
@@ -4894,19 +4929,16 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/appcompat-v7/26.1.0/2b34456c30d6b6e5db5fa3e8fa02f6cebd5531fd/appcompat-v7-26.1.0-sources.jar!/android/support/v7/app/AppCompatViewInflater.java">
@@ -4917,25 +4949,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/serial_console.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/asus-p028-192.168.21.100_5555/storage/sdcard0/Screenshots/Screenshot_20180514-140619.jpg" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/device_filter.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="android-dummy:///home/puccio_c/rendu/Mobile/FreqTester//Theme Editor">
       <provider selected="true" editor-type-id="themeEditor">
         <state theme-name="android:Theme.Material.Light.NoActionBar" module-name="app" proportion="0.67" />
@@ -4945,28 +4969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="63" column="49" lean-forward="false" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="41" lean-forward="true" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
-          <folding>
-            <element signature="e#2024#2042#0" expanded="false" />
-            <element signature="e#2375#2393#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4982,130 +4984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <marker date="1517935319054" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1517935319054" expanded="false" signature="140:190" ph="..." />
-            <marker date="1517935319054" expanded="false" signature="844:855" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="891:897" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="935:946" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="982:988" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1037:1048" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1084:1090" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1129:1140" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1176:1182" ph=" }" />
-            <marker date="1517935319054" expanded="true" signature="1246:1298" ph="{...}" />
-            <marker date="1517935319054" expanded="false" signature="1333:1344" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1380:1386" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1418:1429" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1465:1471" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1504:1515" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1551:1557" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1595:1606" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1642:1648" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1677:1688" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1724:1730" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1774:1785" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1821:1827" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1870:1881" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="1917:1923" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="1983:1994" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="2030:2036" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="2078:2089" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="2125:2131" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="2190:2201" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="2237:2243" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="2289:2300" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="2336:2342" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="2399:2410" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="2446:2452" ph=" }" />
-            <marker date="1517935319054" expanded="true" signature="2521:2573" ph="{...}" />
-            <marker date="1517935319054" expanded="true" signature="2637:2689" ph="{...}" />
-            <marker date="1517935319054" expanded="false" signature="2742:2753" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="2789:2795" ph=" }" />
-            <marker date="1517935319054" expanded="true" signature="2866:2918" ph="{...}" />
-            <marker date="1517935319054" expanded="false" signature="2961:2972" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3008:3014" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="3074:3085" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3121:3127" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="3170:3181" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3217:3223" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="3283:3294" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3330:3336" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="3384:3395" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3431:3437" ph=" }" />
-            <marker date="1517935319054" expanded="true" signature="3503:3555" ph="{...}" />
-            <marker date="1517935319054" expanded="false" signature="3587:3598" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3634:3640" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="3687:3698" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3734:3740" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="3770:3781" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3817:3823" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="3868:3879" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="3915:3921" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="3964:3975" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="4011:4017" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="4077:4088" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="4124:4130" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="4179:4190" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="4226:4232" ph=" }" />
-            <marker date="1517935319054" expanded="true" signature="4299:4351" ph="{...}" />
-            <marker date="1517935319054" expanded="false" signature="4399:4410" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="4446:4452" ph=" }" />
-            <marker date="1517935319054" expanded="true" signature="4518:4570" ph="{...}" />
-            <marker date="1517935319054" expanded="false" signature="4604:4615" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="4651:4657" ph=" }" />
-            <marker date="1517935319054" expanded="true" signature="4690:4701" ph=" { " />
-            <marker date="1517935319054" expanded="true" signature="4737:4743" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="4782:4793" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="4829:4835" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="4866:4877" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="4913:4919" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="4968:4979" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5015:5021" ph=" }" />
-            <marker date="1517935319054" expanded="true" signature="5127:5179" ph="{...}" />
-            <marker date="1517935319054" expanded="false" signature="5206:5217" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5253:5259" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="5286:5297" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5333:5339" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="5371:5382" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5418:5424" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="5453:5464" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5500:5506" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="5540:5551" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5587:5593" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="5637:5648" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5684:5690" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="5735:5746" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5782:5788" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="5812:5823" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5859:5865" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="5908:5919" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="5955:5961" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6015:6026" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6062:6068" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6104:6115" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6151:6157" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6182:6193" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6229:6235" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6283:6294" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6330:6336" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6374:6385" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6421:6427" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6470:6481" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6517:6523" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6556:6567" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6603:6609" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6639:6650" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6686:6692" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6731:6742" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6778:6784" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6834:6845" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6881:6887" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="6936:6947" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="6983:6989" ph=" }" />
-            <marker date="1517935319054" expanded="false" signature="7049:7060" ph=" { " />
-            <marker date="1517935319054" expanded="false" signature="7096:7102" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5113,6 +4991,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="692">
           <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/device_filter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -5133,49 +5027,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="35" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/my_border.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
+        <state relative-caret-position="305">
+          <caret line="172" column="35" lean-forward="false" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="114" column="19" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+          <folding>
+            <element signature="e#2825#3269#0" expanded="true" />
+            <element signature="e#3268#3269#0" expanded="true" />
+            <element signature="e#8637#8638#0" expanded="true" />
+            <element signature="e#8695#8696#0" expanded="true" />
+            <element signature="e#8755#8756#0" expanded="true" />
+            <element signature="e#8809#8810#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="374" column="17" lean-forward="true" selection-start-line="374" selection-start-column="17" selection-end-line="374" selection-end-column="17" />
+        <state relative-caret-position="572">
+          <caret line="567" column="14" lean-forward="false" selection-start-line="567" selection-start-column="14" selection-end-line="567" selection-end-column="14" />
           <folding>
-            <element signature="e#0#26327#0" expanded="true" />
+            <element signature="e#0#26001#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#9303#9664#0" expanded="true" />
-            <element signature="e#9663#9664#0" expanded="true" />
-            <element signature="e#16290#16291#0" expanded="true" />
-            <element signature="e#16329#16330#0" expanded="true" />
-            <element signature="e#16389#16390#0" expanded="true" />
-            <element signature="e#16428#16429#0" expanded="true" />
+            <element signature="e#6052#6235#0" expanded="true" />
+            <element signature="e#6234#6235#0" expanded="true" />
+            <element signature="e#15630#16323#0" expanded="true" />
+            <element signature="e#15709#16297#0" expanded="true" />
+            <element signature="e#16296#16297#0" expanded="true" />
+            <element signature="e#16322#16323#0" expanded="true" />
+            <element signature="e#16469#16470#0" expanded="true" />
+            <element signature="e#16508#16509#0" expanded="true" />
+            <element signature="e#16568#16569#0" expanded="true" />
+            <element signature="e#16607#16608#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" column="23" lean-forward="false" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

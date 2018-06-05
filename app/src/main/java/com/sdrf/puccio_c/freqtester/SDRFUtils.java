@@ -5,6 +5,11 @@ import android.icu.math.BigDecimal;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.opencsv.CSVReader;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
@@ -18,6 +23,26 @@ import java.util.Set;
 
 public class SDRFUtils {
 
+    static public LinkedHashMap<BigInteger, BigDecimal> csvRead(InputStreamReader file) {
+        LinkedHashMap<BigInteger, BigDecimal> table;
+
+        try {
+            CSVReader reader = new CSVReader(file);
+            table = new LinkedHashMap<>();// create prices map
+
+            String[] nextLine;
+            while ((nextLine = reader.readNext()) != null) {
+                System.out.println(nextLine[0] + ", " + nextLine[1]);
+                table.put(new BigInteger(nextLine[0]), new BigDecimal(nextLine[1]));
+
+            }
+            return table;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     static public BigDecimal calc_moy(BigDecimal val1, BigDecimal val2) {
         BigDecimal res;
         BigDecimal ten = new BigDecimal(10D);
@@ -26,6 +51,54 @@ public class SDRFUtils {
         res = res.divide(new BigDecimal(2D), 3, BigDecimal.ROUND_HALF_EVEN);
         return res;
     }
+
+    static public BigDecimal calc_val(BigDecimal val1, BigDecimal val2){
+        BigDecimal ten = new BigDecimal(10D);
+        BigDecimal res = BigDecimal.valueOf(StrictMath.pow(ten.doubleValue() , val1.divide(ten, 3, BigDecimal.ROUND_HALF_EVEN).doubleValue()))
+                        .subtract(BigDecimal.valueOf(StrictMath.pow(ten.doubleValue(), val2.divide(ten, 3, BigDecimal.ROUND_HALF_EVEN).doubleValue())));
+        return res;
+    }
+
+    static public BigInteger calc_tens(BigDecimal amp, BigDecimal valmin, BigDecimal valmax, BigInteger tensmin, BigInteger tensmax){
+        BigInteger res;
+        BigDecimal valcalc = calc_val(amp, valmin).divide(calc_val(valmax, valmin));
+        valcalc = valcalc.multiply(new BigDecimal(tensmax.subtract(tensmin)));
+        valcalc = valcalc.add(new BigDecimal(tensmin));
+        res = valcalc.setScale(1, BigDecimal.ROUND_HALF_EVEN).toBigInteger();
+        return res;
+    }
+
+    static public BigInteger ParseTension(LinkedHashMap table, BigDecimal amp) {
+        BigDecimal  valmin = BigDecimal.ZERO;
+        BigDecimal  valmax = BigDecimal.ZERO;
+        BigInteger  tensmax = BigInteger.ZERO;
+        BigInteger  tensmin = BigInteger.ZERO;
+        Set set = table.entrySet();
+
+        // Displaying elements of LinkedHashMap
+        if (amp.compareTo(BigDecimal.ZERO) < 0)
+            amp = amp.multiply(BigDecimal.valueOf(-1L));
+        Iterator iterator = set.iterator();
+        if (iterator.hasNext()) {
+            Map.Entry me = (Map.Entry) iterator.next();
+            if (amp.compareTo((BigDecimal)me.getValue()) >= 0) {
+                iterator = set.iterator();
+                while (iterator.hasNext() && valmax.compareTo(amp) < 0) {
+                    me = (Map.Entry) iterator.next();
+                    valmin = valmax;
+                    valmax = (BigDecimal) me.getValue();
+                    tensmin = tensmax;
+                    tensmax = (BigInteger) me.getKey();
+                }
+                System.out.print("Key is: " + valmax + " last key: " + valmin +
+                        " Value is: " + tensmax + " Last amp is: " + tensmin + "\n");
+                BigInteger scaled = calc_tens(amp, valmin, valmax, tensmin, tensmax);
+                return scaled;
+            }
+        }
+        return BigInteger.ZERO;
+    }
+
 
     static public BigDecimal ParseAmp(LinkedHashMap table, BigInteger freq) {
         BigInteger  pfreq = BigInteger.ZERO;
@@ -53,17 +126,6 @@ public class SDRFUtils {
         }
         BigDecimal scaled = pamp.setScale(1, BigDecimal.ROUND_HALF_EVEN);
         return scaled;
-    }
-
-    static public BigDecimal Bigdivision(BigDecimal val, Double Freq){
-        BigDecimal  res;
-        BigDecimal  calc;
-
-        calc = BigDecimal.valueOf(Freq).divide(BigDecimal.valueOf(1000000000), 9, BigDecimal.ROUND_HALF_UP);
-        Log.d("$$$$$$$$$$$$$$$$$$$$$$$$$", calc.toString());
-        res = val;
-        res = res.divide(calc, 9, BigDecimal.ROUND_HALF_UP);
-        return res;
     }
 
     static public BigDecimal division(Integer numberpick, Integer unit, Double Freq){
@@ -110,19 +172,6 @@ public class SDRFUtils {
         bb.put(converted);
         byte[] result = bb.array();
 
-
-        //        int integer = integere.intValue();
-        //result[0] = (byte)((integer & 0xFF000000) >> 24);
-        //result[1] = (byte)((integer & 0x00FF0000) >> 16);
-        //result[2] = (byte)((integer & 0x0000FF00) >> 8);
-        //result[3] = (byte)(integer & 0x000000FF)
-//
-        //System.arraycopy(startbyte, 0, result, 0, startbyte.length);
-//
-        //for(i = 0; i != 9 - converted.length; i++)
-        //    System.arraycopy(zero, 0, result, i, zero.length);
-//
-        //System.arraycopy(converted, 0, result, i, converted.length);
         return result;
     }
 }

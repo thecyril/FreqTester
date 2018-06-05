@@ -62,11 +62,11 @@ import com.hoho.android.usbserial.util.HexDump;
 import com.hoho.android.usbserial.util.SerialInputOutputManager;
 import com.nononsenseapps.filepicker.FilePickerActivity;
 import com.nononsenseapps.filepicker.Utils;
-import com.opencsv.CSVReader;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -102,6 +102,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
     protected TextView              mTitleTextView;
     protected TextView              mDumpTextView;
+    protected TextView              mPath;
+    protected EditText              mOuput;
     protected ScrollView            mScrollView;
     protected EditText              mFreqInput;
     protected EditText              mFreqStart;
@@ -132,6 +134,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected BigInteger            mFreq;
     protected BigDecimal            mNb;
     protected BigDecimal            mAmp;
+    protected BigDecimal            mCorrectedamp;
     protected Integer               mVnp;
     private Timer                   timer;
     private TimerTask               timerTask;
@@ -139,6 +142,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     private Switch                  mSwRef;
     private Handler                 handler = new Handler();
     protected LinkedHashMap<BigInteger, BigDecimal> mTable;
+    protected LinkedHashMap<BigInteger, BigDecimal> mTension;
 
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
@@ -170,6 +174,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.serial_console);
         mTitleTextView  = (TextView) findViewById(R.id.demoTitle);
         mDumpTextView   = (TextView) findViewById(R.id.consoleText);
+        mPath           = (TextView) findViewById(R.id.file);
+        mOuput          = (EditText) findViewById(R.id.output);
         mScrollView     = (ScrollView) findViewById(R.id.demoScroller);
         mFreqInput      = (EditText) findViewById(R.id.Freq);
         mFreqStart      = (EditText) findViewById(R.id.Start);
@@ -209,6 +215,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
         mVnp = 1;
         mAmp = BigDecimal.ZERO;
+        mCorrectedamp = BigDecimal.ZERO;
         mNb = BigDecimal.ZERO;
         mFreq = BigInteger.ZERO;
         displayInt(0, mFreqStart);
@@ -358,25 +365,21 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 for (Uri uri : files)
                 {
                     File file = Utils.getFileForUri(uri);
-                    try{
-                        CSVReader reader = new CSVReader(new FileReader(file.getAbsolutePath()));
-                        mTable = new LinkedHashMap<>();// create prices map
+                    InputStreamReader is1 = new InputStreamReader(new FileInputStream(file) );
+                    InputStreamReader is2 = new InputStreamReader(getAssets()
+                            .open("vga_ctrl_voltage_att.csv"));
 
-                        String [] nextLine;
-                        while ((nextLine = reader.readNext()) != null) {
-                            System.out.println(nextLine[0] + ", " +nextLine[1]);
-                            mTable.put(new BigInteger(nextLine[0]), new BigDecimal(nextLine[1]));
-                        }
-                    }catch(Exception e){
-                        e.printStackTrace();
-                        Toast.makeText(this, "Wrong Csv File", Toast.LENGTH_SHORT).show();
-                    }
-                    Toast.makeText(getApplicationContext(), file.getPath(), Toast.LENGTH_LONG).show();
+                    if ((mTable = SDRFUtils.csvRead(is1)) == null)
+                        Toast.makeText(getApplicationContext(), "Wrong Csv", Toast.LENGTH_SHORT).show();
+                    mTension = SDRFUtils.csvRead(is2);
+
+                    mPath.setText(file.getPath().substring(file.getPath().lastIndexOf("/") + 1));
+                    Toast.makeText(getApplicationContext(), file.getPath(), Toast.LENGTH_SHORT).show();
                 }
             }
         }
         catch (Exception ex) {
-            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -399,7 +402,6 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                         if (mNb.compareTo(stop) >= 0)
                             stopTimer();
                         else {
-                            resetBoard();
                             mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
                             display(mNb, mFreqInput);
                             sendFreq(mFreqInput, 33);
@@ -517,8 +519,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
     public void sendAmp(EditText input, Integer nb)
     {
-        BigInteger tmp;
-        if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -500d)
+        BigInteger tension = BigInteger.ZERO;
+        if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -50d)
         {
             Toast.makeText(getApplicationContext(),
                     "value is to low",
@@ -527,50 +529,32 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
         else {
             try {
-                tmp = mAmp.multiply(BigDecimal.valueOf(10)).toBigInteger();
+                if (mTable != null && mTension != null)
+                    display((mCorrectedamp = SDRFUtils.ParseAmp(mTable, mFreq)), mCorrection);
+                mAmp = mAmp.subtract(mCorrectedamp);
+                tension = SDRFUtils.ParseTension(mTension, mAmp);
+                Log.d("Tension", tension.toString());
             } catch (Exception e) {
                 return;
             }
-            if (tmp.longValue() > 300L)
+            if (mAmp.longValue() > 30L)
                 Toast.makeText(getApplicationContext(),
                         "Value is too high",
                         Toast.LENGTH_SHORT).show();
-            else if (tmp.longValue() < -500L)
+            else if (mAmp.longValue() < -50L)
                 Toast.makeText(getApplicationContext(),
                         "Value is too Low",
                         Toast.LENGTH_SHORT).show();
             else {
                 Toast.makeText(getApplicationContext(),
-                        String.valueOf(tmp),
+                        String.valueOf(tension),
                         Toast.LENGTH_SHORT).show();
 
-                Log.i("mAmp", String.format("%d", tmp));
+                Log.i("Correct amp", mCorrectedamp.toString());
             }
-            sendCommand(tmp, nb, 2);
+            sendCommand(tension, nb, 2);
         }
     }
-
-    public void correctAmp(EditText input, Integer nb)
-    {
-        BigInteger tmp;
-        if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() == -1D)
-        {
-            Toast.makeText(getApplicationContext(),
-                    "Put a value",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-        else {
-            try {
-                tmp = mAmp.multiply(BigDecimal.valueOf(10)).toBigInteger();
-                tmp = BigInteger.ZERO.subtract(tmp);
-            } catch (Exception e) {
-                return;
-            }
-                Log.i("Correct amp", String.format("%d", tmp));
-            }
-            sendCommand(tmp, nb, 8);
-        }
 
     public void sendFreq(EditText input, Integer nb)
     {
@@ -598,10 +582,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
                 Log.i("mFreq", String.format("%d", mFreq));
             }
-            if (mTable != null) {
-                display(SDRFUtils.ParseAmp(mTable, mFreq), mCorrection);
-                correctAmp(mCorrection, 32);
-            }
+            sendAmp(mAmpinput, 32);
             sendCommand(mFreq, nb, 8);
         }
     }
@@ -684,6 +665,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 + HexDump.dumpHexString(data) + "\n\n";
         mDumpTextView.append(message);
         mScrollView.smoothScrollTo(0, mDumpTextView.getBottom());
+        mOuput.setText(HexDump.dumpHexString(data));
     }
 
     @Override
