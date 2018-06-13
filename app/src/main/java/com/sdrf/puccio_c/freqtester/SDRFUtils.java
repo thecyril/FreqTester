@@ -144,13 +144,13 @@ public class SDRFUtils {
         String  Freqtxt = txt.getText().toString();
         if (Freqtxt.matches(""))
         {
-            return -1D;
+            return -101D;
         }
         else {
             try {
                 tmp = Double.parseDouble(Freqtxt);
             } catch (Exception e) {
-                return -1D;
+                return -101D;
             }
         }
         return (tmp);

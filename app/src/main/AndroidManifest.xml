@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.usb.host" />
 
     <application
@@ -25,9 +26,9 @@
 
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/Base.V7.Theme.AppCompat.Light"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
+            android:theme="@style/Base.V7.Theme.AppCompat.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,16 +38,17 @@
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
+
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
         <activity
             android:name=".SerialConsoleActivity"
-            android:label="@string/app_name"
             android:configChanges="keyboard|keyboardHidden"
+            android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan">
-//            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            // android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
         </activity>
         <activity
             android:name="com.nononsenseapps.filepicker.FilePickerActivity"
@@ -54,12 +56,24 @@
             android:theme="@style/FilePickerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".USBChooserActivity"
+            android:label="@string/title_activity_usbchooser"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sdrf.puccio_c.freqtester.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

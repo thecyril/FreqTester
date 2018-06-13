@@ -57,6 +57,7 @@ public class MainActivity extends Activity {
     private static final int MESSAGE_REFRESH = 101;
     private static final long REFRESH_TIMEOUT_MILLIS = 5000;
 
+    public static UsbSerialPort mPort;
     private static final String ACTION_USB_PERMISSION =
             "com.android.example.USB_PERMISSION";
     private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
@@ -112,7 +113,6 @@ public class MainActivity extends Activity {
         mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
         IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
         registerReceiver(mUsbReceiver, filter);
-        Log.d("$$$$$$$$$$$$$$$$$", "Pas Here");
 
 
         mAdapter = new ArrayAdapter<UsbSerialPort>(this,
@@ -164,8 +164,8 @@ public class MainActivity extends Activity {
                     return;
                 }
 
-                final UsbSerialPort port = mEntries.get(position);
-                showConsoleActivity(port);
+                mPort = mEntries.get(position);
+                showConsoleActivity(mPort);
             }
         });
     }
@@ -234,7 +234,9 @@ public class MainActivity extends Activity {
     }
 
     private void showConsoleActivity(UsbSerialPort port) {
-        SerialConsoleActivity.show(this, port);
+        final Intent intent = new Intent(this, SerialConsoleActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
     }
 
 }

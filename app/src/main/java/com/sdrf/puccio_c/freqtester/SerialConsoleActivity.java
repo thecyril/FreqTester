@@ -47,6 +47,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -130,12 +131,14 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected Button                mIncreaseamp;
     protected Button                mSetAmp;
     protected Button                mCalib;
+    protected CheckBox              mTone;
     protected NumberPicker          np;
     protected BigInteger            mFreq;
     protected BigDecimal            mNb;
     protected BigDecimal            mAmp;
     protected BigDecimal            mCorrectedamp;
     protected Integer               mVnp;
+    protected Boolean               isOn;
     private Timer                   timer;
     private TimerTask               timerTask;
     private Switch                  mSwRf;
@@ -199,8 +202,10 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mSwRf           = (Switch) findViewById(R.id.RF);
         mSwRef          = (Switch) findViewById(R.id.Ref);
         mAmpinput       = (EditText) findViewById(R.id.Amp);
+        mTone           = (CheckBox) findViewById(R.id.tone);
 
 
+        sPort = MainActivity.mPort;
         np.setMinValue(1);
         np.setMaxValue(1000);
         np.setWrapSelectorWheel(true);
@@ -212,7 +217,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 Log.d(TAG, mVnp.toString());
             }
         });
-
+        isOn = false;
         mVnp = 1;
         mAmp = BigDecimal.ZERO;
         mCorrectedamp = BigDecimal.ZERO;
@@ -233,7 +238,9 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
+                    sendCommand(BigInteger.valueOf(0), 31, 1);
                     sendFreq(mFreqInput, 33);
+                    rfstate();
                     return true;
                 }
                 return false;
@@ -241,7 +248,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         });
         mSwRf.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+                if ((isOn = isChecked)) {
                     sendCommand(BigInteger.valueOf(1), 31, 1);
                 } else {
                     sendCommand(BigInteger.valueOf(0), 31, 1);
@@ -269,6 +276,18 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mLoop.setOnClickListener(this);
         mSetAmp.setOnClickListener(this);
         mCalib.setOnClickListener(this);
+        mTone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if ( isChecked )
+                {
+                    Intent i = new Intent(getApplicationContext(), USBChooserActivity.class);
+                    startActivity(i);
+                }
+
+            }
+        });;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -281,7 +300,9 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     {
         switch (v.getId()) {
             case R.id.start:
+                sendCommand(BigInteger.valueOf(0), 31, 1);
                 sendFreq(mFreqInput, 33);
+                rfstate();
                 break;
             case R.id.reset:
                 resetBoard();
@@ -305,26 +326,30 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 openFolder();
                 break;
             case R.id.increase:
-                if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)))
+                if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-101D)))
                     mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
                 else
                     return;
                 display(mNb, mFreqInput);
+                sendCommand(BigInteger.valueOf(0), 31, 1);
                 sendFreq(mFreqInput, 33);
+                rfstate();
                 break;
             case R.id.decrease:
-                if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-1D)) && mNb.signum() > 0)
+                if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-101D)) && mNb.signum() > 0)
                     mNb = mNb.subtract(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
                 else
                     return;
                 display(mNb, mFreqInput);
+                sendCommand(BigInteger.valueOf(0), 31, 1);
                 sendFreq(mFreqInput, 33);
+                rfstate();
                 break;
             case R.id.setamp:
                 sendAmp(mAmpinput, 32);
                 break;
             case R.id.increaseamp:
-                if (!(mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-1D)))
+                if (!(mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-101D)))
                     mAmp = mAmp.add(BigDecimal.valueOf(0.1));
                 else
                     return;
@@ -332,12 +357,34 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 sendAmp(mAmpinput, 32);
                 break;
             case R.id.decreaseamp:
-                if (!(mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-1D)))
+                if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).compareTo(BigDecimal.valueOf(-100D)) > 0)
                     mAmp = mAmp.subtract(BigDecimal.valueOf(0.1));
                 else
                     return;
                 display(mAmp, mAmpinput);
                 sendAmp(mAmpinput, 32);
+                break;
+        }
+    }
+
+    public void rfstate()
+    {
+        if (isOn == true)
+            sendCommand(BigInteger.valueOf(1), 31, 1);
+    }
+
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        switch(view.getId()) {
+            case R.id.tone:
+                if (checked) {
+                    Toast.makeText(getApplicationContext(), "checked", Toast.LENGTH_SHORT).show();
+                }
+            else
+                // Remove the meat
                 break;
         }
     }
@@ -404,7 +451,9 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                         else {
                             mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
                             display(mNb, mFreqInput);
+                            sendCommand(BigInteger.valueOf(0), 31, 1);
                             sendFreq(mFreqInput, 33);
+                            rfstate();
                         }
                      }
                 });
@@ -520,7 +569,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     public void sendAmp(EditText input, Integer nb)
     {
         BigInteger tension = BigInteger.ZERO;
-        if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -50d)
+        if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -5-101D)
         {
             Toast.makeText(getApplicationContext(),
                     "value is to low",
@@ -558,7 +607,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
     public void sendFreq(EditText input, Integer nb)
     {
-        if ((mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < 0d)
+        if ((mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -101D)
         {
             Toast.makeText(getApplicationContext(),
                     "Error you should enter a value",
@@ -675,18 +724,4 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         stopTimer();
         finish();
     }
-
-    /**
-     * Starts the activity, using the supplied driver instance.
-     *
-     * @param context
-     * @param driver
-     */
-    static void show(Context context, UsbSerialPort port) {
-        sPort = port;
-        final Intent intent = new Intent(context, SerialConsoleActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NO_HISTORY);
-        context.startActivity(intent);
-    }
-
 }

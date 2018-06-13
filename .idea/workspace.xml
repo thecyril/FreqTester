@@ -24,8 +24,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffcf0fd9-1cf3-49fa-a23d-f62b100bf74a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/my_border.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/USBChooserActivity.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_usbchooser.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_usbchooser.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_usbchooser.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
@@ -35,14 +37,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml" />
-      <change beforePath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/usbSerialExamples/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change beforePath="$PROJECT_DIR$/usbSerialExamples/usbSerialExamples.iml" afterPath="$PROJECT_DIR$/usbSerialExamples/usbSerialExamples.iml" />
-      <change beforePath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/usbSerialForAndroid/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
-      <change beforePath="$PROJECT_DIR$/usbSerialForAndroid/usbSerialForAndroid.iml" afterPath="$PROJECT_DIR$/usbSerialForAndroid/usbSerialForAndroid.iml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -81,38 +82,42 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="114" column="19" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+            <state relative-caret-position="395">
+              <caret line="240" column="0" lean-forward="true" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
               <folding>
-                <element signature="e#2825#3269#0" expanded="true" />
-                <element signature="e#3268#3269#0" expanded="true" />
-                <element signature="e#8637#8638#0" expanded="true" />
-                <element signature="e#8695#8696#0" expanded="true" />
-                <element signature="e#8755#8756#0" expanded="true" />
-                <element signature="e#8809#8810#0" expanded="true" />
+                <element signature="e#2055#2824#0" expanded="true" />
+                <element signature="e#2823#2824#0" expanded="true" />
+                <element signature="e#2864#3308#0" expanded="true" />
+                <element signature="e#3307#3308#0" expanded="true" />
+                <element signature="e#5854#6330#0" expanded="true" />
+                <element signature="e#6329#6330#0" expanded="true" />
+                <element signature="e#8610#8611#0" expanded="true" />
+                <element signature="e#8668#8669#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerialConsoleActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SerialConsoleActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="567" column="14" lean-forward="false" selection-start-line="567" selection-start-column="14" selection-end-line="567" selection-end-column="14" />
+            <state relative-caret-position="17">
+              <caret line="359" column="20" lean-forward="false" selection-start-line="359" selection-start-column="20" selection-end-line="359" selection-end-column="20" />
               <folding>
-                <element signature="e#0#26001#0" expanded="true" />
+                <element signature="e#0#27327#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#6052#6235#0" expanded="true" />
-                <element signature="e#6234#6235#0" expanded="true" />
-                <element signature="e#15630#16323#0" expanded="true" />
-                <element signature="e#15709#16297#0" expanded="true" />
-                <element signature="e#16296#16297#0" expanded="true" />
-                <element signature="e#16322#16323#0" expanded="true" />
-                <element signature="e#16469#16470#0" expanded="true" />
-                <element signature="e#16508#16509#0" expanded="true" />
-                <element signature="e#16568#16569#0" expanded="true" />
-                <element signature="e#16607#16608#0" expanded="true" />
+                <element signature="e#6169#6352#0" expanded="true" />
+                <element signature="e#6351#6352#0" expanded="true" />
+                <element signature="e#9464#9965#0" expanded="true" />
+                <element signature="e#9964#9965#0" expanded="true" />
+                <element signature="e#10009#10379#0" expanded="true" />
+                <element signature="e#10378#10379#0" expanded="true" />
+                <element signature="e#10424#10785#0" expanded="true" />
+                <element signature="e#10784#10785#0" expanded="true" />
+                <element signature="e#18220#18221#0" expanded="true" />
+                <element signature="e#18259#18260#0" expanded="true" />
+                <element signature="e#18319#18320#0" expanded="true" />
+                <element signature="e#18358#18359#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,8 +126,18 @@
       <file leaf-file-name="SDRFUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="172" column="35" lean-forward="false" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
+            <state relative-caret-position="119">
+              <caret line="102" column="34" lean-forward="false" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="USBChooserActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/USBChooserActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="22" column="81" lean-forward="false" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,47 +145,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vga_ctrl_voltage_att.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv">
+      <file leaf-file-name="content_usbchooser.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_usbchooser.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+            <state relative-caret-position="0">
+              <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serial_console.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml">
-          <provider selected="true" editor-type-id="android-designer2">
+      <file leaf-file-name="activity_usbchooser.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_usbchooser.xml">
+          <provider editor-type-id="android-designer2">
             <state />
           </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="23" lean-forward="false" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="serial_console.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml">
-          <provider selected="true" editor-type-id="android-designer2">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml">
+          <provider editor-type-id="android-designer2">
             <state />
           </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my_border.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/my_border.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            <state relative-caret-position="166">
+              <caret line="645" column="27" lean-forward="false" selection-start-line="645" selection-start-column="25" selection-end-line="645" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -178,22 +186,12 @@
       </file>
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
           <provider editor-type-id="android-manifest">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+            <state relative-caret-position="313">
+              <caret line="71" column="62" lean-forward="false" selection-start-line="71" selection-start-column="62" selection-end-line="71" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -206,42 +204,48 @@
       <list>
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>context</find>
-      <find>Context</find>
-      <find>csv</find>
-      <find>toast</find>
-      <find>LENGTH_LONG</find>
-      <find>contex</find>
-      <find>con</find>
-      <find>mFile</find>
-      <find>mCorrection</find>
-      <find>32</find>
-      <find>sendamp</find>
-      <find>correctamp</find>
-      <find>value is</find>
-      <find>correc</find>
-      <find>log.</find>
-      <find>mtension</find>
-      <find>Tens</find>
-      <find>parse</find>
-      <find>val</find>
-      <find>valcal</find>
-      <find>1, BigDecimal.ROUND_HALF_EVEN</find>
-      <find>valca</find>
-      <find>parseTe</find>
-      <find>setsc</find>
-      <find>tension</find>
-      <find>mCorrectedamp</find>
-      <find>mamp</find>
-      <find>system.out</find>
-      <find>tens</find>
       <find>sendFreq</find>
+      <find>position</find>
+      <find>show</find>
+      <find>intent</find>
+      <find>driver</find>
+      <find>actionbar</find>
+      <find>tool</find>
+      <find>USBCHOOSER</find>
+      <find>onrec</find>
+      <find>SerialConsoleActivity</find>
+      <find>port</find>
+      <find>action</find>
+      <find>onre</find>
+      <find>mPort</find>
+      <find>Toast</find>
+      <find>rf</find>
+      <find>RF</find>
+      <find>set</find>
+      <find>set</find>
+      <find>31</find>
+      <find>33</find>
+      <find>mSwRf</find>
+      <find>sendfr</find>
+      <find>sendf</find>
+      <find>parsefre</find>
+      <find>-100</find>
+      <find>-101DD</find>
+      <find>0D</find>
+      <find>mSerialIoManager</find>
+      <find>startIoManager</find>
     </findStrings>
+    <replaceStrings>
+      <replace>30</replace>
+      <replace>-100D</replace>
+      <replace>-101D</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -4173,19 +4177,22 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/my_border.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/UsbChooserActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/USBChooserActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="79" />
-    <option name="width" value="1280" />
-    <option name="height" value="692" />
+    <option name="x" value="-36" />
+    <option name="y" value="109" />
+    <option name="width" value="1920" />
+    <option name="height" value="826" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -4202,7 +4209,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -4337,6 +4343,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -4370,7 +4377,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -4383,14 +4390,21 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/puccio_c/rendu/Mobile/FreqTester/app/src/main/AndroidManifest.xml" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/assets" />
+    <key name="android.template.packageName">
+      <recent name="com.sdrf.puccio_c.freqtester" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
       <recent name="$PROJECT_DIR$/app/src/main/res/menu" />
+    </key>
+    <key name="android.template.parentActivityClass">
+      <recent name="com.sdrf.puccio_c.freqtester.MainActivity" />
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/assets" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -4631,7 +4645,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1039" extended-state="6" />
+    <frame x="-36" y="109" width="1922" height="1039" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="0" side_tool="false" content_ui="tabs" />
@@ -4645,17 +4659,18 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3702081" sideWeight="0.66648877" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36144578" sideWeight="0.66648877" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19903949" sideWeight="0.49408284" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2705367" sideWeight="0.43970117" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.4704142" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978093" sideWeight="0.6302028" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5295858" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978093" sideWeight="0.6302028" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -4665,7 +4680,6 @@
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="0" side_tool="false" content_ui="tabs" />
@@ -4715,57 +4729,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console_OLD.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/serial_consolebackup.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_consolebackup.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-v24/serial_consolebackup.xml" />
-    <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-26/android.jar!/android/content/Context.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1411">
-          <caret line="45" column="55" lean-forward="true" selection-start-line="45" selection-start-column="55" selection-end-line="45" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/usbSerialExamples/src/main/res/layout/serial_console.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="49" column="29" lean-forward="false" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/usbSerialExamples/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="61" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/usbSerialExamples/src/main/res/layout/main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Android/Sdk/platforms/android-26/data/res/layout/simple_list_item_2.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/platforms/android-26/data/res/layout/simple_expandable_list_item_2.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -4980,21 +4943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-27/android.jar!/android/icu/math/BigDecimal.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SpinnerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="56" column="13" lean-forward="false" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/device_filter.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -5027,10 +4975,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        <state relative-caret-position="255">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-27/android/content/ContextWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="606" column="18" lean-forward="false" selection-start-line="606" selection-start-column="18" selection-end-line="606" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/UsbChooserActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -5046,90 +5020,153 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SpinnerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        <state relative-caret-position="85">
+          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-27/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="24953" column="21" lean-forward="false" selection-start-line="24953" selection-start-column="21" selection-end-line="24953" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_usbchooser.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_usbchooser.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
       </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="71" column="62" lean-forward="false" selection-start-line="71" selection-start-column="62" selection-end-line="71" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/serial_console.xml">
-      <provider selected="true" editor-type-id="android-designer2">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/USBChooserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" column="81" lean-forward="false" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml">
+      <provider editor-type-id="android-designer2">
         <state />
       </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="645" column="27" lean-forward="false" selection-start-line="645" selection-start-column="25" selection-end-line="645" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Android/Sdk/platforms/android-27/android.jar!/android/icu/math/BigDecimal.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="179" column="19" lean-forward="false" selection-start-line="179" selection-start-column="19" selection-end-line="179" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SDRFUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="172" column="35" lean-forward="false" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="102" column="34" lean-forward="false" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-27/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="6183" column="22" lean-forward="false" selection-start-line="6183" selection-start-column="22" selection-end-line="6183" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/usbSerialForAndroid/src/main/java/com/hoho/android/usbserial/util/SerialInputOutputManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="165" column="25" lean-forward="false" selection-start-line="165" selection-start-column="25" selection-end-line="165" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-27/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="90" column="16" lean-forward="false" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="114" column="19" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+        <state relative-caret-position="395">
+          <caret line="240" column="0" lean-forward="true" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
           <folding>
-            <element signature="e#2825#3269#0" expanded="true" />
-            <element signature="e#3268#3269#0" expanded="true" />
-            <element signature="e#8637#8638#0" expanded="true" />
-            <element signature="e#8695#8696#0" expanded="true" />
-            <element signature="e#8755#8756#0" expanded="true" />
-            <element signature="e#8809#8810#0" expanded="true" />
+            <element signature="e#2055#2824#0" expanded="true" />
+            <element signature="e#2823#2824#0" expanded="true" />
+            <element signature="e#2864#3308#0" expanded="true" />
+            <element signature="e#3307#3308#0" expanded="true" />
+            <element signature="e#5854#6330#0" expanded="true" />
+            <element signature="e#6329#6330#0" expanded="true" />
+            <element signature="e#8610#8611#0" expanded="true" />
+            <element signature="e#8668#8669#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sdrf/puccio_c/freqtester/SerialConsoleActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="567" column="14" lean-forward="false" selection-start-line="567" selection-start-column="14" selection-end-line="567" selection-end-column="14" />
+        <state relative-caret-position="17">
+          <caret line="359" column="20" lean-forward="false" selection-start-line="359" selection-start-column="20" selection-end-line="359" selection-end-column="20" />
           <folding>
-            <element signature="e#0#26001#0" expanded="true" />
+            <element signature="e#0#27327#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#6052#6235#0" expanded="true" />
-            <element signature="e#6234#6235#0" expanded="true" />
-            <element signature="e#15630#16323#0" expanded="true" />
-            <element signature="e#15709#16297#0" expanded="true" />
-            <element signature="e#16296#16297#0" expanded="true" />
-            <element signature="e#16322#16323#0" expanded="true" />
-            <element signature="e#16469#16470#0" expanded="true" />
-            <element signature="e#16508#16509#0" expanded="true" />
-            <element signature="e#16568#16569#0" expanded="true" />
-            <element signature="e#16607#16608#0" expanded="true" />
+            <element signature="e#6169#6352#0" expanded="true" />
+            <element signature="e#6351#6352#0" expanded="true" />
+            <element signature="e#9464#9965#0" expanded="true" />
+            <element signature="e#9964#9965#0" expanded="true" />
+            <element signature="e#10009#10379#0" expanded="true" />
+            <element signature="e#10378#10379#0" expanded="true" />
+            <element signature="e#10424#10785#0" expanded="true" />
+            <element signature="e#10784#10785#0" expanded="true" />
+            <element signature="e#18220#18221#0" expanded="true" />
+            <element signature="e#18259#18260#0" expanded="true" />
+            <element signature="e#18319#18320#0" expanded="true" />
+            <element signature="e#18358#18359#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/vga_ctrl_voltage_att.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp-land/serial_console.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="23" lean-forward="false" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
