@@ -304,10 +304,10 @@ public class CdcAcmSerialDriver implements UsbSerialDriver {
                         System.arraycopy(src, offset, mWriteBuffer, 0, writeLength);
                         writeBuffer = mWriteBuffer;
                     }
-
+                try {
                     amtWritten = mConnection.bulkTransfer(mWriteEndpoint, writeBuffer, writeLength,
                             timeoutMillis);
-                }
+
                 if (amtWritten <= 0) {
                     throw new IOException("Error writing " + writeLength
                             + " bytes at offset " + offset + " length=" + src.length);
@@ -315,6 +315,11 @@ public class CdcAcmSerialDriver implements UsbSerialDriver {
 
                 Log.d(TAG, "Wrote amt=" + amtWritten + " attempted=" + writeLength);
                 offset += amtWritten;
+                    } catch (RuntimeException e) {
+                        Log.e(TAG, "Bulk transfer exception");
+                        return 0;
+                        }
+                }
             }
             return offset;
         }

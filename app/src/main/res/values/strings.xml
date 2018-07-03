@@ -12,6 +12,12 @@
         <item>kHz</item>
         <item>Hz</item>
     </string-array>
+
+    <string-array name="dbm">
+        <item>1</item>
+        <item>0.1</item>
+        <item>10</item>
+    </string-array>
     <string name="title_activity_usbchooser">USBChooserActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

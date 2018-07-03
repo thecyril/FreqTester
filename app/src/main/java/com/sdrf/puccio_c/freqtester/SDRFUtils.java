@@ -5,10 +5,10 @@ import android.icu.math.BigDecimal;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.opencsv.CSVReader;
 
-import java.io.File;
-import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
@@ -43,17 +43,37 @@ public class SDRFUtils {
         }
     }
 
+    static public void sendCommand(BigInteger val, int nb, int bits, UsbSerialPort port){
+
+        byte[] msg = SDRFUtils.intToByteArray(val, nb, bits);
+
+        Log.d("SendCMD", val.toString());
+
+        for (byte b : msg) {
+            System.out.println(Integer.toBinaryString(b & 255 | 256).substring(1));
+        }
+        for (int index = 0; index < msg.length; index++) {
+            Log.i("Byte", String.format("0x%20x", msg[index]));
+        }
+        try {
+            port.write(msg, 10);
+        } catch (IOException e) {
+            Log.e("SendCMD", "Write Error");
+            return;
+        }
+    }
+
     static public BigDecimal calc_moy(BigDecimal val1, BigDecimal val2) {
         BigDecimal res;
-        BigDecimal ten = new BigDecimal(10D);
+        BigDecimal ten = BigDecimal.valueOf(10D);
         res = (BigDecimal.valueOf(StrictMath.pow(ten.doubleValue() , val1.divide(ten, 3, BigDecimal.ROUND_HALF_EVEN).doubleValue()))
                 .add(BigDecimal.valueOf(StrictMath.pow(ten.doubleValue(), val2.divide(ten, 3, BigDecimal.ROUND_HALF_EVEN).doubleValue()))));
-        res = res.divide(new BigDecimal(2D), 3, BigDecimal.ROUND_HALF_EVEN);
+        res = res.divide(BigDecimal.valueOf(2D), 3, BigDecimal.ROUND_HALF_EVEN);
         return res;
     }
 
     static public BigDecimal calc_val(BigDecimal val1, BigDecimal val2){
-        BigDecimal ten = new BigDecimal(10D);
+        BigDecimal ten = BigDecimal.valueOf(10D);
         BigDecimal res = BigDecimal.valueOf(StrictMath.pow(ten.doubleValue() , val1.divide(ten, 3, BigDecimal.ROUND_HALF_EVEN).doubleValue()))
                         .subtract(BigDecimal.valueOf(StrictMath.pow(ten.doubleValue(), val2.divide(ten, 3, BigDecimal.ROUND_HALF_EVEN).doubleValue())));
         return res;
@@ -62,10 +82,20 @@ public class SDRFUtils {
     static public BigInteger calc_tens(BigDecimal amp, BigDecimal valmin, BigDecimal valmax, BigInteger tensmin, BigInteger tensmax){
         BigInteger res;
         BigDecimal valcalc = calc_val(amp, valmin).divide(calc_val(valmax, valmin));
-        valcalc = valcalc.multiply(new BigDecimal(tensmax.subtract(tensmin)));
-        valcalc = valcalc.add(new BigDecimal(tensmin));
+        valcalc = valcalc.multiply(new BigDecimal (tensmax.subtract(tensmin)));
+        valcalc = valcalc.add(new BigDecimal (tensmin));
         res = valcalc.setScale(1, BigDecimal.ROUND_HALF_EVEN).toBigInteger();
         return res;
+    }
+
+    static public BigDecimal calc_att(BigDecimal freq, BigDecimal attmin, BigDecimal attmax, BigDecimal freqmin, BigDecimal freqmax){
+        BigDecimal valcalc;
+        BigDecimal ten = BigDecimal.valueOf(10D);
+        valcalc = (freq.subtract(freqmin)).divide((freqmax.subtract(freqmin)), 3, BigDecimal.ROUND_HALF_EVEN);
+        valcalc = valcalc.multiply(calc_val(attmax, attmin));
+        valcalc = valcalc.add(BigDecimal.valueOf(StrictMath.pow(ten.doubleValue() , attmin.divide(ten, 3, BigDecimal.ROUND_HALF_EVEN).doubleValue())));
+        valcalc = ten.multiply(BigDecimal.valueOf(StrictMath.log10(valcalc.doubleValue())));
+        return valcalc;
     }
 
     static public BigInteger ParseTension(LinkedHashMap table, BigDecimal amp) {
@@ -99,11 +129,11 @@ public class SDRFUtils {
         return BigInteger.ZERO;
     }
 
-
     static public BigDecimal ParseAmp(LinkedHashMap table, BigInteger freq) {
-        BigInteger  pfreq = BigInteger.ZERO;
-        BigDecimal  pamp = BigDecimal.ZERO;
-        BigDecimal  lastamp = BigDecimal.ZERO;
+        BigDecimal  attmin = BigDecimal.ZERO;
+        BigDecimal  attmax = BigDecimal.ZERO;
+        BigInteger  freqmax = BigInteger.ZERO;
+        BigInteger  freqmin = BigInteger.ZERO;
         Set set = table.entrySet();
 
         // Displaying elements of LinkedHashMap
@@ -112,20 +142,22 @@ public class SDRFUtils {
             Map.Entry me = (Map.Entry) iterator.next();
             if (freq.compareTo((BigInteger) me.getKey()) >= 0) {
                 iterator = set.iterator();
-                while (iterator.hasNext() && pfreq.compareTo(freq) < 0) {
+                while (iterator.hasNext() && freqmax.compareTo(freq) < 0) {
                     me = (Map.Entry) iterator.next();
-                    pfreq = (BigInteger) me.getKey();
-                    lastamp = pamp;
-                    pamp = (BigDecimal) me.getValue();
+                    freqmin = freqmax;
+                    freqmax = (BigInteger) me.getKey();
+                    attmin = attmax;
+                    attmax = (BigDecimal) me.getValue();
                 }
-               if (pamp.signum() != 0 && lastamp.signum() != 0 && pfreq.compareTo(freq) != 0)
-                    pamp = BigDecimal.valueOf(10D).multiply(BigDecimal.valueOf(StrictMath.log10(calc_moy(lastamp, pamp).doubleValue())));
-                System.out.print("Key is: " + pfreq +
-                        " Value is: " + pamp + " Last amp is: " + lastamp + "\n");
+                if (attmax.signum() != 0 && attmin.signum() != 0 && freqmax.compareTo(freq) != 0)
+                    attmax = calc_att(new BigDecimal(freq), attmin, attmax, new BigDecimal(freqmin), new BigDecimal(freqmax));
+                System.out.print("Key is: " + freqmax + " last key: " + freqmin +
+                        " Value is: " + attmax + " Last amp is: " + attmin + "\n");
+                BigDecimal scaled = attmax.setScale(1, BigDecimal.ROUND_HALF_EVEN);
+                return scaled;
             }
         }
-        BigDecimal scaled = pamp.setScale(1, BigDecimal.ROUND_HALF_EVEN);
-        return scaled;
+        return BigDecimal.ZERO;
     }
 
     static public BigDecimal division(Integer numberpick, Integer unit, Double Freq){

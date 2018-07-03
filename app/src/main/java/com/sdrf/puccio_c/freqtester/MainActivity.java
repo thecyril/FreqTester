@@ -38,11 +38,6 @@ import com.hoho.android.usbserial.util.HexDump;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Shows a {@link ListView} of available USB devices.
- *
- * @author mike wakerly (opensource@hoho.com)
- */
 public class MainActivity extends Activity {
 
     private final String TAG = MainActivity.class.getSimpleName();

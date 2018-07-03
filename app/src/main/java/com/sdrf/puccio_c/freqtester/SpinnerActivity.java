@@ -1,13 +1,8 @@
 package com.sdrf.puccio_c.freqtester;
 
-import android.app.Activity;
-import android.util.Log;
+import android.icu.math.BigDecimal;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import static com.sdrf.puccio_c.freqtester.SerialConsoleActivity.*;
 
 /**
  * Created by puccio_c on 4/12/18.
@@ -51,6 +46,20 @@ public class SpinnerActivity extends SerialConsoleActivity implements AdapterVie
                         break;
                     case 3:
                         mNbDiv = 1000000000;
+                        break;
+                }
+                break;
+            }
+            case R.id.Dbm: {
+                switch (pos) {
+                    case 0:
+                        mDbm = BigDecimal.valueOf(1);
+                        break;
+                    case 1:
+                        mDbm = BigDecimal.valueOf(0.1);
+                        break;
+                    case 2:
+                        mDbm = BigDecimal.valueOf(10);
                         break;
                 }
                 break;

@@ -139,8 +139,8 @@
         android:text="+"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/Amp"
-        app:layout_constraintEnd_toStartOf="@+id/startFreq"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/Amp"
+        app:layout_constraintStart_toStartOf="@+id/Amp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.22000003" />
 
@@ -228,6 +228,22 @@
         app:layout_constraintTop_toTopOf="@+id/Freq" />
 
     <Spinner
+        android:id="@+id/Dbm"
+        android:layout_width="109dp"
+        android:layout_height="74dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="@+id/Freq"
+        android:layout_gravity="right"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/decreaseamp"
+        app:layout_constraintEnd_toStartOf="@+id/np"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toEndOf="@+id/Amp"
+        app:layout_constraintTop_toTopOf="@+id/Amp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
         android:id="@+id/Unit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -305,7 +321,7 @@
     <TextView
         android:id="@+id/consoleText"
         android:layout_width="355dp"
-        android:layout_height="80dp"
+        android:layout_height="63dp"
         android:layout_marginBottom="104dp"
         android:layout_marginStart="16dp"
         android:textIsSelectable="true"
@@ -470,11 +486,10 @@
         app:layout_constraintStart_toStartOf="@+id/correction" />
 
     <TextView
-        android:id="@+id/startFreq"
+        android:id="@+id/dbm"
         android:layout_width="48dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -488,7 +503,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/Amp"
         app:layout_constraintStart_toEndOf="@+id/Amp"
         app:layout_constraintTop_toTopOf="@+id/Amp"
-        app:layout_constraintVertical_bias="0.615" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/Step"

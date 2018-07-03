@@ -33,6 +33,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -76,26 +77,10 @@ import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * Monitors a single {@link UsbSerialPort} instance, showing all data
- * received.
- *
- * @author mike wakerly (opensource@hoho.com)
- */
 public class SerialConsoleActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final String TAG = SerialConsoleActivity.class.getSimpleName();
 
-    /**
-     * Driver instance, passed in statically via
-     * {@link #show(Context, UsbSerialPort)}.
-     *
-     * <p/>
-     * This is a devious hack; it'd be cleaner to re-create the driver using
-     * arguments passed in with the {@link #startActivity(Intent)} intent. We
-     * can get away with it because both activities will run in the same
-     * process, and this is a simple demo.
-     */
     private static UsbSerialPort    sPort = null;
 
     public static final int FILE_CODE = 1;
@@ -118,10 +103,11 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected ImageButton           mPlay;
     protected ImageButton           mStop;
     protected ImageButton           mLoop;
+    protected Boolean               mBoucle;
     protected Spinner               mSpinner;
     protected Spinner               mSpinnerStep;
+    protected Spinner               mSpinnerDbm;
     protected static Double         mFreqmult;
-    protected static Double         mFreqLoop;
     protected static Integer        mNbDiv;
     protected Toolbar               mToolbar;
     protected ActionBar             mActionBar;
@@ -137,6 +123,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected BigDecimal            mNb;
     protected BigDecimal            mAmp;
     protected BigDecimal            mCorrectedamp;
+    protected static BigDecimal     mDbm;
     protected Integer               mVnp;
     protected Boolean               isOn;
     private Timer                   timer;
@@ -144,6 +131,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     private Switch                  mSwRf;
     private Switch                  mSwRef;
     private Handler                 handler = new Handler();
+    private Runnable                runnable;
+    private String                  mMessage = "";
     protected LinkedHashMap<BigInteger, BigDecimal> mTable;
     protected LinkedHashMap<BigInteger, BigDecimal> mTension;
 
@@ -223,6 +212,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mCorrectedamp = BigDecimal.ZERO;
         mNb = BigDecimal.ZERO;
         mFreq = BigInteger.ZERO;
+        mBoucle = false;
         displayInt(0, mFreqStart);
         displayInt(0, mFreqStop);
         displayInt(800, mDelay);
@@ -238,9 +228,19 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
-                    sendCommand(BigInteger.valueOf(0), 31, 1);
+                    SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                     sendFreq(mFreqInput, 33);
                     rfstate();
+                    return true;
+                }
+                return false;
+            }
+        });
+        mAmpinput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
+                    sendAmp(mAmpinput, 32);
                     return true;
                 }
                 return false;
@@ -249,18 +249,18 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mSwRf.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if ((isOn = isChecked)) {
-                    sendCommand(BigInteger.valueOf(1), 31, 1);
+                    SDRFUtils.sendCommand(BigInteger.valueOf(1), 31, 1, sPort);
                 } else {
-                    sendCommand(BigInteger.valueOf(0), 31, 1);
+                    SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                 }
             }
         });
         mSwRef.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    sendCommand(BigInteger.valueOf(1), 28, 1);
+                    SDRFUtils.sendCommand(BigInteger.valueOf(1), 28, 1, sPort);
                 } else {
-                    sendCommand(BigInteger.valueOf(0), 28, 1);
+                    SDRFUtils.sendCommand(BigInteger.valueOf(0), 28, 1, sPort);
                 }
             }
         });
@@ -300,7 +300,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     {
         switch (v.getId()) {
             case R.id.start:
-                sendCommand(BigInteger.valueOf(0), 31, 1);
+                SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                 sendFreq(mFreqInput, 33);
                 rfstate();
                 break;
@@ -315,12 +315,18 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.play:
                 mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqStart));
+                resetBoard();
                 startTimer();
                 break;
             case R.id.stop:
+                mBoucle = false;
                 stopTimer();
                 break;
             case R.id.loop:
+                mBoucle = true;
+                mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqStart));
+                resetBoard();
+                startTimer();
                 break;
             case R.id.calib:
                 openFolder();
@@ -331,7 +337,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 else
                     return;
                 display(mNb, mFreqInput);
-                sendCommand(BigInteger.valueOf(0), 31, 1);
+                SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                 sendFreq(mFreqInput, 33);
                 rfstate();
                 break;
@@ -341,7 +347,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 else
                     return;
                 display(mNb, mFreqInput);
-                sendCommand(BigInteger.valueOf(0), 31, 1);
+                SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                 sendFreq(mFreqInput, 33);
                 rfstate();
                 break;
@@ -350,7 +356,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.increaseamp:
                 if (!(mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-101D)))
-                    mAmp = mAmp.add(BigDecimal.valueOf(0.1));
+                    mAmp = mAmp.add(mDbm);
                 else
                     return;
                 display(mAmp, mAmpinput);
@@ -358,7 +364,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.decreaseamp:
                 if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).compareTo(BigDecimal.valueOf(-100D)) > 0)
-                    mAmp = mAmp.subtract(BigDecimal.valueOf(0.1));
+                    mAmp = mAmp.subtract(mDbm);
                 else
                     return;
                 display(mAmp, mAmpinput);
@@ -369,8 +375,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
     public void rfstate()
     {
-        if (isOn == true)
-            sendCommand(BigInteger.valueOf(1), 31, 1);
+        if (isOn)
+            SDRFUtils.sendCommand(BigInteger.valueOf(1), 31, 1, sPort);
     }
 
     public void onCheckboxClicked(View view) {
@@ -412,7 +418,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 for (Uri uri : files)
                 {
                     File file = Utils.getFileForUri(uri);
-                    InputStreamReader is1 = new InputStreamReader(new FileInputStream(file) );
+                    InputStreamReader is1 = new InputStreamReader(new FileInputStream(file));
                     InputStreamReader is2 = new InputStreamReader(getAssets()
                             .open("vga_ctrl_voltage_att.csv"));
 
@@ -431,35 +437,28 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     }
 
     private void stopTimer(){
-        if(timer != null){
-            timer.cancel();
-            timer.purge();
-        }
+        handler.removeCallbacks(runnable);
     }
 
     //To start timer
-    private void startTimer(){
-        timer = new Timer();
-        timerTask = new TimerTask() {
-            public void run() {
-                handler.post(new Runnable() {
-                    public void run(){
-                        display(mNb, mFreqInput);
-                        BigDecimal stop = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqStop));
-                        if (mNb.compareTo(stop) >= 0)
-                            stopTimer();
-                        else {
-                            mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
-                            display(mNb, mFreqInput);
-                            sendCommand(BigInteger.valueOf(0), 31, 1);
-                            sendFreq(mFreqInput, 33);
-                            rfstate();
-                        }
-                     }
-                });
+    public void startTimer() {
+        handler.post(runnable = new Runnable() {
+            public void run(){
+                BigDecimal stop = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqStop));
+                if (mNb.compareTo(stop) > 0) {
+                    if (mBoucle.booleanValue() == true)
+                        mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqStart));
+                    else
+                        stopTimer();
+                    }
+                    else {
+                    display(mNb, mFreqInput);
+                    sendFreq(mFreqInput, 34);
+                    mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
+                }
+                handler.postDelayed(runnable, SDRFUtils.ParseFreq(mDelay).longValue());
             }
-        };
-        timer.schedule(timerTask, 500, SDRFUtils.ParseFreq(mDelay).intValue());
+        });
     }
 
     private void display(BigDecimal number, TextView tv) {
@@ -474,11 +473,16 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
         mSpinner = (Spinner) findViewById(R.id.Unit);
         mSpinnerStep = (Spinner) findViewById(R.id.Unit2);
+        mSpinnerDbm = (Spinner) findViewById(R.id.Dbm);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(SerialConsoleActivity.this,
                 R.array.Units, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> DbmAdapter = ArrayAdapter.createFromResource(SerialConsoleActivity.this,
+                R.array.dbm, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        DbmAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
         mSpinnerStep.setAdapter(adapter);
+        mSpinnerDbm.setAdapter(DbmAdapter);
     }
 
     public void addListenerOnSpinnerItemSelection() {
@@ -486,6 +490,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mSpinner.setOnItemSelectedListener(new SpinnerActivity());
         mSpinnerStep = (Spinner) findViewById(R.id.Unit2);
         mSpinnerStep.setOnItemSelectedListener(new SpinnerActivity());
+        mSpinnerDbm = (Spinner) findViewById(R.id.Dbm);
+        mSpinnerDbm.setOnItemSelectedListener(new SpinnerActivity());
     }
 
     @Override
@@ -526,7 +532,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
             try {
                 sPort.open(connection);
-                sPort.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
+                sPort.setParameters(9600, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
 
                 showStatus(mDumpTextView, "CD  - Carrier Detect", sPort.getCD());
                 showStatus(mDumpTextView, "CTS - Clear To Send", sPort.getCTS());
@@ -601,7 +607,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
                 Log.i("Correct amp", mCorrectedamp.toString());
             }
-            sendCommand(tension, nb, 2);
+            SDRFUtils.sendCommand(tension, nb, 2, sPort);
         }
     }
 
@@ -632,26 +638,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 Log.i("mFreq", String.format("%d", mFreq));
             }
             sendAmp(mAmpinput, 32);
-            sendCommand(mFreq, nb, 8);
-        }
-    }
-
-    public void sendCommand(BigInteger val, Integer nb, int bits){
-
-        byte[] msg = SDRFUtils.intToByteArray(val, nb, bits);
-
-        Log.d(TAG, val.toString());
-
-        for (byte b : msg) {
-            System.out.println(Integer.toBinaryString(b & 255 | 256).substring(1));
-        }
-        for (int index = 0; index < msg.length; index++) {
-            Log.i("Byte", String.format("0x%20x", msg[index]));
-        }
-            try {
-                sPort.write(msg, 10);
-        } catch (IOException e) {
-            Log.e(TAG, "Write Error");
+            SDRFUtils.sendCommand(mFreq, nb, 8, sPort);
         }
     }
 
@@ -715,13 +702,20 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mDumpTextView.append(message);
         mScrollView.smoothScrollTo(0, mDumpTextView.getBottom());
         mOuput.setText(HexDump.dumpHexString(data));
+        mMessage = HexDump.dumpHexString(data);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
+        if (sPort != null) {
+            try {
+                sPort.close();
+            } catch (IOException e) {
+                // Ignore.
+            }
+        }
         stopTimer();
-        finish();
+//        finish();
     }
 }
