@@ -33,7 +33,6 @@ import com.hoho.android.usbserial.driver.ProbeTable;
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
-import com.hoho.android.usbserial.util.HexDump;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,9 +128,8 @@ public class MainActivity extends Activity {
 
                 mUsbManager.requestPermission(mDevice, mPermissionIntent);
 
-                final String title = String.format("Board: Vendor %s Product %s",
-                        HexDump.toHexString((short) mDevice.getVendorId()),
-                        HexDump.toHexString((short) mDevice.getProductId()));
+                final String title = String.format("Board: %s",
+                        mDevice.getProductName());
                 row.getText1().setText(title);
 
                 final String subtitle = driver.getClass().getSimpleName();

@@ -556,7 +556,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 sPort = null;
                 return;
             }
-            mTitleTextView.setText("Serial device: " + sPort.getClass().getSimpleName());
+            mTitleTextView.setText("Serial device: " + sPort.getDriver().getDevice().getProductName());
         }
         onDeviceStateChange();
     }
