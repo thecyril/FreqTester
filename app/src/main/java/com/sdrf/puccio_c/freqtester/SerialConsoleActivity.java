@@ -21,11 +21,12 @@
 
 package com.sdrf.puccio_c.freqtester;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.icu.math.BigDecimal;
 import android.net.Uri;
@@ -33,7 +34,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -82,22 +82,30 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     private final String TAG = SerialConsoleActivity.class.getSimpleName();
 
     private static UsbSerialPort    sPort = null;
+    private static UsbSerialPort    sPort2 = null;
 
     public static final int FILE_CODE = 1;
 
 
     protected TextView              mTitleTextView;
+    protected TextView              mUsbDevice2;
     protected TextView              mDumpTextView;
     protected TextView              mPath;
+    protected TextView              mPath2;
     protected EditText              mOuput;
     protected ScrollView            mScrollView;
     protected EditText              mFreqInput;
+    protected EditText              mFreqInput2;
     protected EditText              mFreqStart;
     protected EditText              mFreqStop;
     protected EditText              mAmpinput;
+    protected EditText              mAmpinput2;
+    protected EditText              mVainput;
     protected EditText              mDelay;
     protected EditText              mCorrection;
+    protected EditText              mCorrection2;
     protected Button                mStart;
+    protected Button                mSetVa;
     protected Button                mReset;
     protected ImageButton           mErase;
     protected ImageButton           mPlay;
@@ -112,20 +120,31 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected Toolbar               mToolbar;
     protected ActionBar             mActionBar;
     protected Button                mDecrease;
+    protected Button                mDecrease2;
     protected Button                mIncrease;
+    protected Button                mIncrease2;
     protected Button                mDecreaseamp;
     protected Button                mIncreaseamp;
+    protected Button                mDecreaseamp2;
+    protected Button                mIncreaseamp2;
+    protected Button                mDecreaseVa;
+    protected Button                mIncreaseVa;
     protected Button                mSetAmp;
     protected Button                mCalib;
+    protected Button                mCalib2;
     protected CheckBox              mTone;
     protected NumberPicker          np;
     protected BigInteger            mFreq;
+    protected BigInteger            mFreq2;
+    protected BigInteger            mVa;
     protected BigDecimal            mNb;
     protected BigDecimal            mAmp;
     protected BigDecimal            mCorrectedamp;
+    protected BigDecimal            mCorrectedamp2;
     protected static BigDecimal     mDbm;
     protected Integer               mVnp;
     protected Boolean               isOn;
+    protected Boolean               is2tone;
     private Timer                   timer;
     private TimerTask               timerTask;
     private Switch                  mSwRf;
@@ -134,12 +153,15 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     private Runnable                runnable;
     private String                  mMessage = "";
     protected LinkedHashMap<BigInteger, BigDecimal> mTable;
+    protected LinkedHashMap<BigInteger, BigDecimal> mTable2;
     protected LinkedHashMap<BigInteger, BigDecimal> mTension;
 
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+    private final ExecutorService mExecutor2 = Executors.newSingleThreadExecutor();
 
     private SerialInputOutputManager mSerialIoManager;
+    private SerialInputOutputManager mSerialIoManager2;
 
     private final SerialInputOutputManager.Listener mListener =
             new SerialInputOutputManager.Listener() {
@@ -159,30 +181,72 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             });
         }
     };
+    private final SerialInputOutputManager.Listener mListener2 =
+            new SerialInputOutputManager.Listener() {
+
+                @Override
+                public void onRunError(Exception e) {
+                    Log.d(TAG, "Runner stopped.");
+                }
+
+                @Override
+                public void onNewData(final byte[] data) {
+                    SerialConsoleActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SerialConsoleActivity.this.updateReceivedData(data);
+                        }
+                    });
+                }
+            };
+    final BroadcastReceiver detachReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(UsbManager.ACTION_USB_DEVICE_DETACHED))
+                finish();
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.serial_console);
+
+
+        IntentFilter filters = new IntentFilter();
+        filters.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
+        registerReceiver(detachReceiver, filters);
+
         mTitleTextView  = (TextView) findViewById(R.id.demoTitle);
+        mUsbDevice2     = (TextView) findViewById(R.id.usbdevice2);
         mDumpTextView   = (TextView) findViewById(R.id.consoleText);
         mPath           = (TextView) findViewById(R.id.file);
+        mPath2          = (TextView) findViewById(R.id.file2);
         mOuput          = (EditText) findViewById(R.id.output);
         mScrollView     = (ScrollView) findViewById(R.id.demoScroller);
         mFreqInput      = (EditText) findViewById(R.id.Freq);
+        mFreqInput2     = (EditText) findViewById(R.id.Freq2);
         mFreqStart      = (EditText) findViewById(R.id.Start);
         mFreqStop       = (EditText) findViewById(R.id.Stop);
         mDelay          = (EditText) findViewById(R.id.Delay);
         mCorrection     = (EditText) findViewById(R.id.correction);
+        mCorrection2    = (EditText) findViewById(R.id.correction2);
         mStart          = (Button) findViewById(R.id.start);
         mReset          = (Button) findViewById(R.id.reset);
         mSetAmp         = (Button) findViewById(R.id.setamp);
+        mSetVa          = (Button) findViewById(R.id.setva);
         mToolbar        = (Toolbar) findViewById(R.id.my_toolbar);
         mDecrease       = (Button) findViewById(R.id.decrease);
+        mDecrease2      = (Button) findViewById(R.id.decrease2);
         mIncrease       = (Button) findViewById(R.id.increase);
+        mIncrease2      = (Button) findViewById(R.id.increase2);
         mDecreaseamp    = (Button) findViewById(R.id.decreaseamp);
         mIncreaseamp    = (Button) findViewById(R.id.increaseamp);
+        mDecreaseamp2   = (Button) findViewById(R.id.decreaseamp2);
+        mIncreaseamp2   = (Button) findViewById(R.id.increaseamp2);
+        mDecreaseVa     = (Button) findViewById(R.id.decreaseva);
+        mIncreaseVa     = (Button) findViewById(R.id.increaseva);
         mCalib          = (Button) findViewById(R.id.calib);
+        mCalib2         = (Button) findViewById(R.id.calib2);
         mErase          = (ImageButton) findViewById(R.id.erase);
         mPlay           = (ImageButton) findViewById(R.id.play);
         mStop           = (ImageButton) findViewById(R.id.stop);
@@ -191,7 +255,9 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mSwRf           = (Switch) findViewById(R.id.RF);
         mSwRef          = (Switch) findViewById(R.id.Ref);
         mAmpinput       = (EditText) findViewById(R.id.Amp);
-        mTone           = (CheckBox) findViewById(R.id.tone);
+        mAmpinput2      = (EditText) findViewById(R.id.Amp2);
+        mVainput        = (EditText) findViewById(R.id.vainput);
+        mTone           = (CheckBox) findViewById(R.id.Amplitude);
 
 
         sPort = MainActivity.mPort;
@@ -206,18 +272,24 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 Log.d(TAG, mVnp.toString());
             }
         });
+        mUsbDevice2.setText("");
+        is2tone = false;
         isOn = false;
         mVnp = 1;
         mAmp = BigDecimal.ZERO;
         mCorrectedamp = BigDecimal.ZERO;
+        mCorrectedamp2 = BigDecimal.ZERO;
         mNb = BigDecimal.ZERO;
         mFreq = BigInteger.ZERO;
+        mVa = BigInteger.ZERO;
         mBoucle = false;
         displayInt(0, mFreqStart);
         displayInt(0, mFreqStop);
         displayInt(800, mDelay);
         display(mNb, mFreqInput);
         display(mAmp, mAmpinput);
+        display(mAmp, mAmpinput2);
+        displayInt(mVa.intValue(), mVainput);
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -228,8 +300,18 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
-                    SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                     sendFreq(mFreqInput, 33);
+                    rfstate();
+                    return true;
+                }
+                return false;
+            }
+        });
+        mFreqInput2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT && is2tone && sPort2 != null) {
+                    sendFreq2(mFreqInput2, 33);
                     rfstate();
                     return true;
                 }
@@ -240,7 +322,30 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
-                    sendAmp(mAmpinput, 32);
+                    sendAmp(mAmpinput, 32, sPort);
+                    return true;
+                }
+                return false;
+            }
+        });
+        mAmpinput2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
+                    if (sPort2 != null && is2tone)
+                        sendAmp2(mAmpinput2, 32, sPort2);
+                    return true;
+                }
+                return false;
+            }
+        });
+        mVainput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId== EditorInfo.IME_ACTION_DONE||actionId==EditorInfo.IME_ACTION_NEXT) {
+                    sendVa(mVainput, 35, sPort);
+                    if (sPort2 != null && is2tone)
+                        sendVa(mVainput, 35, sPort2);
                     return true;
                 }
                 return false;
@@ -250,8 +355,12 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if ((isOn = isChecked)) {
                     SDRFUtils.sendCommand(BigInteger.valueOf(1), 31, 1, sPort);
+                    if (sPort2 != null && is2tone)
+                        SDRFUtils.sendCommand(BigInteger.valueOf(1), 31, 1, sPort2);
                 } else {
                     SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
+                    if (sPort2 != null && is2tone)
+                        SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort2);
                 }
             }
         });
@@ -259,31 +368,58 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     SDRFUtils.sendCommand(BigInteger.valueOf(1), 28, 1, sPort);
+                    if (sPort2 != null && is2tone)
+                        SDRFUtils.sendCommand(BigInteger.valueOf(1), 28, 1, sPort2);
                 } else {
                     SDRFUtils.sendCommand(BigInteger.valueOf(0), 28, 1, sPort);
+                    if (sPort2 != null && is2tone)
+                        SDRFUtils.sendCommand(BigInteger.valueOf(0), 28, 1, sPort2);
                 }
             }
         });
         mStart.setOnClickListener(this);
         mReset.setOnClickListener(this);
+        mSetVa.setOnClickListener(this);
         mDecrease.setOnClickListener(this);
+        mDecrease2.setOnClickListener(this);
         mIncrease.setOnClickListener(this);
+        mIncrease2.setOnClickListener(this);
         mIncreaseamp.setOnClickListener(this);
         mDecreaseamp.setOnClickListener(this);
+        mIncreaseamp2.setOnClickListener(this);
+        mDecreaseamp2.setOnClickListener(this);
+        mIncreaseVa.setOnClickListener(this);
+        mDecreaseVa.setOnClickListener(this);
         mErase.setOnClickListener(this);
         mPlay.setOnClickListener(this);
         mStop.setOnClickListener(this);
         mLoop.setOnClickListener(this);
         mSetAmp.setOnClickListener(this);
         mCalib.setOnClickListener(this);
+        mCalib2.setOnClickListener(this);
         mTone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
                 if ( isChecked )
                 {
+                    is2tone = true;
+                    displayInt(0, mFreqInput2);
                     Intent i = new Intent(getApplicationContext(), USBChooserActivity.class);
                     startActivity(i);
+                }
+                else {
+                    is2tone = false;
+                    resetBoard2();
+                    if (sPort2 != null && sPort2.getPortNumber() != sPort.getPortNumber()) {
+                        try {
+                            sPort2.close();
+                        } catch (IOException e) {
+                            // Ignore.
+                        }
+                    }
+                    sPort2 = null;
+                    Singleton.getInstance().setPort(null);
                 }
 
             }
@@ -300,12 +436,19 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     {
         switch (v.getId()) {
             case R.id.start:
-                SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                 sendFreq(mFreqInput, 33);
-                rfstate();
+                if (sPort2 != null && is2tone)
+                    sendFreq2(mFreqInput2, 33);
                 break;
             case R.id.reset:
                 resetBoard();
+                if (sPort2 != null && is2tone)
+                    resetBoard2();
+                break;
+            case R.id.setva:
+                sendVa(mVainput,35, sPort);
+                if (sPort2 != null && is2tone)
+                    sendVa(mVainput,35, sPort);
                 break;
             case R.id.home:
                 finish();
@@ -331,15 +474,16 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             case R.id.calib:
                 openFolder();
                 break;
+            case R.id.calib2:
+                openFolder2();
+                break;
             case R.id.increase:
                 if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-101D)))
                     mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
                 else
                     return;
                 display(mNb, mFreqInput);
-                SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                 sendFreq(mFreqInput, 33);
-                rfstate();
                 break;
             case R.id.decrease:
                 if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput))).equals(BigDecimal.valueOf(-101D)) && mNb.signum() > 0)
@@ -347,12 +491,28 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 else
                     return;
                 display(mNb, mFreqInput);
-                SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
                 sendFreq(mFreqInput, 33);
-                rfstate();
+                break;
+            case R.id.increase2:
+                if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput2))).equals(BigDecimal.valueOf(-101D)))
+                    mNb = mNb.add(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
+                else
+                    return;
+                display(mNb, mFreqInput2);
+                sendFreq2(mFreqInput2, 33);
+                break;
+            case R.id.decrease2:
+                if (!(mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(mFreqInput2))).equals(BigDecimal.valueOf(-101D)) && mNb.signum() > 0)
+                    mNb = mNb.subtract(SDRFUtils.division(mVnp, mNbDiv, mFreqmult));
+                else
+                    return;
+                display(mNb, mFreqInput2);
+                sendFreq2(mFreqInput2, 33);
                 break;
             case R.id.setamp:
-                sendAmp(mAmpinput, 32);
+                sendAmp(mAmpinput, 32, sPort);
+                if (sPort2 != null && is2tone)
+                    sendAmp2(mAmpinput2, 32, sPort2);
                 break;
             case R.id.increaseamp:
                 if (!(mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).equals(BigDecimal.valueOf(-101D)))
@@ -360,7 +520,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 else
                     return;
                 display(mAmp, mAmpinput);
-                sendAmp(mAmpinput, 32);
+                sendAmp(mAmpinput, 32, sPort);
                 break;
             case R.id.decreaseamp:
                 if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput))).compareTo(BigDecimal.valueOf(-100D)) > 0)
@@ -368,7 +528,45 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 else
                     return;
                 display(mAmp, mAmpinput);
-                sendAmp(mAmpinput, 32);
+                sendAmp(mAmpinput, 32, sPort);
+                break;
+            case R.id.increaseamp2:
+                if (!(mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput2))).equals(BigDecimal.valueOf(-101D)))
+                    mAmp = mAmp.add(mDbm);
+                else
+                    return;
+                display(mAmp, mAmpinput2);
+                if (sPort2 != null && is2tone)
+                    sendAmp2(mAmpinput2, 32, sPort2);
+                break;
+            case R.id.decreaseamp2:
+                if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(mAmpinput2))).compareTo(BigDecimal.valueOf(-100D)) > 0)
+                    mAmp = mAmp.subtract(mDbm);
+                else
+                    return;
+                display(mAmp, mAmpinput2);
+                if (sPort2 != null && is2tone)
+                    sendAmp2(mAmpinput2, 32, sPort2);
+                break;
+            case R.id.increaseva:
+                if (!(mVa = BigInteger.valueOf(SDRFUtils.ParseFreq(mVainput).longValue())).equals(BigInteger.valueOf(-101L)))
+                    mVa = mVa.add(BigInteger.valueOf(100L));
+                else
+                    return;
+                displayInt(mVa.intValue(), mVainput);
+                sendVa(mVainput, 35, sPort);
+                if (sPort2 != null && is2tone)
+                    sendVa(mVainput, 35, sPort2);
+                break;
+            case R.id.decreaseva:
+                if ((mVa = BigInteger.valueOf(SDRFUtils.ParseFreq(mVainput).longValue())).compareTo(BigInteger.valueOf(-100L)) > 0 && mVa.signum() > 0)
+                    mVa = mVa.subtract(BigInteger.valueOf(100L));
+                else
+                    return;
+                displayInt(mVa.intValue(), mVainput);
+                sendVa(mVainput, 35, sPort);
+                if (sPort2 != null && is2tone)
+                    sendVa(mVainput, 35, sPort2);
                 break;
         }
     }
@@ -379,13 +577,19 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             SDRFUtils.sendCommand(BigInteger.valueOf(1), 31, 1, sPort);
     }
 
+    public void rfstate2()
+    {
+        if (sPort2 != null && is2tone && isOn)
+            SDRFUtils.sendCommand(BigInteger.valueOf(1), 31, 1, sPort2);
+    }
+
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
 
         // Check which checkbox was clicked
         switch(view.getId()) {
-            case R.id.tone:
+            case R.id.Amplitude:
                 if (checked) {
                     Toast.makeText(getApplicationContext(), "checked", Toast.LENGTH_SHORT).show();
                 }
@@ -403,9 +607,22 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
         i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
 
-        i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
+        i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath() + "/Tables");
 
         startActivityForResult(i, FILE_CODE);
+    }
+
+    public void openFolder2()
+    {
+        Intent i = new Intent(this, FilePickerActivity.class);
+
+        i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
+        i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
+        i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
+
+        i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath() + "/Tables");
+
+        startActivityForResult(i, 2);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -427,6 +644,25 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                     mTension = SDRFUtils.csvRead(is2);
 
                     mPath.setText(file.getPath().substring(file.getPath().lastIndexOf("/") + 1));
+                    Toast.makeText(getApplicationContext(), file.getPath(), Toast.LENGTH_SHORT).show();
+                }
+            }
+            if (requestCode == 2 && resultCode == -1)
+            {
+                List<Uri> files = Utils.getSelectedFilesFromResult(data);
+                for (Uri uri : files)
+                {
+                    File file = Utils.getFileForUri(uri);
+                    InputStreamReader is1 = new InputStreamReader(new FileInputStream(file));
+                    InputStreamReader is2 = new InputStreamReader(getAssets()
+                            .open("vga_ctrl_voltage_att.csv"));
+
+                    if ((mTable2 = SDRFUtils.csvRead(is1)) == null)
+                        Toast.makeText(getApplicationContext(), "Wrong Csv", Toast.LENGTH_SHORT).show();
+                    if (mTension == null)
+                        mTension = SDRFUtils.csvRead(is2);
+
+                    mPath2.setText(file.getPath().substring(file.getPath().lastIndexOf("/") + 1));
                     Toast.makeText(getApplicationContext(), file.getPath(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -506,6 +742,14 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             }
 //            sPort = null;
         }
+        if (sPort2 != null && is2tone) {
+            try {
+                sPort2.close();
+            } catch (IOException e) {
+                // Ignore.
+            }
+//            sPort = null;
+        }
         //finish();
     }
 
@@ -518,47 +762,14 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     protected void onResume() {
         super.onResume();
         Log.d(TAG, "Resumed, port=" + sPort);
-        if (sPort == null) {
-            mTitleTextView.setText("No serial device.");
-        } else {
-            final UsbManager usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
 
-//            usbManager.requestPermission(sPort.getDriver().getDevice(), mPermissionIntent);
-            UsbDeviceConnection connection = usbManager.openDevice(sPort.getDriver().getDevice());
-            if (connection == null) {
-                mTitleTextView.setText("Opening device failed");
-                return;
-            }
+            sPort = SDRFUtils.usbConnect(sPort, mTitleTextView, this.getApplicationContext());
 
-            try {
-                sPort.open(connection);
-                sPort.setParameters(9600, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
-
-                showStatus(mDumpTextView, "CD  - Carrier Detect", sPort.getCD());
-                showStatus(mDumpTextView, "CTS - Clear To Send", sPort.getCTS());
-                showStatus(mDumpTextView, "DSR - Data Set Ready", sPort.getDSR());
-                showStatus(mDumpTextView, "DTR - Data Terminal Ready", sPort.getDTR());
-                showStatus(mDumpTextView, "DSR - Data Set Ready", sPort.getDSR());
-                showStatus(mDumpTextView, "RI  - Ring Indicator", sPort.getRI());
-                showStatus(mDumpTextView, "RTS - Request To Send", sPort.getRTS());
-
-//                int i[] = {2, 77, 240, 120};                    // some value between 0 and 255
-
-
-            } catch (IOException e) {
-                Log.e(TAG, "Error setting up device: " + e.getMessage(), e);
-                mTitleTextView.setText("Error opening device: " + e.getMessage());
-                try {
-                    sPort.close();
-                } catch (IOException e2) {
-                    // Ignore.
-                }
-                sPort = null;
-                return;
-            }
-            mTitleTextView.setText("Serial device: " + sPort.getDriver().getDevice().getProductName());
+        if ((sPort2 = Singleton.getInstance().getPort()) != null) {
+            sPort2 = SDRFUtils.usbConnect(sPort2, mUsbDevice2, this.getApplicationContext());
         }
-        onDeviceStateChange();
+
+            onDeviceStateChange();
     }
 
     @Override
@@ -572,7 +783,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    public void sendAmp(EditText input, Integer nb)
+    public void sendAmp(EditText input, Integer nb, UsbSerialPort port)
     {
         BigInteger tension = BigInteger.ZERO;
         if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -5-101D)
@@ -607,7 +818,46 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
                 Log.i("Correct amp", mCorrectedamp.toString());
             }
-            SDRFUtils.sendCommand(tension, nb, 2, sPort);
+            SDRFUtils.sendCommand(tension, nb, 2, port);
+        }
+    }
+
+    public void sendAmp2(EditText input, Integer nb, UsbSerialPort port)
+    {
+        BigInteger tension = BigInteger.ZERO;
+        if ((mAmp = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -5-101D)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "value is to low",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+            try {
+                if (mTable2 != null && mTension != null)
+                    display((mCorrectedamp2 = SDRFUtils.ParseAmp(mTable2, mFreq2)), mCorrection2);
+                mAmp = mAmp.subtract(mCorrectedamp2);
+                tension = SDRFUtils.ParseTension(mTension, mAmp);
+                Log.d("Tension", tension.toString());
+            } catch (Exception e) {
+                return;
+            }
+            if (mAmp.longValue() > 30L)
+                Toast.makeText(getApplicationContext(),
+                        "Value is too high",
+                        Toast.LENGTH_SHORT).show();
+            else if (mAmp.longValue() < -50L)
+                Toast.makeText(getApplicationContext(),
+                        "Value is too Low",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                Toast.makeText(getApplicationContext(),
+                        String.valueOf(tension),
+                        Toast.LENGTH_SHORT).show();
+
+                Log.i("Correct amp", mCorrectedamp2.toString());
+            }
+            SDRFUtils.sendCommand(tension, nb, 2, port);
         }
     }
 
@@ -637,8 +887,73 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
 
                 Log.i("mFreq", String.format("%d", mFreq));
             }
-            sendAmp(mAmpinput, 32);
+            SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
+            sendAmp(mAmpinput, 32, sPort);
             SDRFUtils.sendCommand(mFreq, nb, 8, sPort);
+            rfstate();
+        }
+    }
+
+    public void sendFreq2(EditText input, Integer nb)
+    {
+        if ((mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -101D)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Error you should enter a value",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+            try {
+                mFreq2 = mNb.multiply(BigDecimal.valueOf(mFreqmult)).toBigInteger();
+            } catch (Exception e) {
+                return;
+            }
+            if (mFreq2.longValue() > 100000000000L)
+                Toast.makeText(getApplicationContext(),
+                        "Value is too high",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                Toast.makeText(getApplicationContext(),
+                        String.valueOf(mFreq2),
+                        Toast.LENGTH_SHORT).show();
+
+                Log.i("mFreq", String.format("%d", mFreq2));
+            }
+            if (is2tone && sPort2 != null) {
+                SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort2);
+                sendAmp2(mAmpinput, 32, sPort2);
+                SDRFUtils.sendCommand(mFreq2, nb, 8, sPort2);
+                rfstate2();
+            }
+        }
+    }
+
+    public void sendVa(EditText input, Integer nb, UsbSerialPort port)
+    {
+        if ((mVa = BigInteger.valueOf(SDRFUtils.ParseFreq(input).longValue())).intValue() <= -101D)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "value is to low",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+            if (mVa.intValue() > 7400)
+                Toast.makeText(getApplicationContext(),
+                        "Value is too high",
+                        Toast.LENGTH_SHORT).show();
+            else if (mVa.intValue() < 0)
+                Toast.makeText(getApplicationContext(),
+                        "Value is too Low",
+                        Toast.LENGTH_SHORT).show();
+            else {
+                Toast.makeText(getApplicationContext(),
+                        String.valueOf(mVa),
+                        Toast.LENGTH_SHORT).show();
+
+            }
+            SDRFUtils.sendCommand(mVa, nb, 2, port);
         }
     }
 
@@ -652,11 +967,27 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             Log.e(TAG, "Write Error");
         }
     }
+    public void resetBoard2(){
+        if (sPort2 != null) {
+            byte[] msg = SDRFUtils.intToByteArray(BigInteger.valueOf(0), 5, 2);
+            try {
+                sPort2.write(msg, 10);
+            } catch (IOException e) {
+                Log.e(TAG, "Write Error");
+            }
+        }
+    }
+
     private void stopIoManager() {
         if (mSerialIoManager != null) {
             Log.i(TAG, "Stopping io manager ..");
             mSerialIoManager.stop();
             mSerialIoManager = null;
+        }
+        if (mSerialIoManager2 != null) {
+            Log.i(TAG, "Stopping io manager ..");
+            mSerialIoManager2.stop();
+            mSerialIoManager2 = null;
         }
     }
 
@@ -665,6 +996,11 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             Log.i(TAG, "Starting io manager ..");
             mSerialIoManager = new SerialInputOutputManager(sPort, mListener);
             mExecutor.submit(mSerialIoManager);
+        }
+        if (sPort2 != null) {
+            Log.i(TAG, "Starting io manager ..");
+            mSerialIoManager2 = new SerialInputOutputManager(sPort2, mListener2);
+            mExecutor2.submit(mSerialIoManager2);
         }
     }
 
@@ -715,7 +1051,20 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 // Ignore.
             }
         }
+        if (sPort2 != null) {
+            try {
+                sPort2.close();
+                Singleton.getInstance().setPort(null);
+            } catch (IOException e) {
+                // Ignore.
+            }
+        }
         stopTimer();
+        try {
+            unregisterReceiver(detachReceiver);
+        } catch (Exception e) {
+            Log.d(TAG, "unregisterReceiver: " + e.getMessage());
+        }
 //        finish();
     }
 }

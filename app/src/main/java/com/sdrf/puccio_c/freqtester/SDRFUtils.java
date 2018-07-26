@@ -1,9 +1,13 @@
 package com.sdrf.puccio_c.freqtester;
 
 
+import android.content.Context;
+import android.hardware.usb.UsbDeviceConnection;
+import android.hardware.usb.UsbManager;
 import android.icu.math.BigDecimal;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.opencsv.CSVReader;
@@ -22,6 +26,8 @@ import java.util.Set;
  */
 
 public class SDRFUtils {
+
+    private static final String TAG = SDRFUtils.class.getSimpleName();;
 
     static public LinkedHashMap<BigInteger, BigDecimal> csvRead(InputStreamReader file) {
         LinkedHashMap<BigInteger, BigDecimal> table;
@@ -42,7 +48,40 @@ public class SDRFUtils {
             return null;
         }
     }
+    
+    static public UsbSerialPort usbConnect(UsbSerialPort port, TextView mTitleTextView, Context context) {
+        if (port == null)  {
+            mTitleTextView.setText("No serial device.");
+        } else {
+            final UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);
 
+//            usbManager.requestPermission(port.getDriver().getDevice(), mPermissionIntent);
+            UsbDeviceConnection connection = usbManager.openDevice(port.getDriver().getDevice());
+            if (connection == null) {
+                mTitleTextView.setText("Opening device1 failed");
+                return null;
+            }
+            try {
+                port.open(connection);
+                port.setParameters(9600, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
+
+
+            } catch (IOException e) {
+                Log.e(TAG, "Error setting up device: " + e.getMessage(), e);
+                mTitleTextView.setText("Error opening device: " + e.getMessage());
+                try {
+                    port.close();
+                } catch (IOException e2) {
+                    // Ignore.
+                }
+                port = null;
+                return port;
+            }
+            mTitleTextView.setText("Serial device: " + port.getDriver().getDevice().getProductName());
+        }
+        return port;
+    }
+    
     static public void sendCommand(BigInteger val, int nb, int bits, UsbSerialPort port){
 
         byte[] msg = SDRFUtils.intToByteArray(val, nb, bits);

@@ -19,13 +19,13 @@
 
     <TextView
         android:id="@+id/demoTitle"
-        android:layout_width="match_parent"
-        android:layout_height="34dp"
+        android:layout_width="431dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="68dp"
         android:text="@string/app_title"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,17 +33,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/usbdevice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/app_title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toTopOf="@+id/Amplitude"
+        app:layout_constraintEnd_toEndOf="@+id/Amplitude"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/reset"
         style="@android:style/Widget.Material.Button"
         android:layout_width="135dp"
         android:layout_height="60dp"
-        android:layout_marginStart="540dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="600dp"
         android:text="Reset"
         app:layout_constraintBottom_toBottomOf="@+id/start"
         app:layout_constraintEnd_toStartOf="@+id/start"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/consoleText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/start"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -51,13 +69,55 @@
         android:id="@+id/Freq"
         android:layout_width="298dp"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
+        android:inputType="numberSigned|numberDecimal"
         android:singleLine="true"
         android:textSize="42sp"
         app:layout_constraintBottom_toBottomOf="@+id/editText"
         app:layout_constraintEnd_toStartOf="@+id/Unit"
         app:layout_constraintStart_toEndOf="@+id/editText"
         app:layout_constraintTop_toTopOf="@+id/editText" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/Amp"
+        android:layout_width="175dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="8dp"
+        android:inputType="numberSigned|numberDecimal"
+        android:singleLine="true"
+        android:textSize="42sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator2"
+        app:layout_constraintVertical_bias="0.64" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/Amp2"
+        android:layout_width="120dp"
+        android:layout_height="77dp"
+        android:inputType="numberSigned|numberDecimal"
+        android:singleLine="true"
+        android:textSize="42sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Amp"
+        app:layout_constraintStart_toEndOf="@+id/increaseamp"
+        app:layout_constraintTop_toTopOf="@+id/Amp" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/vainput"
+        android:layout_width="130dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:textSize="42sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Amp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/increaseamp2"
+        app:layout_constraintTop_toTopOf="@+id/Amp" />
 
     <android.support.design.widget.TextInputEditText
         android:id="@+id/output"
@@ -76,17 +136,16 @@
     <android.support.design.widget.TextInputEditText
         android:id="@+id/Stop"
         android:layout_width="213dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="24dp"
         android:inputType="numberDecimal"
         android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="@+id/Start"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/Start"
         app:layout_constraintTop_toTopOf="@+id/Start"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <android.support.design.widget.TextInputEditText
         android:id="@+id/Delay"
@@ -94,6 +153,7 @@
         android:layout_height="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:inputType="numberDecimal"
         android:singleLine="true"
         app:layout_constraintEnd_toStartOf="@+id/Stop"
@@ -104,10 +164,13 @@
         android:id="@+id/Start"
         android:layout_width="213dp"
         android:layout_height="44dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="496dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="596dp"
         android:inputType="numberDecimal"
         android:singleLine="true"
+        app:layout_constraintEnd_toStartOf="@+id/Stop"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,19 +194,51 @@
     <Button
         android:id="@+id/increaseamp"
         android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:onClick="increaseInteger"
+        android:text="+"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/decreaseamp"
+        app:layout_constraintStart_toEndOf="@+id/Amp"
+        app:layout_constraintTop_toTopOf="@+id/Amp" />
+
+    <Button
+        android:id="@+id/increaseamp2"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:onClick="increaseInteger"
+        android:text="+"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/Amp2"
+        app:layout_constraintTop_toTopOf="@+id/Amp2" />
+
+    <Button
+        android:id="@+id/increaseva"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:onClick="increaseInteger"
+        android:text="+"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/vainput"
+        app:layout_constraintTop_toTopOf="@+id/vainput" />
+
+    <Button
+        android:id="@+id/increase2"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="245dp"
+        android:layout_marginTop="8dp"
         android:onClick="increaseInteger"
         android:text="+"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/Amp"
-        app:layout_constraintEnd_toEndOf="@+id/Amp"
-        app:layout_constraintStart_toStartOf="@+id/Amp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22000003" />
+        app:layout_constraintBottom_toBottomOf="@+id/Freq2"
+        app:layout_constraintEnd_toEndOf="@+id/Freq2"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/Freq2"
+        app:layout_constraintTop_toTopOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="0.88" />
 
     <Button
         android:id="@+id/decrease"
@@ -160,40 +255,74 @@
         app:layout_constraintTop_toTopOf="@+id/Freq" />
 
     <Button
-        android:id="@+id/decreaseamp"
+        android:id="@+id/decrease2"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="72dp"
         android:onClick="decreaseInteger"
         android:text="-"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/Amp"
+        app:layout_constraintEnd_toEndOf="@+id/Freq2"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/Amp"
-        app:layout_constraintTop_toTopOf="@+id/Amp" />
+        app:layout_constraintStart_toStartOf="@+id/Freq2"
+        app:layout_constraintTop_toTopOf="@+id/Freq2" />
+
+    <Button
+        android:id="@+id/decreaseamp"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:onClick="decreaseInteger"
+        android:text="-"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/Amp"
+        app:layout_constraintTop_toBottomOf="@+id/increaseamp" />
+
+    <Button
+        android:id="@+id/decreaseamp2"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="decreaseInteger"
+        android:text="-"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Amp2"
+        app:layout_constraintTop_toBottomOf="@+id/increaseamp2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/decreaseva"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:onClick="decreaseInteger"
+        android:text="-"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/vainput"
+        app:layout_constraintTop_toBottomOf="@+id/increaseva" />
 
     <android.support.design.widget.TextInputEditText
-        android:id="@+id/Amp"
+        android:id="@+id/Freq2"
         android:layout_width="298dp"
-        android:layout_height="wrap_content"
+        android:layout_height="82dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
         android:inputType="numberSigned|numberDecimal"
         android:singleLine="true"
         android:textSize="42sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
+        app:layout_constraintBottom_toBottomOf="@+id/Amplitude"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
-        app:layout_constraintStart_toStartOf="@+id/Freq"
-        app:layout_constraintTop_toTopOf="@+id/editText2" />
+        app:layout_constraintStart_toEndOf="@+id/Amplitude"
+        app:layout_constraintTop_toTopOf="@+id/Amplitude" />
 
     <android.support.design.widget.TextInputEditText
         android:id="@+id/correction"
         android:layout_width="122dp"
         android:layout_height="44dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="40dp"
         android:inputType="numberSigned|numberDecimal"
         android:selectAllOnFocus="false"
         android:textSize="14sp"
@@ -201,35 +330,47 @@
         app:layout_constraintStart_toEndOf="@+id/calib"
         app:layout_constraintTop_toTopOf="@+id/calib" />
 
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/correction2"
+        android:layout_width="122dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:inputType="numberSigned|numberDecimal"
+        android:selectAllOnFocus="false"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/calib2"
+        app:layout_constraintStart_toEndOf="@+id/calib2"
+        app:layout_constraintTop_toTopOf="@+id/calib2"
+        app:layout_constraintVertical_bias="0.79" />
+
     <View
         android:id="@+id/separator2"
         android:layout_width="match_parent"
         android:layout_height="1dip"
         android:layout_below="@+id/demoTitle"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="8dp"
         android:background="#eeeeee"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Amp"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintTop_toTopOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="0.66" />
 
-    <Spinner
-        android:id="@+id/Dbm"
-        android:layout_width="109dp"
-        android:layout_height="74dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="@+id/Freq"
-        android:layout_gravity="right"
-        android:layout_marginStart="8dp"
+    <View
+        android:id="@+id/separator3"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/demoTitle"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/decreaseamp"
-        app:layout_constraintEnd_toStartOf="@+id/np"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toEndOf="@+id/Amp"
-        app:layout_constraintTop_toTopOf="@+id/Amp"
-        app:layout_constraintVertical_bias="0.0" />
+        android:background="#eeeeee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="0.45999998" />
 
     <Spinner
         android:id="@+id/Unit"
@@ -245,6 +386,19 @@
         app:layout_constraintTop_toTopOf="@+id/Freq" />
 
     <Spinner
+        android:id="@+id/Dbm"
+        android:layout_width="93dp"
+        android:layout_height="77dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="@+id/Freq"
+        android:layout_gravity="right"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Amp"
+        app:layout_constraintEnd_toEndOf="@+id/Amp"
+        app:layout_constraintTop_toTopOf="@+id/Amp"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Spinner
         android:id="@+id/Unit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -253,9 +407,8 @@
         android:layout_gravity="right"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="@+id/np"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="@+id/np"
         app:layout_constraintTop_toBottomOf="@+id/np" />
 
@@ -267,23 +420,21 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toTopOf="@+id/separator2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.302" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <Button
         android:id="@+id/start"
         style="@android:style/Widget.Material.Button"
         android:layout_width="135dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="500dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:text="Set Freq"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/reset"
         app:layout_constraintTop_toBottomOf="@+id/separator2"
         app:layout_constraintVertical_bias="0.005" />
 
@@ -303,16 +454,50 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
+        android:id="@+id/setva"
+        style="@android:style/Widget.Material.Button"
+        android:layout_width="135dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:text="Set Vva"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/reset"
+        app:layout_constraintStart_toStartOf="@+id/reset"
+        app:layout_constraintTop_toBottomOf="@+id/reset"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
         android:id="@+id/calib"
         style="@android:style/Widget.Material.Button"
         android:layout_width="131dp"
         android:layout_height="37dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Browse"
+        app:layout_constraintBottom_toTopOf="@+id/separator2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.13999999" />
+
+    <Button
+        android:id="@+id/calib2"
+        style="@android:style/Widget.Material.Button"
+        android:layout_width="131dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="63dp"
         android:text="Browse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.329"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Amplitude"
+        app:layout_constraintVertical_bias="0.04000002" />
 
     <ScrollView
         android:id="@+id/demoScroller"
@@ -323,9 +508,9 @@
 
     <TextView
         android:id="@+id/consoleText"
-        android:layout_width="355dp"
-        android:layout_height="137dp"
-        android:layout_marginBottom="192dp"
+        android:layout_width="41dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="92dp"
         android:layout_marginStart="16dp"
         android:textIsSelectable="true"
         android:typeface="monospace"
@@ -334,10 +519,10 @@
 
     <TextView
         android:id="@+id/editText"
-        android:layout_width="129dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="144dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:singleLine="false"
@@ -348,6 +533,7 @@
         android:visibility="visible"
         app:fontFamily="@font/roboto"
         app:layout_constraintEnd_toStartOf="@+id/Freq"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -355,9 +541,9 @@
         android:id="@+id/Delay"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="55dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:singleLine="false"
@@ -367,15 +553,15 @@
         android:typeface="normal"
         android:visibility="visible"
         app:fontFamily="@font/roboto"
-        app:layout_constraintEnd_toEndOf="@+id/Stop"
-        app:layout_constraintStart_toStartOf="@+id/Start"
-        app:layout_constraintTop_toBottomOf="@+id/Start" />
+        app:layout_constraintBottom_toTopOf="@+id/play"
+        app:layout_constraintEnd_toEndOf="@+id/loop"
+        app:layout_constraintStart_toStartOf="@+id/stop" />
 
     <TextView
         android:id="@+id/StopFreq"
         android:layout_width="39dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
@@ -433,11 +619,29 @@
         app:layout_constraintStart_toStartOf="@+id/calib" />
 
     <TextView
+        android:id="@+id/browse2"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:text="Load calibration file:"
+        android:textColor="#263238"
+        android:textSize="16sp"
+        android:typeface="normal"
+        android:visibility="visible"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toTopOf="@+id/calib2"
+        app:layout_constraintEnd_toEndOf="@+id/calib2"
+        app:layout_constraintStart_toStartOf="@+id/calib2" />
+
+    <TextView
         android:id="@+id/file"
         android:layout_width="179dp"
-        android:layout_height="30dp"
+        android:layout_height="27dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -448,15 +652,35 @@
         android:visibility="visible"
         app:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="@+id/calib"
-        app:layout_constraintEnd_toStartOf="@+id/calib"
-        app:layout_constraintTop_toTopOf="@+id/calib" />
+        app:layout_constraintStart_toEndOf="@+id/correction"
+        app:layout_constraintTop_toTopOf="@+id/calib"
+        app:layout_constraintVertical_bias="0.444" />
+
+    <TextView
+        android:id="@+id/file2"
+        android:layout_width="235dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:textColor="#263238"
+        android:textSize="16sp"
+        android:typeface="normal"
+        android:visibility="visible"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toBottomOf="@+id/correction2"
+        app:layout_constraintStart_toEndOf="@+id/correction2"
+        app:layout_constraintTop_toTopOf="@+id/correction2" />
 
     <TextView
         android:id="@+id/outputext"
         android:layout_width="180dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:singleLine="false"
@@ -489,12 +713,32 @@
         app:layout_constraintStart_toStartOf="@+id/correction" />
 
     <TextView
+        android:id="@+id/browse3"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:text="Applied correction:"
+        android:textColor="#263238"
+        android:textSize="16sp"
+        android:typeface="normal"
+        android:visibility="visible"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toTopOf="@+id/correction2"
+        app:layout_constraintEnd_toEndOf="@+id/correction2"
+        app:layout_constraintStart_toStartOf="@+id/correction2" />
+
+    <TextView
         android:id="@+id/dbm"
         android:layout_width="48dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:singleLine="false"
@@ -504,10 +748,10 @@
         android:typeface="normal"
         android:visibility="visible"
         app:fontFamily="@font/roboto"
-        app:layout_constraintBottom_toBottomOf="@+id/Amp"
-        app:layout_constraintStart_toEndOf="@+id/Amp"
-        app:layout_constraintTop_toTopOf="@+id/Amp"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/Dbm"
+        app:layout_constraintEnd_toEndOf="@+id/Amp"
+        app:layout_constraintStart_toStartOf="@+id/Dbm"
+        app:layout_constraintTop_toTopOf="@+id/Dbm" />
 
     <TextView
         android:id="@+id/Step"
@@ -572,31 +816,73 @@
 
     <TextView
         android:id="@+id/editText2"
-        android:layout_width="127dp"
+        android:layout_width="53dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:singleLine="false"
-        android:text="Amplitude:"
+        android:text="Amp:"
         android:textColor="#263238"
         android:textSize="21sp"
         android:typeface="normal"
         android:visibility="visible"
         app:fontFamily="@font/roboto"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintEnd_toStartOf="@+id/Amp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintBottom_toTopOf="@+id/Amp"
+        app:layout_constraintEnd_toEndOf="@+id/Dbm"
+        app:layout_constraintStart_toStartOf="@+id/Amp"
+        app:layout_constraintTop_toBottomOf="@+id/separator2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/editText4"
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:text="Amp2:"
+        android:textColor="#263238"
+        android:textSize="21sp"
+        android:typeface="normal"
+        android:visibility="visible"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toTopOf="@+id/Amp2"
+        app:layout_constraintEnd_toEndOf="@+id/Amp2"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/Amp2"
+        app:layout_constraintTop_toBottomOf="@+id/separator2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/editText3"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        android:text="ext_vva_ctrl:"
+        android:textColor="#263238"
+        android:textSize="21sp"
+        android:typeface="normal"
+        android:visibility="visible"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toTopOf="@+id/vainput"
+        app:layout_constraintEnd_toEndOf="@+id/vainput"
+        app:layout_constraintStart_toStartOf="@+id/vainput" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="255dp"
         android:layout_height="147dp"
-        android:layout_marginBottom="88dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/logo_sdrf2" />
@@ -607,7 +893,6 @@
         android:layout_width="31dp"
         android:layout_height="31dp"
         android:layout_marginBottom="15dp"
-        android:layout_marginEnd="12dp"
         android:layout_marginTop="8dp"
         android:background="@null"
         android:scaleType="fitCenter"
@@ -651,14 +936,17 @@
         style="@android:style/Widget.Material.Light.ImageButton"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="88dp"
         android:background="@null"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="@+id/Delay"
-        app:layout_constraintStart_toStartOf="@+id/Delay"
-        app:layout_constraintTop_toBottomOf="@+id/Delay"
+        app:layout_constraintBottom_toTopOf="@+id/separator2"
+        app:layout_constraintEnd_toEndOf="@+id/Stop"
+        app:layout_constraintStart_toStartOf="@+id/Start"
+        app:layout_constraintTop_toBottomOf="@+id/Stop"
+        app:layout_constraintVertical_bias="0.07999998"
         app:srcCompat="@drawable/ic_play_arrow_black_48dp" />
 
     <Switch
@@ -667,13 +955,15 @@
         android:layout_width="113dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto"
         android:text="RF Off  "
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/reset"
         app:layout_constraintEnd_toStartOf="@+id/reset"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/reset" />
 
     <Switch
@@ -695,9 +985,9 @@
         android:id="@+id/Looptest"
         android:layout_width="68dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="93dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="428dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:singleLine="false"
@@ -707,19 +997,22 @@
         android:typeface="normal"
         android:visibility="visible"
         app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toTopOf="@+id/Delay"
         app:layout_constraintEnd_toEndOf="@+id/Stop"
-        app:layout_constraintStart_toStartOf="@+id/Start"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/Start" />
 
     <CheckBox
-        android:id="@+id/tone"
-        android:layout_width="wrap_content"
+        android:id="@+id/Amplitude"
+        android:layout_width="148dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto"
         android:text="2 Tone Gen"
-        app:layout_constraintBottom_toTopOf="@+id/consoleText"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toTopOf="@+id/separator2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/separator2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

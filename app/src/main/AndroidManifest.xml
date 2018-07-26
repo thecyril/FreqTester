@@ -74,6 +74,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sdrf.puccio_c.freqtester.MainActivity" />
         </activity>
+        <activity
+            android:name=".IQgene"
+            android:label="@string/title_activity_iqgene"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sdrf.puccio_c.freqtester.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
