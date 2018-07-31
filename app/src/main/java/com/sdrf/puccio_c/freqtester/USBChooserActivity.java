@@ -42,11 +42,11 @@ public class USBChooserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usbchooser);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mListView = (ListView) findViewById(R.id.deviceList);
-        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        mListView = findViewById(R.id.deviceList);
+        mCollapsingToolbarLayout = findViewById(R.id.toolbar_layout);
 
         mCollapsingToolbarLayout.setTitle("Second device:");
 

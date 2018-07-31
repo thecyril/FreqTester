@@ -27,7 +27,7 @@
         android:text="@string/app_title"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
         android:text="@string/app_title"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/Amplitude"
         app:layout_constraintEnd_toEndOf="@+id/Amplitude"
         app:layout_constraintHorizontal_bias="0.0"
@@ -182,7 +182,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
-        android:onClick="increaseInteger"
+
         android:text="+"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/decrease"
@@ -195,7 +195,7 @@
         android:id="@+id/increaseamp"
         android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:onClick="increaseInteger"
+
         android:text="+"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/decreaseamp"
@@ -206,7 +206,7 @@
         android:id="@+id/increaseamp2"
         android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:onClick="increaseInteger"
+
         android:text="+"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/Amp2"
@@ -216,7 +216,7 @@
         android:id="@+id/increaseva"
         android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:onClick="increaseInteger"
+
         android:text="+"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/vainput"
@@ -230,7 +230,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="increaseInteger"
+
         android:text="+"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/Freq2"
@@ -247,7 +247,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="70dp"
-        android:onClick="decreaseInteger"
+
         android:text="-"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/Unit"
@@ -261,7 +261,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="72dp"
-        android:onClick="decreaseInteger"
+
         android:text="-"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/Freq2"
@@ -273,7 +273,7 @@
         android:id="@+id/decreaseamp"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
-        android:onClick="decreaseInteger"
+
         android:text="-"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/Amp"
@@ -284,7 +284,7 @@
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_marginBottom="16dp"
-        android:onClick="decreaseInteger"
+
         android:text="-"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -296,7 +296,7 @@
         android:id="@+id/decreaseva"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
-        android:onClick="decreaseInteger"
+
         android:text="-"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/vainput"
@@ -531,14 +531,14 @@
         android:textSize="21sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toStartOf="@+id/Freq"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Delay"
+        android:id="@+id/Delay2"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -552,7 +552,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/play"
         app:layout_constraintEnd_toEndOf="@+id/loop"
         app:layout_constraintStart_toStartOf="@+id/stop" />
@@ -572,7 +572,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/Stop"
         app:layout_constraintEnd_toEndOf="@+id/Stop"
         app:layout_constraintStart_toStartOf="@+id/Stop" />
@@ -592,7 +592,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/Start"
         app:layout_constraintEnd_toEndOf="@+id/Start"
         app:layout_constraintStart_toStartOf="@+id/Start" />
@@ -612,7 +612,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/calib"
         app:layout_constraintEnd_toEndOf="@+id/calib"
         app:layout_constraintHorizontal_bias="0.513"
@@ -631,7 +631,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/calib2"
         app:layout_constraintEnd_toEndOf="@+id/calib2"
         app:layout_constraintStart_toStartOf="@+id/calib2" />
@@ -650,7 +650,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="@+id/calib"
         app:layout_constraintStart_toEndOf="@+id/correction"
         app:layout_constraintTop_toTopOf="@+id/calib"
@@ -670,7 +670,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="@+id/correction2"
         app:layout_constraintStart_toEndOf="@+id/correction2"
         app:layout_constraintTop_toTopOf="@+id/correction2" />
@@ -689,7 +689,7 @@
         android:textSize="21sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/consoleText" />
 
@@ -707,7 +707,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/correction"
         app:layout_constraintEnd_toEndOf="@+id/correction"
         app:layout_constraintStart_toStartOf="@+id/correction" />
@@ -727,7 +727,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/correction2"
         app:layout_constraintEnd_toEndOf="@+id/correction2"
         app:layout_constraintStart_toStartOf="@+id/correction2" />
@@ -747,7 +747,7 @@
         android:textSize="18sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="@+id/Dbm"
         app:layout_constraintEnd_toEndOf="@+id/Amp"
         app:layout_constraintStart_toStartOf="@+id/Dbm"
@@ -768,7 +768,7 @@
         android:textSize="16sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/np"
         app:layout_constraintEnd_toEndOf="@+id/np"
         app:layout_constraintStart_toStartOf="@+id/np" />
@@ -788,7 +788,7 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="@+id/RF"
         app:layout_constraintStart_toEndOf="@+id/RF"
         app:layout_constraintTop_toTopOf="@+id/RF"
@@ -809,7 +809,7 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toBottomOf="@+id/Ref"
         app:layout_constraintStart_toEndOf="@+id/Ref"
         app:layout_constraintTop_toTopOf="@+id/Ref" />
@@ -829,7 +829,7 @@
         android:textSize="21sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/Amp"
         app:layout_constraintEnd_toEndOf="@+id/Dbm"
         app:layout_constraintStart_toStartOf="@+id/Amp"
@@ -851,7 +851,7 @@
         android:textSize="21sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/Amp2"
         app:layout_constraintEnd_toEndOf="@+id/Amp2"
         app:layout_constraintHorizontal_bias="0.504"
@@ -874,7 +874,7 @@
         android:textSize="21sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/vainput"
         app:layout_constraintEnd_toEndOf="@+id/vainput"
         app:layout_constraintStart_toStartOf="@+id/vainput" />
@@ -996,7 +996,7 @@
         android:textSize="21sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:fontFamily="@font/roboto"
+        android:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/Delay"
         app:layout_constraintEnd_toEndOf="@+id/Stop"
         app:layout_constraintStart_toStartOf="@+id/Start" />

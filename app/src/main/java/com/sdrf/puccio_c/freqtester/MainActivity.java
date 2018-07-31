@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
             String action = intent.getAction();
             if (ACTION_USB_PERMISSION.equals(action)) {
                 synchronized (this) {
-                    UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+                    UsbDevice device = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
 
                     if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
                         if(device != null){
@@ -75,6 +75,7 @@ public class MainActivity extends Activity {
         }
     };
 
+    //Receive message from de usb device
     private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -99,16 +100,18 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        //set the variable with graphical field
         mUsbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
-        mListView = (ListView) findViewById(R.id.deviceList);
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        mProgressBarTitle = (TextView) findViewById(R.id.progressBarTitle);
+        mListView = findViewById(R.id.deviceList);
+        mProgressBar = findViewById(R.id.progressBar);
+        mProgressBarTitle = findViewById(R.id.progressBarTitle);
 
+        //request permission of the usb
         mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
         IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
         registerReceiver(mUsbReceiver, filter);
 
-
+        //Here the viewlist with all the devices listed
         mAdapter = new ArrayAdapter<UsbSerialPort>(this,
                 android.R.layout.simple_expandable_list_item_2, mEntries) {
             @Override
@@ -148,6 +151,7 @@ public class MainActivity extends Activity {
 
         mListView.setAdapter(mAdapter);
 
+        //The executed action when you click on a device
         mListView.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -177,6 +181,7 @@ public class MainActivity extends Activity {
         mHandler.removeMessages(MESSAGE_REFRESH);
     }
 
+    //the task colled every X second to refresh the device list
     private void refreshDeviceList() {
         showProgressBar();
 
@@ -187,6 +192,7 @@ public class MainActivity extends Activity {
                 SystemClock.sleep(1000);
 
                 ProbeTable customTable = new ProbeTable();
+                //here where you add your device to the whitelist, if you change chip you'll need to update the vendorid and the productid to make it work
                 customTable.addProduct(0x04d8, 0x000a, CdcAcmSerialDriver.class);
                 UsbSerialProber prober = new UsbSerialProber(customTable);
                 UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);

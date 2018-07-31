@@ -163,6 +163,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     private SerialInputOutputManager mSerialIoManager;
     private SerialInputOutputManager mSerialIoManager2;
 
+    //to make the communication working you need to add a listener to the incoming data.
+
     private final SerialInputOutputManager.Listener mListener =
             new SerialInputOutputManager.Listener() {
 
@@ -206,6 +208,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     };
 
+    //this is the first called function when you open the app
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -216,48 +219,48 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         filters.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
         registerReceiver(detachReceiver, filters);
 
-        mTitleTextView  = (TextView) findViewById(R.id.demoTitle);
-        mUsbDevice2     = (TextView) findViewById(R.id.usbdevice2);
-        mDumpTextView   = (TextView) findViewById(R.id.consoleText);
-        mPath           = (TextView) findViewById(R.id.file);
-        mPath2          = (TextView) findViewById(R.id.file2);
-        mOuput          = (EditText) findViewById(R.id.output);
-        mScrollView     = (ScrollView) findViewById(R.id.demoScroller);
-        mFreqInput      = (EditText) findViewById(R.id.Freq);
-        mFreqInput2     = (EditText) findViewById(R.id.Freq2);
-        mFreqStart      = (EditText) findViewById(R.id.Start);
-        mFreqStop       = (EditText) findViewById(R.id.Stop);
-        mDelay          = (EditText) findViewById(R.id.Delay);
-        mCorrection     = (EditText) findViewById(R.id.correction);
-        mCorrection2    = (EditText) findViewById(R.id.correction2);
-        mStart          = (Button) findViewById(R.id.start);
-        mReset          = (Button) findViewById(R.id.reset);
-        mSetAmp         = (Button) findViewById(R.id.setamp);
-        mSetVa          = (Button) findViewById(R.id.setva);
-        mToolbar        = (Toolbar) findViewById(R.id.my_toolbar);
-        mDecrease       = (Button) findViewById(R.id.decrease);
-        mDecrease2      = (Button) findViewById(R.id.decrease2);
-        mIncrease       = (Button) findViewById(R.id.increase);
-        mIncrease2      = (Button) findViewById(R.id.increase2);
-        mDecreaseamp    = (Button) findViewById(R.id.decreaseamp);
-        mIncreaseamp    = (Button) findViewById(R.id.increaseamp);
-        mDecreaseamp2   = (Button) findViewById(R.id.decreaseamp2);
-        mIncreaseamp2   = (Button) findViewById(R.id.increaseamp2);
-        mDecreaseVa     = (Button) findViewById(R.id.decreaseva);
-        mIncreaseVa     = (Button) findViewById(R.id.increaseva);
-        mCalib          = (Button) findViewById(R.id.calib);
-        mCalib2         = (Button) findViewById(R.id.calib2);
-        mErase          = (ImageButton) findViewById(R.id.erase);
-        mPlay           = (ImageButton) findViewById(R.id.play);
-        mStop           = (ImageButton) findViewById(R.id.stop);
-        mLoop           = (ImageButton) findViewById(R.id.loop);
-        np              = (NumberPicker) findViewById(R.id.np);
-        mSwRf           = (Switch) findViewById(R.id.RF);
-        mSwRef          = (Switch) findViewById(R.id.Ref);
-        mAmpinput       = (EditText) findViewById(R.id.Amp);
-        mAmpinput2      = (EditText) findViewById(R.id.Amp2);
-        mVainput        = (EditText) findViewById(R.id.vainput);
-        mTone           = (CheckBox) findViewById(R.id.Amplitude);
+        mTitleTextView  = findViewById(R.id.demoTitle);
+        mUsbDevice2     = findViewById(R.id.usbdevice2);
+        mDumpTextView   = findViewById(R.id.consoleText);
+        mPath           = findViewById(R.id.file);
+        mPath2          = findViewById(R.id.file2);
+        mOuput          = findViewById(R.id.output);
+        mScrollView     = findViewById(R.id.demoScroller);
+        mFreqInput      = findViewById(R.id.Freq);
+        mFreqInput2     = findViewById(R.id.Freq2);
+        mFreqStart      = findViewById(R.id.Start);
+        mFreqStop       = findViewById(R.id.Stop);
+        mDelay          = findViewById(R.id.Delay);
+        mCorrection     = findViewById(R.id.correction);
+        mCorrection2    = findViewById(R.id.correction2);
+        mStart          = findViewById(R.id.start);
+        mReset          = findViewById(R.id.reset);
+        mSetAmp         = findViewById(R.id.setamp);
+        mSetVa          = findViewById(R.id.setva);
+        mToolbar        = findViewById(R.id.my_toolbar);
+        mDecrease       = findViewById(R.id.decrease);
+        mDecrease2      = findViewById(R.id.decrease2);
+        mIncrease       = findViewById(R.id.increase);
+        mIncrease2      = findViewById(R.id.increase2);
+        mDecreaseamp    = findViewById(R.id.decreaseamp);
+        mIncreaseamp    = findViewById(R.id.increaseamp);
+        mDecreaseamp2   = findViewById(R.id.decreaseamp2);
+        mIncreaseamp2   = findViewById(R.id.increaseamp2);
+        mDecreaseVa     = findViewById(R.id.decreaseva);
+        mIncreaseVa     = findViewById(R.id.increaseva);
+        mCalib          = findViewById(R.id.calib);
+        mCalib2         = findViewById(R.id.calib2);
+        mErase          = findViewById(R.id.erase);
+        mPlay           = findViewById(R.id.play);
+        mStop           = findViewById(R.id.stop);
+        mLoop           = findViewById(R.id.loop);
+        np              = findViewById(R.id.np);
+        mSwRf           = findViewById(R.id.RF);
+        mSwRef          = findViewById(R.id.Ref);
+        mAmpinput       = findViewById(R.id.Amp);
+        mAmpinput2      = findViewById(R.id.Amp2);
+        mVainput        = findViewById(R.id.vainput);
+        mTone           = findViewById(R.id.Amplitude);
 
 
         sPort = MainActivity.mPort;
@@ -397,6 +400,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mSetAmp.setOnClickListener(this);
         mCalib.setOnClickListener(this);
         mCalib2.setOnClickListener(this);
+        //2tone listener
         mTone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
@@ -423,7 +427,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 }
 
             }
-        });;
+        });
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -431,6 +435,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    //onClick is a listener to every graphic component you can link an action to the start button for example
     @Override
     public void onClick(View v)
     {
@@ -606,7 +611,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
         i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
         i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
-
+        //Here where i sat the path to the Tables folder, juste delete the + "/Tables" to change it
         i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath() + "/Tables");
 
         startActivityForResult(i, FILE_CODE);
@@ -625,6 +630,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         startActivityForResult(i, 2);
     }
 
+    //This is the function called when a correction file is loaded
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         try
@@ -672,11 +678,12 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    //To stop the sweep timer
     private void stopTimer(){
         handler.removeCallbacks(runnable);
     }
 
-    //To start timer
+    //To start the sweep timer
     public void startTimer() {
         handler.post(runnable = new Runnable() {
             public void run(){
@@ -705,11 +712,12 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         tv.setText("" + number);
     }
 
+    //spinner class corresponding to the Frequency and the dbm spinner
     public void addItemsOnSpinner() {
 
-        mSpinner = (Spinner) findViewById(R.id.Unit);
-        mSpinnerStep = (Spinner) findViewById(R.id.Unit2);
-        mSpinnerDbm = (Spinner) findViewById(R.id.Dbm);
+        mSpinner = findViewById(R.id.Unit);
+        mSpinnerStep = findViewById(R.id.Unit2);
+        mSpinnerDbm = findViewById(R.id.Dbm);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(SerialConsoleActivity.this,
                 R.array.Units, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> DbmAdapter = ArrayAdapter.createFromResource(SerialConsoleActivity.this,
@@ -722,14 +730,15 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
     }
 
     public void addListenerOnSpinnerItemSelection() {
-        mSpinner = (Spinner) findViewById(R.id.Unit);
+        mSpinner = findViewById(R.id.Unit);
         mSpinner.setOnItemSelectedListener(new SpinnerActivity());
-        mSpinnerStep = (Spinner) findViewById(R.id.Unit2);
+        mSpinnerStep = findViewById(R.id.Unit2);
         mSpinnerStep.setOnItemSelectedListener(new SpinnerActivity());
-        mSpinnerDbm = (Spinner) findViewById(R.id.Dbm);
+        mSpinnerDbm = findViewById(R.id.Dbm);
         mSpinnerDbm.setOnItemSelectedListener(new SpinnerActivity());
     }
 
+    //be careful to always close the opened port before closing
     @Override
     protected void onPause() {
         super.onPause();
@@ -758,6 +767,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         theTextView.append(msg);
     }
 
+    //called everytime the application is suspended like when you open the browse folder you need to reconnect to the usb port
     @Override
     protected void onResume() {
         super.onResume();
@@ -783,6 +793,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    //the function that set the amp you need to provide the edittext field where the amp is setted, the nb is the number of byte to send and a port
     public void sendAmp(EditText input, Integer nb, UsbSerialPort port)
     {
         BigInteger tension = BigInteger.ZERO;
@@ -798,6 +809,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                 if (mTable != null && mTension != null)
                     display((mCorrectedamp = SDRFUtils.ParseAmp(mTable, mFreq)), mCorrection);
                 mAmp = mAmp.subtract(mCorrectedamp);
+                //function are located in the SDRFUtils class so you can use them like that
                 tension = SDRFUtils.ParseTension(mTension, mAmp);
                 Log.d("Tension", tension.toString());
             } catch (Exception e) {
@@ -822,6 +834,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    //same as sendamp but for the 2tone
     public void sendAmp2(EditText input, Integer nb, UsbSerialPort port)
     {
         BigInteger tension = BigInteger.ZERO;
@@ -861,6 +874,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    //use to send frequency to the board
     public void sendFreq(EditText input, Integer nb)
     {
         if ((mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -101D)
@@ -881,19 +895,20 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                         "Value is too high",
                         Toast.LENGTH_SHORT).show();
             else {
-                Toast.makeText(getApplicationContext(),
-                        String.valueOf(mFreq),
-                        Toast.LENGTH_SHORT).show();
-
                 Log.i("mFreq", String.format("%d", mFreq));
             }
+            //rf off
             SDRFUtils.sendCommand(BigInteger.valueOf(0), 31, 1, sPort);
+            //send the amp
             sendAmp(mAmpinput, 32, sPort);
+            //send the freq
             SDRFUtils.sendCommand(mFreq, nb, 8, sPort);
+            //check if rfon is checked and send rf on if it is the case
             rfstate();
         }
     }
 
+    //same as sendfreq but for the 2tone
     public void sendFreq2(EditText input, Integer nb)
     {
         if ((mNb = BigDecimal.valueOf(SDRFUtils.ParseFreq(input))).doubleValue() < -101D)
@@ -914,10 +929,6 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                         "Value is too high",
                         Toast.LENGTH_SHORT).show();
             else {
-                Toast.makeText(getApplicationContext(),
-                        String.valueOf(mFreq2),
-                        Toast.LENGTH_SHORT).show();
-
                 Log.i("mFreq", String.format("%d", mFreq2));
             }
             if (is2tone && sPort2 != null) {
@@ -948,10 +959,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
                         "Value is too Low",
                         Toast.LENGTH_SHORT).show();
             else {
-                Toast.makeText(getApplicationContext(),
-                        String.valueOf(mVa),
-                        Toast.LENGTH_SHORT).show();
-
+                Log.i("mVa", String.format("%d", mVa));
             }
             SDRFUtils.sendCommand(mVa, nb, 2, port);
         }
@@ -967,6 +975,8 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
             Log.e(TAG, "Write Error");
         }
     }
+
+    //reset for the 2tone
     public void resetBoard2(){
         if (sPort2 != null) {
             byte[] msg = SDRFUtils.intToByteArray(BigInteger.valueOf(0), 5, 2);
@@ -1010,6 +1020,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         return true;
     }
 
+    //choose action for the action bar on the top of the activity
     public boolean onOptionsItemSelected(MenuItem item) {
        if(item.getItemId()== android.R.id.home)
            finish();
@@ -1032,6 +1043,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         startIoManager();
     }
 
+    //a hidden field that you can show by enlarging the windows in the view, it show every message comming from the board
     private void updateReceivedData(byte[] data) {
         final String message = "Read " + data.length + " bytes: \n"
                 + HexDump.dumpHexString(data) + "\n\n";
@@ -1041,6 +1053,7 @@ public class SerialConsoleActivity extends AppCompatActivity implements View.OnC
         mMessage = HexDump.dumpHexString(data);
     }
 
+    //called when you quit the activity or the application
     @Override
     public void onDestroy() {
         super.onDestroy();

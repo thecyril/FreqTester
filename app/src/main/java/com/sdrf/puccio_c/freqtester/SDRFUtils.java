@@ -27,7 +27,7 @@ import java.util.Set;
 
 public class SDRFUtils {
 
-    private static final String TAG = SDRFUtils.class.getSimpleName();;
+    private static final String TAG = SDRFUtils.class.getSimpleName();
 
     static public LinkedHashMap<BigInteger, BigDecimal> csvRead(InputStreamReader file) {
         LinkedHashMap<BigInteger, BigDecimal> table;
@@ -137,6 +137,7 @@ public class SDRFUtils {
         return valcalc;
     }
 
+    //the function used to calculate the output tension with the corrected amp and the vga_ctrl_voltage_att.csv located in the asset folder
     static public BigInteger ParseTension(LinkedHashMap table, BigDecimal amp) {
         BigDecimal  valmin = BigDecimal.ZERO;
         BigDecimal  valmax = BigDecimal.ZERO;
@@ -168,6 +169,7 @@ public class SDRFUtils {
         return BigInteger.ZERO;
     }
 
+    //the function used to calculate the corrected amp with the correction table you choose in the folder
     static public BigDecimal ParseAmp(LinkedHashMap table, BigInteger freq) {
         BigDecimal  attmin = BigDecimal.ZERO;
         BigDecimal  attmax = BigDecimal.ZERO;
@@ -209,6 +211,7 @@ public class SDRFUtils {
         return res;
     }
 
+    //use to avoid an empty field exception
     static public Double ParseFreq(EditText txt)
     {
         Double tmp = 0D;
@@ -227,6 +230,7 @@ public class SDRFUtils {
         return (tmp);
     }
 
+    //this function is used in every data transfer it convert a BigInteger value to byte, the second argument is the firt byte i have to send (33 for frequency set) and the nuber of total bytes to send
     static public byte[] intToByteArray (final BigInteger value, final int start, int bits) {
         byte[] startbyte = new byte[1];
         final byte[] converted = value.toByteArray();

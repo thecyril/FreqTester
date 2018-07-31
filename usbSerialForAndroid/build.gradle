@@ -3,7 +3,7 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
 
     defaultConfig {
         minSdkVersion 12
@@ -27,10 +27,6 @@ configurations {
     }
 }
 
-signing {
-    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
-}
 
 def getRepositoryUsername() {
     return hasProperty('sonatypeUsername') ? sonatypeUsername : ""
